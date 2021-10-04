@@ -1,0 +1,11 @@
+{
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "error",
+    "no-var": "error",
+    "prefer-template": "warn",
+    "radix": "warn",
+    "no-console": "warn",
+    "import/first": "error"
+  }
+}

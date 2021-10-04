@@ -1,0 +1,9 @@
+build
+node_modules
+.github
+.next
+next-env.d.ts
+yarn.lock
+package-lock.json
+public
+__mocks__

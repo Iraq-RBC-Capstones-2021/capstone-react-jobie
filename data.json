@@ -1,0 +1,218 @@
+{
+  "contact": [
+    {
+      "contact_1": [
+        {
+          "first_name": "john",
+          "last_name": "wick",
+          "email": "example.22@gmail.com",
+          "message": "Tom Jerry is president of the Youth Activism Project and author of several books including Youth! The 26% Solution, which she wrote with 19‐year‐old Emanuel Tsourounis. This national clearinghouse located in Washington, D.C. seeks to maximize youth impact in the public policy arena from school boards, law enforcement, transit authority, city council, statehouse to Congress. Currently Wendy is involved with youth‐led campaigns across the country to stop the school to prison pipeline and to extend voting rights to 16‐year‐olds in municipal elections and local school boards."
+        }
+      ],
+      "contact_2": [
+        {
+          "first_name": "larry",
+          "last_name": "robertson",
+          "email": "example.22@gmail.com",
+          "message": "Tom Jerry is president of the Youth Activism Project and author of several books including Youth! The 26% Solution, which she wrote with 19‐year‐old Emanuel Tsourounis. This national clearinghouse located in Washington, D.C. seeks to maximize youth impact in the public policy arena from school boards, law enforcement, transit authority, city council, statehouse to Congress. Currently Wendy is involved with youth‐led campaigns across the country to stop the school to prison pipeline and to extend voting rights to 16‐year‐olds in municipal elections and local school boards."
+        }
+      ],
+      "contact_3": [
+        {
+          "first_name": "rebaz",
+          "last_name": "farid",
+          "email": "example.22@gmail.com",
+          "message": "Tom Jerry is president of the Youth Activism Project and author of several books including Youth! The 26% Solution, which she wrote with 19‐year‐old Emanuel Tsourounis. This national clearinghouse located in Washington, D.C. seeks to maximize youth impact in the public policy arena from school boards, law enforcement, transit authority, city council, statehouse to Congress. Currently Wendy is involved with youth‐led campaigns across the country to stop the school to prison pipeline and to extend voting rights to 16‐year‐olds in municipal elections and local school boards."
+        }
+      ]
+    }
+  ],
+
+  "Posts": [
+    {
+      "id": 1,
+      "Title": "Web Developer",
+      "Location": [
+        {
+          "Country": "iraq",
+          "City": "sulaimany",
+          "street": "salim Street"
+        }
+      ],
+      "Type": "Full Time ",
+      "Category": "Developer",
+      "Work-Level": "advance",
+      "Experience": "3 years",
+      "Gender": "female",
+      "Salary": [
+        {
+          "From": 1500,
+          "To": 2000
+        }
+      ],
+      "Info": [
+        {
+          "Description": "We are looking for a highly skilled Full-Stack Web Developer who is comfortable with both front and back-end programming.",
+          "Responsibilities": "Responsible for developing and designing front end web architecture, ensuring the responsiveness of applications The developers will be required to see out a project from conception to the final product, requiring good organizational skills and attention to detail.",
+          "background": ""
+        }
+      ],
+      "Date": [
+        {
+          "start": "2021-1-11",
+          "End": "2023-1-4"
+        }
+      ]
+    },
+    {
+      "Title": "Graphic Designer",
+      "Location": [
+        {
+          "Country": "iraq",
+          "City": "erbil",
+          "street": "60m Street"
+        }
+      ],
+      "Type": "paid internShip",
+      "Category": "Designer",
+      "Work-Level": "intermidiate",
+      "Experience": "0 years",
+      "Gender": "male",
+      "Salary": [
+        {
+          "From": 300,
+          "To": 500
+        }
+      ],
+      "Info": [
+        {
+          "Description": "creative ability in design supporting the identity of the company ,and consolidating its brand through productivity and creativity",
+          "Responsibilities": "schedule the required tasks and commit to completing them on specified dates Continuous development in the tools and programs used and keeping pace with the creative ideas of designs ",
+          "background": ""
+        }
+      ],
+      "Date": [
+        {
+          "start": "2021-1-11",
+          "End": "2021-1-12"
+        }
+      ]
+    },
+    {
+      "Title": "Accountant ",
+      "Location": [
+        {
+          "Country": "iraq",
+          "City": "sulaimany",
+          "street": "salim Street"
+        }
+      ],
+      "Type": "Full Time ",
+      "Category": "Developer",
+      "Work-Level": "advance",
+      "Experience": "3 years",
+      "Gender": "female",
+      "Salary": [
+        {
+          "From": 1500,
+          "To": 2000
+        }
+      ],
+      "Info": [
+        {
+          "Description": "Review and monitor the reconciliation and settlement with significant merchant’s accounts، including checking commission of rates vs. contracts.Manage cash disbursement. Prepare Monthly cash-flow plan Ensure compliance with internal controls, policies and procedures. Develop and monitor treasury operational policies.",
+          "Responsibilities": "Manage all cash management functions including cash concentration, account funding. Ensure adequate liquidity for working capital needs and invest short term excess cash Oversee cash management banking and financial institution relationships. Negotiate bank and service fees. Implement new bank technologies, products and services to improve cash cycle and simplify company operations.Review Bank transfer requests for (Dealer, Merchant, Vendor, etc.) and follow-up with the Bank. ",
+          "background": ""
+        }
+      ],
+      "Date": [
+        {
+          "start": "2022-1-1",
+          "End": "2023-1-1"
+        }
+      ]
+    }
+  ],
+
+  "companies": [
+    {
+      "company_1": [
+        {
+          "id": "1",
+          "name": "google",
+          "website": "www.google.com",
+          "about": "Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
+          "contact": [
+            {
+              "location": [
+                {
+                  "country": "United States",
+                  "city": " Mountain View, California"
+                }
+              ],
+              "email": "contact@google.com",
+              "phone": "650 253-0000"
+            }
+          ],
+          "specialties": [
+            "search",
+            "mobile",
+            "technology",
+            "hardware",
+            "software"
+          ]
+        }
+      ],
+
+      "company_2": [
+        {
+          "id": "2",
+          "name": "apple",
+          "website": "www.apple.com",
+          "about": "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Apple is the world's largest technology company by revenue and, since January 2021, the world's most valuable company.",
+          "contact": [
+            {
+              "location": [
+                {
+                  "country": "United States",
+                  "city": " Cupertino, California"
+                }
+              ],
+              "email": "contact@apple.com",
+              "phone": "1-800-275-2273"
+            }
+          ],
+          "specialties": ["hardware", "software", "laptop", "mobile"]
+        }
+      ],
+
+      "company_3": [
+        {
+          "id": "3",
+          "name": "huawei",
+          "website": "www.huawei.com",
+          "about": "Huawei Technologies Co., Ltd. is a Chinese multinational technology corporation headquartered in Shenzhen, Guangdong, China. It designs, develops, and sells telecommunications equipment and consumer electronics.",
+          "contact": [
+            {
+              "location": [
+                {
+                  "country": "china",
+                  "city": "Shenzhen"
+                }
+              ],
+              "email": "contact@huawei.com",
+              "phone": "0800 088 6700"
+            }
+          ],
+          "specialties": [
+            "hardware",
+            "software",
+            "mobile",
+            "technology",
+            "network"
+          ]
+        }
+      ]
+    }
+  ]
+}

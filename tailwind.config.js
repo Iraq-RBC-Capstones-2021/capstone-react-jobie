@@ -9,6 +9,8 @@ module.exports = {
         light: "#E7ECF2",
         primary: "#72451",
         secondary: "#154360",
+        body: "#F8F8F8",
+        lightgrey: "#EBEDEF",
       },
     },
   },

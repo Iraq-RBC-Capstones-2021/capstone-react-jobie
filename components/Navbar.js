@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import NavbarSearch from "./navbarSearch";
+import NavBarSearch from "./NavBarSearch";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 
@@ -54,7 +54,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className="list-none">
-                <NavbarSearch />
+                <NavBarSearch />
               </li>
 
               <li className="list-none">

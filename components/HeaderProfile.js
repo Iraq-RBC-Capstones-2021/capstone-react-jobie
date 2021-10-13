@@ -5,7 +5,7 @@ const data = {
   id: "1",
   name: "Bruse Lee",
   skill: "Frontend Developer",
-  img: "/../public/avatar.png",
+  img: "/../public/img_avatar.png",
   contact: {
     hireLink: "",
     downloadCvBtn: "",
@@ -20,43 +20,49 @@ const data = {
 
 export default function ProfileHeader() {
   return (
-    <div className="w-full bg-gray-300">
-      <div className="container  p-12">
+    <div className="bg-light grid justify-items-center">
+      <div className="p-8 " style={{ width: "1080px" }}>
         <div className="flex item-center">
           <div className="mr-4">
             <Image
-              alt="No Image"
+              alt="Profile Image"
               src={data.img}
-              width={180}
-              height={180}
-              className="rounded-2xl"
+              width={300}
+              height={300}
+              className="rounded-xl"
             />
           </div>
 
           <div className="leading-5  w-screen">
-            <h4 className="text-xl font-semibold mb-4">Bruse Lee</h4>
-            <h5 className="">Frontend Developer</h5>
+            <h1 className="text-4xl font-semibold mb-2"> {data.name}</h1>
+            <h2 className="">{data.skill}</h2>
 
-            <div className="  justify-start flex mt-8">
-              <button className="bg-gray-500 w-40 text-white rounded-full py-1 px-6 m-2">
+            <div className="  justify-start flex mt-2">
+              <button className="bg-dark w-40 text-white rounded-full py-1 px-6 m-2">
                 Hire
               </button>
-              <button className="bg-gray-200 w-40  text-gray rounded-full py-1 px-6 m-2 border-2 border-gray-500 hover:text-white hover:bg-gray-500 ">
-                Downoad CV
+
+              <button className="border-dark w-40 text-dark font-semibold rounded-full py-1 px-6 m-2 border-2">
+                Download CV
               </button>
             </div>
           </div>
         </div>
+
         <div className="justify-between flex mt-10">
-          <div className="justify-between flex">
-            <AiFillLinkedin size={25} />
-            <span>{data.social.linkedin}</span>
+          <div className="justify-between flex items-center">
+            <AiFillLinkedin size={30} /> &nbsp;
+            {data.social.linkedin}
           </div>
-          <div className="justify-between flex  ">
-            <AiFillGithub size={25} /> <span>{data.social.github}</span>
+
+          <div className="justify-between flex items-center  ">
+            <AiFillGithub size={30} /> &nbsp;
+            {data.social.github}
           </div>
-          <div className="justify-between flex">
-            <AiFillFacebook size={25} /> <span>{data.social.facebook}</span>
+
+          <div className="justify-between flex items-center">
+            <AiFillFacebook size={30} /> &nbsp;
+            {data.social.facebook}
           </div>
         </div>
       </div>

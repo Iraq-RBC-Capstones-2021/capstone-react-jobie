@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-import NavbarSearch from "./navbarSearch";
+import NavbarSearch from "./NavbarSearch";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 

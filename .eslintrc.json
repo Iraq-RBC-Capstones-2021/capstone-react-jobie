@@ -6,6 +6,7 @@
     "prefer-template": "warn",
     "radix": "warn",
     "no-console": "warn",
-    "import/first": "error"
+    "import/first": "error",
+    "@next/next/no-img-element": "off"
   }
 }

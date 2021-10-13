@@ -9,7 +9,9 @@ module.exports = {
         light: "#E7ECF2",
         primary: "#72451",
         secondary: "#154360",
-        footer: "#546E7A"
+        footer: "#546E7A",
+        body: "#F8F8F8",
+        lightgrey: "#EBEDEF",
       },
     },
   },

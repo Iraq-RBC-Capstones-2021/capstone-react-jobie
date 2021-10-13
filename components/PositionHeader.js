@@ -25,6 +25,7 @@ const PositionHeader = ({
         <Image
           className="bg-white rounded-xl"
           src="/public/positionheader.svg"
+          alt="Image Section"
           width={400}
           height={332}
         />

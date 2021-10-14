@@ -1,6 +1,7 @@
 import Select from "react-select";
 export default function createjob() {
   const cities = [
+    { value: "Remote", label: "Remote" },
     { value: "Anbar", label: "Anbar" },
     { value: "Babylon", label: "Babylon" },
     { value: "Baghdad", label: "Baghdad" },
@@ -20,6 +21,8 @@ export default function createjob() {
     { value: "Thi-Qar", label: "Thi-Qar" },
     { value: "Wassit", label: "Wassit" },
   ];
+
+  const employment = [{ value: "Full Time", label: "Full Time" }];
 
   const style = {
     control: (base) => ({
@@ -48,20 +51,16 @@ export default function createjob() {
                   </button>
                 </div>
               </div>
+              <h1 className="text-dark font-semibold mt-6 mb-4"> Job Detail</h1>
 
-              <div className="grid gap-4 grid-rows-5 ">
+              <div className="grid grid-rows-5 gap-2  ">
                 <div className="row-1 grid grid-cols-3">
                   <div className="col-1 col-span-2 ">
-                    <h1 className="text-dark font-semibold mt-6 mb-4">
-                      {" "}
-                      Job Detail
-                    </h1>
-
                     <h5>Title</h5>
-                    <input className="mt-2 w-full h-10 rounded-lg border-grey border-2" />
+                    <input className=" w-full h-10 rounded-lg border-grey border-2" />
                   </div>
 
-                  <div className="col-3 border-l-4 mt-10 ml-6 pl-6  border-dark text-footer">
+                  <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
                     Some job title examples:
                     <ul className="list-disc ml-6 ">
                       <li>React Developer</li>
@@ -71,14 +70,52 @@ export default function createjob() {
                   </div>
                 </div>
 
-                <div className="row-2 ">
+                <div className="row-2 grid grid-cols-3">
                   <div className="col-1">
                     <h5>Location</h5>
                     <Select
-                      className=" w-1/3 h-11 rounded-lg border-grey border-2"
+                      className=" w-full h-11 rounded-lg border-grey border-2"
                       name="location"
                       required
                       options={cities}
+                      styles={style}
+                      multiple
+                    >
+                      <option
+                        className="rounded-lg border-grey border-2"
+                        value=""
+                        selected
+                        disabled
+                        hidden
+                      >
+                        Select Location
+                      </option>
+                    </Select>
+                  </div>
+
+                  <div className="col-2 ml-4">
+                    <h5>Title</h5>
+                    <input className="h-11 w-full rounded-lg border-grey border-2" />
+                  </div>
+
+                  <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+                    Some job title examples:
+                    <ul className="list-disc ml-6 ">
+                      <li>React Developer</li>
+                      <li>Team Lead</li>
+                      <li>Front-end Developer</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="row-3 grid grid-cols-3">
+                  <div className="col-1">
+                    <h5>Type of Employment</h5>
+                    <Select
+                      className=" w-full h-11 rounded-lg border-grey border-2"
+                      name="location"
+                      required
+                      options={employment}
                       styles={style}
                     >
                       <option
@@ -93,9 +130,9 @@ export default function createjob() {
                     </Select>
                   </div>
 
-                  <div className="col-2">
+                  <div className="col-2 ml-4">
                     <h5>Title</h5>
-                    <input className="mt-2 w-full h-10 rounded-lg border-grey border-2" />
+                    <input className="h-11 w-full rounded-lg border-grey border-2" />
                   </div>
                 </div>
 

@@ -72,24 +72,31 @@ export default function createjob() {
                 </div>
 
                 <div className="row-2 ">
-                  <h5>Location</h5>
-                  <Select
-                    className="col-1 w-1/3 h-11 rounded-lg border-grey border-2"
-                    name="location"
-                    required
-                    options={cities}
-                    styles={style}
-                  >
-                    <option
-                      className="rounded-lg border-grey border-2"
-                      value=""
-                      selected
-                      disabled
-                      hidden
+                  <div className="col-1">
+                    <h5>Location</h5>
+                    <Select
+                      className=" w-1/3 h-11 rounded-lg border-grey border-2"
+                      name="location"
+                      required
+                      options={cities}
+                      styles={style}
                     >
-                      Select Location
-                    </option>
-                  </Select>
+                      <option
+                        className="rounded-lg border-grey border-2"
+                        value=""
+                        selected
+                        disabled
+                        hidden
+                      >
+                        Select Location
+                      </option>
+                    </Select>
+                  </div>
+
+                  <div className="col-2">
+                    <h5>Title</h5>
+                    <input className="mt-2 w-full h-10 rounded-lg border-grey border-2" />
+                  </div>
                 </div>
 
                 <div className="col-3">hello</div>

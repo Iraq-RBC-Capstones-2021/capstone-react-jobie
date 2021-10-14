@@ -20,6 +20,16 @@ export default function createjob() {
     { value: "Thi-Qar", label: "Thi-Qar" },
     { value: "Wassit", label: "Wassit" },
   ];
+
+  const style = {
+    control: (base) => ({
+      ...base,
+      border: 0,
+      // This line disable the blue border
+      boxShadow: "none",
+    }),
+  };
+
   return (
     <div className="">
       <form className="form">
@@ -64,12 +74,19 @@ export default function createjob() {
                 <div className="row-2 ">
                   <h5>Location</h5>
                   <Select
-                    className="col-1 w-1/3 h-10 mt-2"
+                    className="col-1 w-1/3 h-11 rounded-lg border-grey border-2"
                     name="location"
                     required
                     options={cities}
+                    styles={style}
                   >
-                    <option value="" selected disabled hidden>
+                    <option
+                      className="rounded-lg border-grey border-2"
+                      value=""
+                      selected
+                      disabled
+                      hidden
+                    >
                       Select Location
                     </option>
                   </Select>

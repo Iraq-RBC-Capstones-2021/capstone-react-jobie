@@ -4,7 +4,6 @@ const data = {
   category: "Internet",
   website: "https://www.google.com/",
   logo: "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
-  // for Testing the image if exist put  : '/../public/img_avatar.png'
   img: "",
   about:
     "Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",

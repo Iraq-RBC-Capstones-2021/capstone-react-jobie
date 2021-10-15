@@ -48,9 +48,9 @@ export default function createjob() {
   ];
 
   const level = [
-    { value: "entry-level", label: "entry-level" },
-    { value: "mid-level,", label: "mid-level," },
-    { value: "senior-level,", label: "senior-level" },
+    { value: "Entry-Level", label: "Entry-Level" },
+    { value: "Mid-Level", label: "Mid-Level" },
+    { value: "Senior-Level", label: "Senior-Level" },
   ];
 
   const gender = [
@@ -73,7 +73,7 @@ export default function createjob() {
       <div className="bg-body px-4 lg:px-48 w-full pt-10">
         <div className="border-b-2 grid grid-cols-3">
           <div className="col-1 col-span-2">
-            <h1 className="text-dark font-semibold"> Create a Job </h1>
+            <h1 className="text-dark font-semibold text-4xl"> Create a Job </h1>
             <h4 className="mb-10"> Create a new job offer here</h4>
           </div>
           <div className="col-start-3 my-10 flex justify-end">

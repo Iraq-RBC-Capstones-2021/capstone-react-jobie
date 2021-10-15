@@ -69,237 +69,220 @@ export default function createjob() {
   };
 
   return (
-    <div className="">
-      <form className="form">
-        <div className="bg-body">
-          <div className=" px-4 lg:px-48 w-full">
-            <div className="relative pt-10">
-              <div className="border-b-2">
-                <h1 className="text-dark font-semibold"> Create a Job </h1>
-                <h4 className="mb-10"> Create a new job offer here</h4>
-                <div className="absolute top-2 right-0 mb-10">
-                  <button className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent">
-                    Save
-                  </button>
-                  <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
-                    Cancel
-                  </button>
-                </div>
-              </div>
+    <form className="form">
+      <div className="bg-body px-4 lg:px-48 w-full pt-10">
+        <div className="border-b-2">
+          <h1 className="text-dark font-semibold"> Create a Job </h1>
+          <h4 className="mb-10"> Create a new job offer here</h4>
+          <div className="absolute top-2 right-0 mb-10">
+            <button className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent">
+              Save
+            </button>
+            <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
+              Cancel
+            </button>
+          </div>
+        </div>
 
-              <h1 className="text-dark font-semibold mt-6 mb-4"> Job Detail</h1>
+        <h1 className="text-dark font-semibold mt-6 mb-4"> Job Detail</h1>
 
-              <div className="grid grid-rows-5 gap-2  ">
-                <div className="row-1 grid grid-cols-3">
-                  <div className="col-1 col-span-2 ">
-                    <h5>Title</h5>
-                    <input
-                      className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-                      name="title"
-                      placeholder="web developer"
-                    />
-                  </div>
+        <div className="grid grid-rows-5 gap-2  ">
+          <div className="row-1 grid grid-cols-3">
+            <div className="col-1 col-span-2 ">
+              <h5>Title</h5>
+              <input
+                className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
+                name="title"
+                placeholder="web developer"
+              />
+            </div>
 
-                  <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
-                    Some job title examples:
-                    <ul className="list-disc ml-6 ">
-                      <li>React Developer</li>
-                      <li>Team Lead</li>
-                      <li>Front-end Developer</li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+              Some job title examples:
+              <ul className="list-disc ml-6 ">
+                <li>React Developer</li>
+                <li>Team Lead</li>
+                <li>Front-end Developer</li>
+              </ul>
+            </div>
+          </div>
 
-                <div className="row-2 grid grid-cols-3">
-                  <div className="col-1">
-                    <h5>Location</h5>
-                    <Select
-                      className=" w-full h-11 rounded-lg border-grey border-2"
-                      name="location"
-                      required
-                      options={cities}
-                      styles={style}
-                      isMulti
-                      placeholder="Select the Locations that applies"
-                    />
-                  </div>
+          <div className="row-2 grid grid-cols-3">
+            <div className="col-1">
+              <h5>Location</h5>
+              <Select
+                className=" w-full h-11 rounded-lg border-grey border-2"
+                name="location"
+                required
+                options={cities}
+                styles={style}
+                isMulti
+                placeholder="Select the Locations that applies"
+              />
+            </div>
 
-                  <div className="col-2 ml-4">
-                    <h5>Address</h5>
-                    <input
-                      className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                      name="address"
-                      placeholder="as sulaymaniyah, Iraq"
-                    />
-                  </div>
+            <div className="col-2 ml-4">
+              <h5>Address</h5>
+              <input
+                className="h-11 w-full rounded-lg border-grey border-2 pl-2"
+                name="address"
+                placeholder="as sulaymaniyah, Iraq"
+              />
+            </div>
 
-                  <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
-                    Some job title examples:
-                    <ul className="list-disc ml-6 ">
-                      <li>React Developer</li>
-                      <li>Team Lead</li>
-                      <li>Front-end Developer</li>
-                    </ul>
-                  </div>
-                </div>
+            <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+              Some job title examples:
+              <ul className="list-disc ml-6 ">
+                <li>React Developer</li>
+                <li>Team Lead</li>
+                <li>Front-end Developer</li>
+              </ul>
+            </div>
+          </div>
 
-                <div className="row-3 grid grid-cols-3">
-                  <div className="col-1">
-                    <h5>Type of Employment</h5>
-                    <Select
-                      className=" w-full h-11 rounded-lg border-grey border-2"
-                      name="type"
-                      required
-                      options={employment}
-                      styles={style}
-                      isMulti
-                      placeholder="Choose all that applies"
-                    />
-                  </div>
+          <div className="row-3 grid grid-cols-3">
+            <div className="col-1">
+              <h5>Type of Employment</h5>
+              <Select
+                className=" w-full h-11 rounded-lg border-grey border-2"
+                name="type"
+                required
+                options={employment}
+                styles={style}
+                isMulti
+                placeholder="Choose all that applies"
+              />
+            </div>
 
-                  <div className="col-2 ml-4">
-                    <h5>Category</h5>
-                    <Select
-                      className=" w-full h-11 rounded-lg border-grey border-2"
-                      name="category"
-                      required
-                      options={category}
-                      styles={style}
-                      isMulti
-                      placeholder="Choose all that applies"
-                    />
-                  </div>
-                </div>
+            <div className="col-2 ml-4">
+              <h5>Category</h5>
+              <Select
+                className=" w-full h-11 rounded-lg border-grey border-2"
+                name="category"
+                required
+                options={category}
+                styles={style}
+                isMulti
+                placeholder="Choose all that applies"
+              />
+            </div>
+          </div>
 
-                <div className="row-4 grid grid-cols-3">
-                  <div className="col-1">
-                    <h5>Work Level</h5>
-                    <Select
-                      className=" w-full h-11 rounded-lg border-grey border-2"
-                      name="level"
-                      required
-                      options={level}
-                      styles={style}
-                      isMulti
-                      placeholder="Choose all that applies"
-                    />
-                  </div>
+          <div className="row-4 grid grid-cols-3">
+            <div className="col-1">
+              <h5>Work Level</h5>
+              <Select
+                className=" w-full h-11 rounded-lg border-grey border-2"
+                name="level"
+                required
+                options={level}
+                styles={style}
+                isMulti
+                placeholder="Choose all that applies"
+              />
+            </div>
 
-                  <div className="col-2 ml-4">
-                    <h5>Experience</h5>
-                    <Select
-                      className=" w-full h-11 rounded-lg border-grey border-2"
-                      name="experience"
-                      required
-                      options={experience}
-                      styles={style}
-                      placeholder="how many years of experience"
-                    />
-                  </div>
-                </div>
+            <div className="col-2 ml-4">
+              <h5>Experience</h5>
+              <Select
+                className=" w-full h-11 rounded-lg border-grey border-2"
+                name="experience"
+                required
+                options={experience}
+                styles={style}
+                placeholder="how many years of experience"
+              />
+            </div>
+          </div>
 
-                <div className="row-5">
-                  <h5>Gender</h5>
-                  <Select
-                    className=" w-1/3 h-11 rounded-lg border-grey border-2"
-                    name="experience"
-                    required
-                    options={gender}
-                    styles={style}
-                    placeholder="how many years of experience"
-                  />
-                </div>
-              </div>
+          <div className="row-5">
+            <h5>Gender</h5>
+            <Select
+              className=" w-1/3 h-11 rounded-lg border-grey border-2"
+              name="experience"
+              required
+              options={gender}
+              styles={style}
+              placeholder="how many years of experience"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-lightgrey px-4 lg:px-48 w-full pb-4">
+        <h1 className="text-dark font-semibold py-4"> Offered Salary</h1>
+
+        <div className="grid grid-cols-3">
+          <div className="col-1 ">
+            <h5 className="pl-2">From</h5>
+            <input
+              className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
+              name="from"
+              placeholder="From"
+            />
+          </div>
+
+          <div className="col-2 ">
+            <h5 className="pl-2">To</h5>
+            <input
+              className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
+              name="To"
+              placeholder="To"
+            />
+          </div>
+
+          <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+            Some job title examples:
+            <ul className="list-disc ml-6 ">
+              <li>
+                If the salary increases over time fill in the fields (from & to)
+                accordingly
+              </li>
+              <li>If the salary is fixed then leave the “to” field empty</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-body px-4 lg:px-48 w-full">
+        <h1 className="text-dark font-semibold py-6"> Description</h1>
+        <div className="grid grid-rows-3 ">
+          <div className="row-1 grid grid-cols-3">
+            <div className="col-1 col-span-2">
+              <h5>Description</h5>
+              <textarea className="w-full h-52 mt-2 border-grey border-2" />
+            </div>
+          </div>
+
+          <div className="row-2 grid grid-cols-3">
+            <div className="col-1 col-span-2">
+              <h5>Job Responsibilities</h5>
+              <textarea className="w-full h-52 mt-2 border-grey border-2" />
+            </div>
+          </div>
+
+          <div className="row-3 grid grid-cols-3">
+            <div className="col-1 col-span-2">
+              <h5>Background and Experience</h5>
+              <textarea className="w-full h-52 mt-2 border-grey border-2" />
             </div>
           </div>
         </div>
 
-        <div className="bg-lightgrey">
-          <div className="px-4 lg:px-48 w-full pb-4">
-            <h1 className="text-dark font-semibold py-4"> Offered Salary</h1>
-
-            <div className="grid grid-cols-3">
-              <div className="col-1 ">
-                <h5 className="pl-2">From</h5>
-                <input
-                  className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-                  name="from"
-                  placeholder="From"
-                />
-              </div>
-
-              <div className="col-2 ">
-                <h5 className="pl-2">To</h5>
-                <input
-                  className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-                  name="To"
-                  placeholder="To"
-                />
-              </div>
-
-              <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
-                Some job title examples:
-                <ul className="list-disc ml-6 ">
-                  <li>
-                    If the salary increases over time fill in the fields (from &
-                    to) accordingly
-                  </li>
-                  <li>
-                    If the salary is fixed then leave the “to” field empty
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div className="grid grid-cols-4 gap-4">
+          <div className="col-start-4 my-10">
+            <button
+              className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent"
+              type="submit"
+            >
+              Save
+            </button>
+            <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
+              Cancel
+            </button>
           </div>
         </div>
-
-        <div className="bg-body">
-          <div className="flex justify-center">
-            <div className="px-4 lg:px-48 w-full">
-              <h1 className="text-dark font-semibold mt-6 mb-4">
-                {" "}
-                Description
-              </h1>
-              <div className="grid grid-rows-3 ">
-                <div className="row-1 grid grid-cols-3">
-                  <div className="col-1 col-span-2">
-                    <h5>Description</h5>
-                    <textarea className="w-full h-52 mt-2 border-grey border-2" />
-                  </div>
-                </div>
-
-                <div className="row-2 grid grid-cols-3">
-                  <div className="col-1 col-span-2">
-                    <h5>Job Responsibilities</h5>
-                    <textarea className="w-full h-52 mt-2 border-grey border-2" />
-                  </div>
-                </div>
-
-                <div className="row-3 grid grid-cols-3">
-                  <div className="col-1 col-span-2">
-                    <h5>Background and Experience</h5>
-                    <textarea className="w-full h-52 mt-2 border-grey border-2" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-4 gap-4">
-                <div className="col-start-4 my-10">
-                  <button
-                    className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                  <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
+
 const PositionHeader = ({
   JobType = "Intership",
   JobName = "UX/UI Designer Web & Mobile Platforms",
@@ -17,12 +18,14 @@ const PositionHeader = ({
     setsaved(false);
     setsaved(!saved);
   }
+
   return (
     <div className="bg-light  w-screen h-auto flex ">
       <div className="p-12 ">
         <Image
           className="bg-white rounded-xl"
           src="/public/positionheader.svg"
+          alt="Image Section"
           width={400}
           height={332}
         />

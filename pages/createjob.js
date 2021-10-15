@@ -71,14 +71,16 @@ export default function createjob() {
   return (
     <form className="form">
       <div className="bg-body px-4 lg:px-48 w-full pt-10">
-        <div className="border-b-2">
-          <h1 className="text-dark font-semibold"> Create a Job </h1>
-          <h4 className="mb-10"> Create a new job offer here</h4>
-          <div className="absolute top-2 right-0 mb-10">
-            <button className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent">
+        <div className="border-b-2 grid grid-cols-3">
+          <div className="col-1 col-span-2">
+            <h1 className="text-dark font-semibold"> Create a Job </h1>
+            <h4 className="mb-10"> Create a new job offer here</h4>
+          </div>
+          <div className="col-start-3 mb-10 flex justify-end">
+            <button className="text-base rounded-full my-2 pr-6 pl-6 mr-2  text-white font-semibold  bg-accent">
               Save
             </button>
-            <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
+            <button className="text-base rounded-full my-2 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
               Cancel
             </button>
           </div>
@@ -130,12 +132,10 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
-              Some job title examples:
+            <div className="col-3 border-l-4 ml-6 pl-6 my-8  border-dark text-footer">
+              Tip
               <ul className="list-disc ml-6 ">
-                <li>React Developer</li>
-                <li>Team Lead</li>
-                <li>Front-end Developer</li>
+                <li>Choose “Remote” as location for online work</li>
               </ul>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function createjob() {
         </div>
       </div>
 
-      <div className="bg-lightgrey px-4 lg:px-48 w-full pb-4">
+      <div className="bg-lightgrey px-4 lg:px-48 w-full py-10">
         <h1 className="text-dark font-semibold py-4"> Offered Salary</h1>
 
         <div className="grid grid-cols-3">
@@ -232,7 +232,7 @@ export default function createjob() {
           </div>
 
           <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
-            Some job title examples:
+            Tip
             <ul className="list-disc ml-6 ">
               <li>
                 If the salary increases over time fill in the fields (from & to)

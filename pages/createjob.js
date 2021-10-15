@@ -76,11 +76,14 @@ export default function createjob() {
             <h1 className="text-dark font-semibold"> Create a Job </h1>
             <h4 className="mb-10"> Create a new job offer here</h4>
           </div>
-          <div className="col-start-3 mb-10 flex justify-end">
-            <button className="text-base rounded-full my-2 pr-6 pl-6 mr-2  text-white font-semibold  bg-accent">
+          <div className="col-start-3 my-10 flex justify-end">
+            <button
+              className="text-base rounded-full p-1 px-6   text-white font-semibold  bg-accent"
+              type="submit"
+            >
               Save
             </button>
-            <button className="text-base rounded-full my-2 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
+            <button className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey">
               Cancel
             </button>
           </div>
@@ -88,9 +91,9 @@ export default function createjob() {
 
         <h1 className="text-dark font-semibold mt-6 mb-4"> Job Detail</h1>
 
-        <div className="grid grid-rows-5 gap-2  ">
+        <div className="grid grid-rows-5 auto-rows-min">
           <div className="row-1 grid grid-cols-3">
-            <div className="col-1 col-span-2 ">
+            <div className=" self-center col-1 col-span-2 ">
               <h5>Title</h5>
               <input
                 className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
@@ -99,7 +102,7 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+            <div className=" self-center col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
               Some job title examples:
               <ul className="list-disc ml-6 ">
                 <li>React Developer</li>
@@ -109,8 +112,8 @@ export default function createjob() {
             </div>
           </div>
 
-          <div className="row-2 grid grid-cols-3">
-            <div className="col-1">
+          <div className=" row-2 grid grid-cols-3">
+            <div className="self-center col-1">
               <h5>Location</h5>
               <Select
                 className=" w-full h-11 rounded-lg border-grey border-2"
@@ -123,7 +126,7 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-2 ml-4">
+            <div className="self-center col-2 ml-4">
               <h5>Address</h5>
               <input
                 className="h-11 w-full rounded-lg border-grey border-2 pl-2"
@@ -132,7 +135,7 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-3 border-l-4 ml-6 pl-6 my-8  border-dark text-footer">
+            <div className="self-center col-3 border-l-4 ml-6 pl-6 my-8  border-dark text-footer">
               Tip
               <ul className="list-disc ml-6 ">
                 <li>Choose “Remote” as location for online work</li>
@@ -141,7 +144,7 @@ export default function createjob() {
           </div>
 
           <div className="row-3 grid grid-cols-3">
-            <div className="col-1">
+            <div className="self-center col-1">
               <h5>Type of Employment</h5>
               <Select
                 className=" w-full h-11 rounded-lg border-grey border-2"
@@ -154,7 +157,7 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-2 ml-4">
+            <div className="self-center col-2 ml-4">
               <h5>Category</h5>
               <Select
                 className=" w-full h-11 rounded-lg border-grey border-2"
@@ -169,7 +172,7 @@ export default function createjob() {
           </div>
 
           <div className="row-4 grid grid-cols-3">
-            <div className="col-1">
+            <div className="self-center col-1">
               <h5>Work Level</h5>
               <Select
                 className=" w-full h-11 rounded-lg border-grey border-2"
@@ -182,7 +185,7 @@ export default function createjob() {
               />
             </div>
 
-            <div className="col-2 ml-4">
+            <div className="self-center col-2 ml-4">
               <h5>Experience</h5>
               <Select
                 className=" w-full h-11 rounded-lg border-grey border-2"
@@ -195,7 +198,7 @@ export default function createjob() {
             </div>
           </div>
 
-          <div className="row-5">
+          <div className="self-center row-5">
             <h5>Gender</h5>
             <Select
               className=" w-1/3 h-11 rounded-lg border-grey border-2"
@@ -213,7 +216,7 @@ export default function createjob() {
         <h1 className="text-dark font-semibold py-4"> Offered Salary</h1>
 
         <div className="grid grid-cols-3">
-          <div className="col-1 ">
+          <div className="self-center col-1 ">
             <h5 className="pl-2">From</h5>
             <input
               className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
@@ -222,7 +225,7 @@ export default function createjob() {
             />
           </div>
 
-          <div className="col-2 ">
+          <div className="self-center col-2 ">
             <h5 className="pl-2">To</h5>
             <input
               className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
@@ -231,7 +234,7 @@ export default function createjob() {
             />
           </div>
 
-          <div className="col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
+          <div className="self-center col-3 border-l-4 ml-6 pl-6  border-dark text-footer">
             Tip
             <ul className="list-disc ml-6 ">
               <li>
@@ -248,21 +251,21 @@ export default function createjob() {
         <h1 className="text-dark font-semibold py-6"> Description</h1>
         <div className="grid grid-rows-3 ">
           <div className="row-1 grid grid-cols-3">
-            <div className="col-1 col-span-2">
+            <div className="self-center col-1 col-span-2">
               <h5>Description</h5>
               <textarea className="w-full h-52 mt-2 border-grey border-2" />
             </div>
           </div>
 
           <div className="row-2 grid grid-cols-3">
-            <div className="col-1 col-span-2">
+            <div className="self-center col-1 col-span-2">
               <h5>Job Responsibilities</h5>
               <textarea className="w-full h-52 mt-2 border-grey border-2" />
             </div>
           </div>
 
           <div className="row-3 grid grid-cols-3">
-            <div className="col-1 col-span-2">
+            <div className="self-center col-1 col-span-2">
               <h5>Background and Experience</h5>
               <textarea className="w-full h-52 mt-2 border-grey border-2" />
             </div>
@@ -272,12 +275,12 @@ export default function createjob() {
         <div className="grid grid-cols-4 gap-4">
           <div className="col-start-4 my-10">
             <button
-              className="text-base rounded-full p-1 pr-6 pl-6  text-white font-semibold  bg-accent"
+              className="text-base rounded-full p-1 px-6 text-white font-semibold bg-accent"
               type="submit"
             >
               Save
             </button>
-            <button className="text-base rounded-full p-1 pr-6 pl-6  text-dark  font-semibold  bg-lightgrey">
+            <button className="text-base rounded-full p-1 px-6 ml-6 text-dark  font-semibold bg-lightgrey">
               Cancel
             </button>
           </div>

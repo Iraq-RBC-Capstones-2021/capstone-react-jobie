@@ -17,7 +17,7 @@ const JobListing = ({
     setsaved(!saved);
   }
   return (
-    <div className="bg-white shadow-xl w-full py-4 px-6 flex justify-between items-center rounded-xl">
+    <div className="bg-white shadow-lg w-full py-4 px-6 flex justify-between items-center rounded-xl">
       <div className="flex-none sm:flex space-x-4 items-center justify-center">
         <div className="h-16 w-16 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex justify-center items-center">
           {logo ? (

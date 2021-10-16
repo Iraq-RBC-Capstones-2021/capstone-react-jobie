@@ -1,8 +1,3 @@
-import Header from "../components/Header";
-import Image from "next/image";
-import user from "../assets/user.png";
-import { AiFillLinkedin } from "react-icons/ai";
-import { AiFillFacebook } from "react-icons/ai";
 import { FaBriefcase } from "react-icons/fa";
 import { AiFillPhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";

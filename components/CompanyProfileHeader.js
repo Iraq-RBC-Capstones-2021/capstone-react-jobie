@@ -29,19 +29,19 @@ const data = {
 
 function CompanyProfileHeader() {
   return (
-    <div className=" w-full bg-blue-50">
-      <div className="flex flex-col container mx-auto ">
-        <div className="pt-10 pb-8 ">
+    <div className="w-full bg-light">
+      <div className="flex flex-col mx-auto px-4 lg:px-48 w-full">
+        <div className="pt-10 pb-8">
           <div className="flex-none sm:flex">
-            <div className="  h-32 w-32   sm:mb-0 mb-3 bg-blue-200 rounded-2xl ">
+            <div className="h-32 w-32 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex items-center justify-center">
               {data.logo ? (
                 <img
                   src={data.logo}
                   alt={data.name}
-                  className=" w-32 h-32 object-cover rounded-2xl"
+                  className="w-28 h-28 object-cover rounded-2xl"
                 />
               ) : (
-                <div className=" h-full border-primary bg-primary-light text-primary w-full  rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl text-blue-600">
+                <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl">
                   <span>{data.name.charAt(0)}</span>
                 </div>
               )}

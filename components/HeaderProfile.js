@@ -1,19 +1,42 @@
 import Image from "next/image";
 import { AiFillLinkedin, AiFillGithub, AiFillFacebook } from "react-icons/ai";
 
-export default function ProfileHeader({ data }) {
+const data = {
+  id: "1",
+  name: "Bruse Lee",
+  skill: "Frontend Developer",
+  img: "",
+  contact: {
+    hireLink: "",
+    downloadCvBtn: "",
+  },
+
+  social: {
+    linkedin: "linkedin/bruse-lee",
+    github: "bruse-lee",
+    facebook: "bruse-lee",
+  },
+};
+
+export default function ProfileHeader() {
   return (
     <div className="bg-light grid justify-items-center">
       <div className="p-8 " style={{ width: "1080px" }}>
         <div className="flex item-center">
           <div className="mr-4">
-            <Image
-              alt="Profile Image"
-              src={data.img}
-              width={300}
-              height={300}
-              className="rounded-xl"
-            />
+            {data.img ? (
+              <Image
+                alt="Profile Image"
+                src={data.img}
+                width={300}
+                height={300}
+                className="rounded-xl"
+              />
+            ) : (
+              <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl">
+                <span>{data.name.charAt(0)}</span>
+              </div>
+            )}
           </div>
 
           <div className="leading-5  w-screen">

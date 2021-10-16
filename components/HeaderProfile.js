@@ -1,24 +1,7 @@
 import Image from "next/image";
 import { AiFillLinkedin, AiFillGithub, AiFillFacebook } from "react-icons/ai";
 
-const data = {
-  id: "1",
-  name: "Bruse Lee",
-  skill: "Frontend Developer",
-  img: "/../public/img_avatar.png",
-  contact: {
-    hireLink: "",
-    downloadCvBtn: "",
-  },
-
-  social: {
-    linkedin: "linkedin/bruse-lee",
-    github: "bruse-lee",
-    facebook: "bruse-lee",
-  },
-};
-
-export default function ProfileHeader() {
+export default function ProfileHeader({ data }) {
   return (
     <div className="bg-light grid justify-items-center">
       <div className="p-8 " style={{ width: "1080px" }}>

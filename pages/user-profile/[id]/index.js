@@ -2,7 +2,7 @@ import { FaBriefcase } from "react-icons/fa";
 import { AiFillPhone } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineMail } from "react-icons/ai";
-import ProfileHeader from "../components/HeaderProfile";
+import ProfileHeader from "../../../components/HeaderProfile";
 
 const data = {
   id: "1",
@@ -81,10 +81,10 @@ export default function UserProfile(props) {
       <ProfileHeader data={data} />
       <div className="grid justify-items-center bg-gray-50">
         <p className="w-8/12 m-6 text-lg text-dark">{data.description}</p>
-        <div className="grid justify-items-center grid-cols-3 w-full mb-20 mt-10">
-          <div className="space-y-2">
+        <div className="flex  flex-row justify-around  mb-20 mt-10  w-5/6">
+          <div className="flex flex-col space-y-2">
             <h1 className="text-dark mb-3 font-bold">Contacts</h1>
-            <div className=" flex flex-row ">
+            <div className=" flex  ">
               <div className="mr-1">
                 <AiOutlineMail className=" text-2xl text-dark" />
               </div>
@@ -92,7 +92,7 @@ export default function UserProfile(props) {
                 <h4 className="text-dark">{data.contacts.email}</h4>
               </div>
             </div>
-            <div className=" flex flex-row">
+            <div className=" flex ">
               <div className="mr-1">
                 <GoLocation className=" text-2xl text-dark" />
               </div>
@@ -100,7 +100,7 @@ export default function UserProfile(props) {
                 <h4 className="text-dark">{data.contacts.location}</h4>
               </div>
             </div>
-            <div className=" flex flex-row">
+            <div className=" flex ">
               <div className="mr-1">
                 <AiFillPhone className=" text-2xl text-dark" />
               </div>

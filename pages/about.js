@@ -42,8 +42,8 @@ const Sec1 = [
 const Sec2 = [
   { title: "Posted", subtitle: "15k Vacancies", logo: FaPenNib },
   { title: "Saved", subtitle: "5k Vacancies", logo: FaBookmark },
-  { title: "Submitted", subtitle: "12k Vacancies", logo: FaFileUpload },
-  { title: "Hired", subtitle: "8k Vacancies", logo: FaCheckDouble },
+  { title: "Submitted", subtitle: "12k CV", logo: FaFileUpload },
+  { title: "Hired", subtitle: "8k Employees", logo: FaCheckDouble },
 ];
 
 export default function aboutus() {

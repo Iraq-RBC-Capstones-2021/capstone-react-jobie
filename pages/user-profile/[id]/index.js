@@ -1,7 +1,7 @@
 import { FaBriefcase } from "react-icons/fa";
-import { AiFillPhone } from "react-icons/ai";
-import { GoLocation } from "react-icons/go";
-import { AiOutlineMail } from "react-icons/ai";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import ProfileHeader from "../../../components/HeaderProfile";
 
 const data = {
@@ -34,7 +34,7 @@ const data = {
       company: "apple",
       location: "loss angles",
       job_type: "Full Time",
-      date: "20/march/2020",
+      date: "April 20, 2020 - July 12, 2021",
     },
     {
       name: "Full Stack web developer",
@@ -77,102 +77,107 @@ const data = {
 
 export default function UserProfile(props) {
   return (
-    <div className="mx-auto">
+    <div>
       <ProfileHeader data={data} />
-      <div className="grid justify-items-center bg-gray-50">
-        <p className="w-8/12 m-6 text-lg text-dark">{data.description}</p>
-        <div className="flex  flex-row justify-around  mb-20 mt-10  w-5/6">
-          <div className="flex flex-col space-y-2">
-            <h1 className="text-dark mb-3 font-bold">Contacts</h1>
-            <div className=" flex  ">
-              <div className="mr-1">
-                <AiOutlineMail className=" text-2xl text-dark" />
+      <div className="bg-body">
+        <div className="mx-auto px-4 lg:px-48 w-full py-10">
+          <p className=" text-lg text-dark">{data.description}</p>
+          <div className="grid grid-cols-3 gap-4 pt-12">
+            <div className="space-y-3">
+              <h1 className="text-dark mb-3 font-semibold">Contact</h1>
+              <div className=" flex items-center">
+                <div className="mr-2">
+                  <FaMapMarkerAlt className=" text-dark" />
+                </div>
+                <div>
+                  <h4 className="text-dark ">{data.contacts.location}</h4>
+                </div>
               </div>
-              <div>
-                <h4 className="text-dark">{data.contacts.email}</h4>
+              <div className=" flex items-center">
+                <div className="mr-2">
+                  <FaEnvelope className=" text-dark" />
+                </div>
+                <div>
+                  <h4 className="text-dark">{data.contacts.email}</h4>
+                </div>
+              </div>
+              <div className=" flex items-center">
+                <div className="mr-2">
+                  <FaPhoneAlt className=" text-dark" />
+                </div>
+                <div>
+                  <h4 className="text-dark">{data.contacts.phone}</h4>
+                </div>
               </div>
             </div>
-            <div className=" flex ">
-              <div className="mr-1">
-                <GoLocation className=" text-2xl text-dark" />
+            <div className="col-span-2">
+              {" "}
+              <h1 className="text-dark mb-3 font-semibold">Skills</h1>
+              <div className="flex flex-wrap flex-row space-x-3 ">
+                {data.skills.map((skill, index) => {
+                  return (
+                    <div
+                      className="bg-lightblue text-dark rounded-lg py-0.5 px-3 "
+                      key={index}
+                    >
+                      {skill}
+                    </div>
+                  );
+                })}
               </div>
-              <div>
-                <h4 className="text-dark">{data.contacts.location}</h4>
-              </div>
-            </div>
-            <div className=" flex ">
-              <div className="mr-1">
-                <AiFillPhone className=" text-2xl text-dark" />
-              </div>
-              <div>
-                <h4 className="text-dark">{data.contacts.phone}</h4>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-2 w-96">
-            <h1 className="text-dark mb-3 font-bold">Skills</h1>
-            <div className="flex flex-wrap flex-row space-x-3 ">
-              {data.skills.map((skill, index) => {
-                return (
-                  <div
-                    className="bg-light text-dark rounded-lg  p-1 mb-2"
-                    key={index}
-                  >
-                    {skill}
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>
       </div>
+
       <div className="bg-lightgrey">
-        <h1 className="ml-48 pt-16 mb-6 font-bold text-3xl text-secondary">
-          Work Experience
-        </h1>
-        {data.experience.map((experience, index) => {
-          return (
-            <div className="pb-10" key={index}>
-              <div className="flex justify-around gap-x-72  w-11/12">
-                <div>
-                  <h3 className="text-secondary">{experience.name}</h3>
-                  <div className="flex justify-between mt-2">
-                    <p className="flex text-darkgrey">
-                      <FaBriefcase className="mr-2 mt-1" />
-                      {experience.company}
-                    </p>
-                    <p className="flex text-darkgrey">
-                      <GoLocation className="mr-2 mt-1" />
-                      {experience.location}
-                    </p>
+        <div className="mx-auto px-4 lg:px-48 w-full py-10">
+          <h1 className=" mb-6 font-bold text-3xl text-secondary">
+            Work Experience
+          </h1>
+          {data.experience.map((experience, index) => {
+            return (
+              <div key={index}>
+                <div className="grid grid-cols-4 gap-y-4 ">
+                  <div className="col-span-3">
+                    <h3 className="text-secondary">{experience.name}</h3>
+                    <div className="flex space-x-5 mt-2 ">
+                      <p className="flex text-darkgrey">
+                        <FaBriefcase className="mr-2 mt-1" />
+                        {experience.company}
+                      </p>
+                      <p className="flex text-darkgrey">
+                        <FaMapMarkerAlt className="mr-2 mt-1" />
+                        {experience.location}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-center flex-col">
+                    <h3 className="text-accent">{experience.job_type}</h3>
+                    <p className="text-darkgrey">{experience.date}</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-accent">{experience.job_type}</h3>
 
-                  <p className="text-darkgrey">{experience.date}</p>
-                </div>
+                {index === data.experience.length - 1 ? (
+                  ""
+                ) : (
+                  <div className="flex justify-center my-5 ">
+                    <hr className="w-full border-gray-300" />
+                  </div>
+                )}
               </div>
-              {index === data.experience.length - 1 ? (
-                ""
-              ) : (
-                <div className="flex justify-center mt-10 ">
-                  <hr className="w-3/4 border-darkgrey" />
-                </div>
-              )}
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-      <div className="">
-        <h1 className="ml-48 pt-16 mb-6 font-bold text-3xl text-secondary">
-          Education
-        </h1>
+
+      <div className="mx-auto px-4 lg:px-48 w-full py-10">
+        <h1 className="  mb-6 font-bold text-3xl text-secondary">Education</h1>
         {data.education.map((education, index) => {
           return (
-            <div className="pb-10" key={index}>
-              <div className="flex justify-around gap-x-60  w-11/12 ">
-                <div>
+            <div key={index}>
+              <div className="grid grid-cols-4 gap-y-4 ">
+                <div className="col-span-3">
                   <h3 className="text-secondary">{education.name}</h3>
                   <div className="mt-2">
                     <p className="flex text-darkgrey">
@@ -181,17 +186,15 @@ export default function UserProfile(props) {
                     </p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-accent">During</h3>
-
+                <div className="flex items-center">
                   <p className="text-darkgrey">{education.date}</p>
                 </div>
               </div>
               {index === data.education.length - 1 ? (
                 ""
               ) : (
-                <div className="flex justify-center mt-10 ">
-                  <hr className="w-3/4 border-darkgrey" />
+                <div className="flex justify-center my-5 ">
+                  <hr className="w-full border-gray-300" />
                 </div>
               )}
             </div>

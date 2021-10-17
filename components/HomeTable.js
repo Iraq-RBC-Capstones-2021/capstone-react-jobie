@@ -19,13 +19,13 @@ const HomeTable = ({
           <span className="ml-2">Remote</span>
         </label>
       </div>
-      <table class="table-fixed shadow-lg  ">
+      <table className="table-fixed shadow-lg  ">
         <thead className="bg-light  h-12   ">
           <tr className="rounded-xl">
-            <th class=" text-dark w-1/2 text-left pl-6 ">Position</th>
-            <th class="w-1/4 text-left text-dark">Salary</th>
-            <th class="w-1/4 text-left text-dark ">Date</th>
-            <th class="w-1/4 text-left text-dark">Apply</th>
+            <th className=" text-dark w-1/2 text-left pl-6 ">Position</th>
+            <th className="w-1/4 text-left text-dark">Salary</th>
+            <th className="w-1/4 text-left text-dark ">Date</th>
+            <th className="w-1/4 text-left text-dark">Apply</th>
           </tr>
         </thead>
         <tbody>

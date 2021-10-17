@@ -1,7 +1,7 @@
-import HowItWorks from "./../components/Aboutus/HowItWorks";
-import TeamProfile from "./../components/Aboutus/TeamProfile";
-import WhyChooseUs from "./../components/Aboutus/WhyChooseUs";
-import Header from "./../components/Header";
+import HowItWorks from "../components/Aboutus/HowItWorks";
+import TeamProfile from "../components/Aboutus/TeamProfile";
+import WhyChooseUs from "../components/Aboutus/WhyChooseUs";
+import Header from "../components/Header";
 
 import Rebaz from "../assets/TeamPic/Rebaz.jpg";
 import Aya from "../assets/TeamPic/aya.jpg";
@@ -78,11 +78,11 @@ export default function aboutus() {
           </div>
         </div>
 
-        <h1 className="text-4xl font-semibold text-primary pt-40">
+        <h1 className="text-4xl font-semibold text-primary pt-20 pb-10">
           {" "}
           How it works
         </h1>
-        <div className="grid grid-cols-3 p-6 gap-12">
+        <div className="grid grid-cols-3 py-6 gap-12 pb-20">
           <HowItWorks
             title={Sec1[0].title}
             desc={Sec1[0].desc}
@@ -100,12 +100,12 @@ export default function aboutus() {
           />
         </div>
 
-        <h1 className="text-4xl font-semibold text-center pt-40 pb-10">
+        <h1 className="text-4xl font-semibold text-center pt-20 pb-16 ">
           {" "}
           <span className="text-primary">Why Choose </span>{" "}
           <span className="text-accent">Us?</span>
         </h1>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 pb-20 ">
           <WhyChooseUs
             title={Sec2[0].title}
             subtitle={Sec2[0].subtitle}
@@ -128,12 +128,12 @@ export default function aboutus() {
           />
         </div>
 
-        <h1 className="text-4xl font-semibold text-center pt-40 pb-10">
+        <h1 className="text-4xl font-semibold text-center pt-20 pb-10">
           {" "}
           <span className="text-primary"> Meet Our </span>{" "}
           <span className="text-accent">Team</span>
         </h1>
-        <div className="flex justify-between">
+        <div className="flex justify-between pb-20">
           <TeamProfile name="Zahraa YH" pic={Zahraa} role="Web Developer" />
           <TeamProfile name="Rebaz Farid" pic={Rebaz} role="Web Developer" />
           <TeamProfile name="Lara Raoof " pic={Lara} role="Web Developer" />

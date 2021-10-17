@@ -1,7 +1,7 @@
 function RoadMapCard({ title, link, icon }) {
   return (
     <a
-      className="shadow-lg rounded-xl px-16 py-10 w-24 h-24 bg-white"
+      className="shadow-lg rounded-xl px-16 py-10 w-52 bg-white"
       href={link}
       style={{}}
     >

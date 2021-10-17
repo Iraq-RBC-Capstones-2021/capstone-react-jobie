@@ -2,6 +2,7 @@ import HowItWorks from "../components/Aboutus/HowItWorks";
 import TeamProfile from "../components/Aboutus/TeamProfile";
 import WhyChooseUs from "../components/Aboutus/WhyChooseUs";
 import Header from "../components/Header";
+import Partners from "../components/Partners";
 
 import Rebaz from "../assets/TeamPic/Rebaz.jpg";
 import Aya from "../assets/TeamPic/aya.jpg";
@@ -142,6 +143,13 @@ export default function aboutus() {
           <TeamProfile name="Aya Abdulsalm " pic={Aya} role="Web Developer" />
           <TeamProfile name="Bnar Kamal" pic={Bnar} role="Web Developer" />
         </div>
+
+        <h1 className="text-4xl font-semibold text-center pt-20 pb-16 ">
+          {" "}
+          <span className="text-primary">Our </span>{" "}
+          <span className="text-accent">Collaborators</span>
+        </h1>
+        <Partners />
       </div>
     </div>
   );

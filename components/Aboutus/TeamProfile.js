@@ -1,10 +1,13 @@
-export default function TeamProfile() {
+export default function TeamProfile({ pic, role, name }) {
   return (
-    <div style={{ width: "500px" }}>
-      <div style={{ height: "300px" }}>
-        <img className="rounded-full bg-dark h-40 w-40" alt="user" />
-        <h1 className="mt-4 ml-4 text-accent font-semibold">Rebaz Farid</h1>
-      </div>
+    <div className="">
+      <img
+        className="rounded-full bg-dark w-28 h-28 md:h-40 md:w-40 xl:w-52 xl:h-52  "
+        alt="user"
+        src={pic.src}
+      />
+      <h1 className=" text-accent font-semibold text-center py-4">{name}</h1>
+      <h2 className="text-center">{role}</h2>
     </div>
   );
 }

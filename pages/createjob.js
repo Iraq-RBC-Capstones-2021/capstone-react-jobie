@@ -272,8 +272,8 @@ export default function createjob() {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-4">
-          <div className="col-start-4 my-10">
+        <div className="flex flex-row-reverse">
+          <div className=" my-10">
             <button
               className="text-base rounded-full p-1 px-6 text-white font-semibold bg-accent"
               type="submit"

@@ -13,7 +13,7 @@ export default function Header({
         <div>
           <h1 className="text-5xl font-bold pb-3">{title}</h1>
           <h1 className="text-5xl font-bold pb-3">{title2}</h1>
-          <h2>{subtitle}</h2>
+          <h2 className="pb-6">{subtitle}</h2>
           <h2> {subtitle2}</h2>
           {children}
         </div>

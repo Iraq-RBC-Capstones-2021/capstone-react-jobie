@@ -6,8 +6,10 @@ export default function TeamProfile({ pic, role, name }) {
         alt="user"
         src={pic.src}
       />
-      <h1 className=" text-accent font-semibold text-center py-4">{name}</h1>
-      <h2 className="text-center">{role}</h2>
+      <h1 className=" text-accent lg:text-4xl font-bold text-center py-4">
+        {name}
+      </h1>
+      <h2 className=" lg:text-2xl text-center">{role}</h2>
     </div>
   );
 }

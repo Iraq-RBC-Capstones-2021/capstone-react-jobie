@@ -58,7 +58,7 @@ export default function aboutus() {
           </div>
 
           <div className="col-2 col-span-2 px-6">
-            <h1 className="text-4xl font-semibold mb-6">
+            <h1 className="text-4xl xl:text-6xl font-semibold mb-6">
               {" "}
               <span className="text-accent"> About</span>{" "}
               <span className="text-dark"> Us</span>{" "}
@@ -79,7 +79,7 @@ export default function aboutus() {
           </div>
         </div>
 
-        <h1 className="text-4xl font-semibold text-primary pt-20 pb-10">
+        <h1 className="text-4xl xl:text-6xl font-semibold text-primary pt-20 pb-10">
           {" "}
           How it works
         </h1>
@@ -101,7 +101,7 @@ export default function aboutus() {
           />
         </div>
 
-        <h1 className="text-4xl font-semibold text-center pt-20 pb-16 ">
+        <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
           <span className="text-primary">Why Choose </span>{" "}
           <span className="text-accent">Us?</span>
@@ -129,7 +129,7 @@ export default function aboutus() {
           />
         </div>
 
-        <h1 className="text-4xl font-semibold text-center pt-20 pb-10">
+        <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-10">
           {" "}
           <span className="text-primary"> Meet Our </span>{" "}
           <span className="text-accent">Team</span>
@@ -144,12 +144,12 @@ export default function aboutus() {
           <TeamProfile name="Bnar Kamal" pic={Bnar} role="Web Developer" />
         </div>
 
-        <h1 className="text-4xl font-semibold text-center pt-20 pb-16 ">
+        <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
           <span className="text-primary">Our </span>{" "}
           <span className="text-accent">Collaborators</span>
         </h1>
-        <Partners />
+        <Partners className="flex justify-around" />
       </div>
     </div>
   );

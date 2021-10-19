@@ -7,10 +7,7 @@ export default function SearchButton() {
         placeholder="Type to Search..."
       />
 
-      <button
-        className="text-white rounded-full absolute     h-6 w-12 text-xs left-24 bottom-0    md:h-8 md:w-20 md:left-40 md:text-base      lg:h-12 lg:w-24 lg:left-56 lg:font-semibold lg:text-xl"
-        style={{ background: "#EC7063" }}
-      >
+      <button className="text-white rounded-full absolute bg-accent     h-6 w-12 text-xs left-24 bottom-0    md:h-8 md:w-20 md:left-40 md:text-base      lg:h-12 lg:w-24 lg:left-56 lg:font-semibold lg:text-xl">
         Search
       </button>
     </div>

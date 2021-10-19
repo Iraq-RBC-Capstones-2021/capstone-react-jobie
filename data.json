@@ -33,109 +33,85 @@
       "id": 1,
       "company_id": 1,
       "Title": "Web Developer",
-      "Location": [
-        {
-          "Country": "iraq",
-          "City": "sulaimany",
-          "street": "salim Street"
-        }
-      ],
+      "Location": {
+        "Country": "iraq",
+        "City": "sulaimany",
+        "street": "salim Street"
+      },
       "Type": "Full Time ",
       "Category": "Developer",
       "Work-Level": "advance",
       "Experience": "3 years",
       "Gender": "female",
-      "Salary": [
-        {
-          "From": 1500,
-          "To": 2000
-        }
-      ],
-      "Info": [
-        {
-          "Description": "We are looking for a highly skilled Full-Stack Web Developer who is comfortable with both front and back-end programming.",
-          "Responsibilities": "Responsible for developing and designing front end web architecture, ensuring the responsiveness of applications The developers will be required to see out a project from conception to the final product, requiring good organizational skills and attention to detail.",
-          "background": ""
-        }
-      ],
-      "Date": [
-        {
-          "start": "2021-1-11",
-          "End": "2023-1-4"
-        }
-      ]
+      "Salary": {
+        "From": 1500,
+        "To": 2000
+      },
+      "Info": {
+        "Description": "We are looking for a highly skilled Full-Stack Web Developer who is comfortable with both front and back-end programming.",
+        "Responsibilities": "Responsible for developing and designing front end web architecture, ensuring the responsiveness of applications The developers will be required to see out a project from conception to the final product, requiring good organizational skills and attention to detail.",
+        "background": ""
+      },
+      "Date": {
+        "start": "2021-1-11",
+        "End": "2023-1-4"
+      }
     },
     {
       "id": 1,
       "company_id": 1,
       "Title": "Graphic Designer",
-      "Location": [
-        {
-          "Country": "iraq",
-          "City": "erbil",
-          "street": "60m Street"
-        }
-      ],
+      "Location": {
+        "Country": "iraq",
+        "City": "erbil",
+        "street": "60m Street"
+      },
       "Type": "paid internShip",
       "Category": "Designer",
       "Work-Level": "intermidiate",
       "Experience": "0 years",
       "Gender": "male",
-      "Salary": [
-        {
-          "From": 300,
-          "To": 500
-        }
-      ],
-      "Info": [
-        {
-          "Description": "creative ability in design supporting the identity of the company ,and consolidating its brand through productivity and creativity",
-          "Responsibilities": "schedule the required tasks and commit to completing them on specified dates Continuous development in the tools and programs used and keeping pace with the creative ideas of designs ",
-          "background": ""
-        }
-      ],
-      "Date": [
-        {
-          "start": "2021-1-11",
-          "End": "2021-1-12"
-        }
-      ]
+      "Salary": {
+        "From": 300,
+        "To": 500
+      },
+      "Info": {
+        "Description": "creative ability in design supporting the identity of the company ,and consolidating its brand through productivity and creativity",
+        "Responsibilities": "schedule the required tasks and commit to completing them on specified dates Continuous development in the tools and programs used and keeping pace with the creative ideas of designs ",
+        "background": ""
+      },
+      "Date": {
+        "start": "2021-1-11",
+        "End": "2021-1-12"
+      }
     },
     {
       "id": 1,
       "company_id": 1,
       "Title": "Accountant ",
-      "Location": [
-        {
-          "Country": "iraq",
-          "City": "sulaimany",
-          "street": "salim Street"
-        }
-      ],
+      "Location": {
+        "Country": "iraq",
+        "City": "sulaimany",
+        "street": "salim Street"
+      },
       "Type": "Full Time ",
       "Category": "Developer",
       "Work-Level": "advance",
       "Experience": "3 years",
       "Gender": "female",
-      "Salary": [
-        {
-          "From": 1500,
-          "To": 2000
-        }
-      ],
-      "Info": [
-        {
-          "Description": "Review and monitor the reconciliation and settlement with significant merchant’s accounts، including checking commission of rates vs. contracts.Manage cash disbursement. Prepare Monthly cash-flow plan Ensure compliance with internal controls, policies and procedures. Develop and monitor treasury operational policies.",
-          "Responsibilities": "Manage all cash management functions including cash concentration, account funding. Ensure adequate liquidity for working capital needs and invest short term excess cash Oversee cash management banking and financial institution relationships. Negotiate bank and service fees. Implement new bank technologies, products and services to improve cash cycle and simplify company operations.Review Bank transfer requests for (Dealer, Merchant, Vendor, etc.) and follow-up with the Bank. ",
-          "background": ""
-        }
-      ],
-      "Date": [
-        {
-          "start": "2022-1-1",
-          "End": "2023-1-1"
-        }
-      ]
+      "Salary": {
+        "From": 1500,
+        "To": 2000
+      },
+      "Info": {
+        "Description": "Review and monitor the reconciliation and settlement with significant merchant’s accounts، including checking commission of rates vs. contracts.Manage cash disbursement. Prepare Monthly cash-flow plan Ensure compliance with internal controls, policies and procedures. Develop and monitor treasury operational policies.",
+        "Responsibilities": "Manage all cash management functions including cash concentration, account funding. Ensure adequate liquidity for working capital needs and invest short term excess cash Oversee cash management banking and financial institution relationships. Negotiate bank and service fees. Implement new bank technologies, products and services to improve cash cycle and simplify company operations.Review Bank transfer requests for (Dealer, Merchant, Vendor, etc.) and follow-up with the Bank. ",
+        "background": ""
+      },
+      "Date": {
+        "start": "2022-1-1",
+        "End": "2023-1-1"
+      }
     }
   ],
 

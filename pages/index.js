@@ -1,9 +1,15 @@
 import Head from "next/head";
-import Header from "../components/Header";
 import HeaderImage from "../assets/img_Home.png";
-import Jobs from "../components/Home/Jobs";
+import Avatar from "../public/img_avatar.png";
+
+import Header from "../components/Header";
+import JobTypeCard from "../components/Home/JobTypeCard";
 import SearchButton from "../components/Home/SearchButton";
 import Categories from "../components/Home/Categories";
+import HomeTable from "../components/Home/HomeTable";
+import CustomerCard from "../components/Home/CustomerCard";
+import Partners from "../components/Partners";
+
 import { FaDraftingCompass } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
@@ -11,13 +17,11 @@ import { FaCogs } from "react-icons/fa";
 import { FaUserCog } from "react-icons/fa";
 import { FaProjectDiagram } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa";
-import HomeTable from "../components/Home/HomeTable";
-
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  function bot() {}
+  const Color1 = "borderColor1";
+  const Color2 = "borderColor2";
+  const Color3 = "borderColor3";
   return (
     <div className=" ">
       <Head>
@@ -34,11 +38,25 @@ export default function Home() {
         <SearchButton />
       </Header>
       <div className="bg-body px-4 lg:px-48 w-full">
-        <div className="py-16">
-          <Jobs title="Full-Time Jobs" />
+        <div className="flex  justify-around py-16">
+          <JobTypeCard
+            title="Full-Time Jobs"
+            text="if you're set on you're career and want to work full time, then a full time job is just the one for you, clicking here will show you all the current full time jobs in our platform"
+            borderColor={Color1}
+          />
+          <JobTypeCard
+            title="Part Time Jobs"
+            text="if you're a student or can't spend to much time on work, then a part time job is what you're looking for. click here and we'll show you all the part-time job offers"
+            borderColor={Color2}
+          />
+          <JobTypeCard
+            title="Remote Jobs"
+            text="if you prefer working from home, with no constraints to a specific place then a remote job is a perfect fit and we've got plenty of that, click and let us show you all the available positions"
+            borderColor={Color3}
+          />
         </div>
-        <div>
-          <h1 className="text-primary font-semibold pt-16 text-lg lg:text-2xl xl:text-4xl">
+        <div className="py-16">
+          <h1 className="text-primary font-semibold text-lg lg:text-2xl xl:text-4xl">
             {" "}
             Explore by categories
           </h1>
@@ -93,9 +111,51 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-light">
-        <h1>hello</h1>
+      <div className="bg-light px-4 lg:px-48 w-full py-16">
+        <h1 className="text-primary font-semibold  pb-8 text-lg lg:text-2xl xl:text-4xl">
+          {" "}
+          Latest Jobs
+        </h1>
         <HomeTable />
+      </div>
+
+      <div className="bg-body px-4 lg:px-48 w-full py-20">
+        <h1 className="text-primary font-semibold text-lg lg:text-2xl xl:text-4xl">
+          {" "}
+          Our Customers
+        </h1>
+        <h2 className="text-primary font-semibold py-8 text-base lg:text-xl xl:text-2xl">
+          {" "}
+          We’ve helped 2,568 users to find their dream job.
+        </h2>
+        <div className="flex justify-between pb-12">
+          <CustomerCard
+            img={Avatar}
+            name="Aya S."
+            position="CEO Co-Founder, Jobie"
+            feedback="Jobie is always true to its internal mission statement: Putting the job seeker first. The mission does not waiver, and all decisions are made to create a better world with job seekers who feel that they can make good decisions for their future."
+          />
+          <CustomerCard
+            img={Avatar}
+            name="Rebaz Farid"
+            position="CEO Co-Founder, Jobie"
+            feedback="Jobie is always true to its internal mission statement: Putting the job seeker first. The mission does not waiver, and all decisions are made to create a better world with job seekers who feel that they can make good decisions for their future."
+          />
+          <CustomerCard
+            img={Avatar}
+            name="Zahraa YH"
+            position="CEO Co-Founder, Jobie"
+            feedback="Jobie is always true to its internal mission statement: Putting the job seeker first. The mission does not waiver, and all decisions are made to create a better world with job seekers who feel that they can make good decisions for their future."
+          />
+        </div>
+        <div className=" py-12">
+          <h2 className="text-primary font-semibold py-12 text-base lg:text-xl xl:text-2xl">
+            {" "}
+            More than 20,000 companies are using our service to hire their
+            employees.
+          </h2>
+          <Partners />
+        </div>
       </div>
     </div>
   );

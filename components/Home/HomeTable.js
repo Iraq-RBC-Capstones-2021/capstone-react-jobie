@@ -5,7 +5,7 @@ export default function HomeTable({
   Date = "3 hours ago",
 }) {
   return (
-    <div className=" w-screen h-auto lg:px-48 py-4  ">
+    <>
       <div className=" text-right space-x-6 ">
         <label className="inline-flex items-center">
           <input type="checkbox" className="form-checkbox" />
@@ -39,6 +39,6 @@ export default function HomeTable({
           <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
         </tbody>
       </table>
-    </div>
+    </>
   );
 }

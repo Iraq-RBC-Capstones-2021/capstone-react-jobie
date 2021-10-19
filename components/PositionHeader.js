@@ -7,10 +7,11 @@ import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 const PositionHeader = ({
   JobType = "Intership",
   JobName = "UX/UI Designer Web & Mobile Platforms",
-  Date = " 26 September  ",
+  Date = " 26 September, 2021",
   company = "Avesta Group Company",
   Location = "Iraq,Sulaimany,Salim St.",
   Salary = "10$ - 15$ Per Hour",
+  logo = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) => {
   const [saved, setsaved] = useState(true);
 
@@ -20,43 +21,57 @@ const PositionHeader = ({
   }
 
   return (
-    <div className="bg-light  w-screen h-auto flex ">
-      <div className="p-12 ">
-        <Image
-          className="bg-white rounded-xl"
-          src="/public/positionheader.svg"
-          alt="Image Section"
-          width={400}
-          height={332}
-        />
-      </div>
-      <div className="my-16  space-y-4  ">
-        <p className="font-medium text-accent">{JobType}</p>
-        <h1 className="text-3xl  ">{JobName}</h1>
-        <h2 className="font-medium">
-          Posted {Date} by <span className="text-accent">{company}</span>
-        </h2>
-        <h2>{Location} </h2>
-        <h2>{Salary}</h2>
-      </div>
-      <button className="absolute  flex  bg-accent hover:bg-secondary text-white  px-10 rounded-full space-x-2 items-center h-14 w-52  inset-y-48 right-10 text-xl  ">
-        <span>Apply Now</span> <VscArrowRight />
-      </button>
-      <button className=" absolute  flex    text-secondary  space-x-2   left-16  font-semibold  bottom-56 items-center">
-        <span>View All Jobs</span>
-        <HiOutlineArrowNarrowRight />
-      </button>
-      <button className="absolute right-10 top-12 " onClick={SaveButton}>
-        {saved ? (
-          <div>
-            <IoBookmarkOutline />
+    <div className="bg-light w-full">
+      <div className="px-4 lg:px-48 w-full py-10">
+        <div className="grid grid-cols-3 pb-7">
+          <div className="flex  col-span-2 items-center">
+            <div className="h-52 w-72  sm:mb-0 bg-lightblue rounded-2xl flex items-center justify-center">
+              {logo ? (
+                <img
+                  src={logo}
+                  alt={JobName}
+                  className="w-44 h-44 object-cover rounded-2xl"
+                />
+              ) : (
+                <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-9xl">
+                  <span>{company.charAt(0)}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col pl-5 ">
+              <p className="font-medium text-accent">{JobType}</p>
+              <h1 className="text-3xl text-primary ">{JobName}</h1>
+              <h2 className="font-medium text-accent">{company}</h2>
+              <h2 className="text-base">{Location} </h2>
+              <h2 className="text-base mt-5">{Date}</h2>
+            </div>
           </div>
-        ) : (
-          <div>
-            <IoBookmark />
+
+          <div className="flex flex-col ">
+            <button className="text-2xl self-end" onClick={SaveButton}>
+              {saved ? (
+                <div>
+                  <IoBookmarkOutline />
+                </div>
+              ) : (
+                <div>
+                  <IoBookmark />
+                </div>
+              )}
+            </button>
+            <button className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2">
+              <span>Apply Now</span> <VscArrowRight />
+            </button>
           </div>
-        )}
-      </button>
+        </div>
+        <div>
+          <button className="flex text-secondary text-lg space-x-2 font-semibold items-center">
+            <span>View All Jobs</span>
+            <HiOutlineArrowNarrowRight />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

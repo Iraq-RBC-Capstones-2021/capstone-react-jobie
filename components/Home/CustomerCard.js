@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { IoIosQuote } from "react-icons/io";
 
 export default function CustomerCard({ img, name, position, feedback }) {

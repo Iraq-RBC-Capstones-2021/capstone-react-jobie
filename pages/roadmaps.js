@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Header from "../components/Header";
 import Img from "../assets/img_roads.png";
 import {
@@ -18,7 +17,7 @@ const RoadMap = () => {
   return (
     <main>
       <Header
-        title="Delveloper Roadmaps"
+        title="Developer Roadmaps"
         subtitle="Follow these roadmaps "
         subtitle2="become a hero in any path you choose!"
         img={Img}

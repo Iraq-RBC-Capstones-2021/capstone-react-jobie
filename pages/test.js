@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import jobs from "../assets/img_jobs.png";
 import roads from "../assets/img_roads.png";
 
 export default function Test(props) {
@@ -30,9 +29,7 @@ export default function Test(props) {
         title="Developer Roadmaps"
         subtitle="Follow these roadmaps and become a hero in any path you choose!"
         img={roads}
-      >
-    
-      </Header>
+      ></Header>
     </div>
   );
 }

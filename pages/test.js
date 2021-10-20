@@ -8,7 +8,6 @@ export default function Test(props) {
         light={false}
         title="10,254 Jobs Are Listed Here!"
         subtitle="Find your dream job now"
-        img={jobs}
       >
         <form className="my-5 h-8 flex">
           <input

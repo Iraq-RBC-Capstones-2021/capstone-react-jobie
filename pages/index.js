@@ -17,6 +17,7 @@ import { FaCogs } from "react-icons/fa";
 import { FaUserCog } from "react-icons/fa";
 import { FaProjectDiagram } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa";
+import { ImArrowRight } from "react-icons/im";
 
 export default function Home() {
   const Color1 = "borderColor1";
@@ -38,7 +39,7 @@ export default function Home() {
         <SearchButton />
       </Header>
       <div className="bg-body px-4 lg:px-48 w-full">
-        <div className="flex  justify-around py-16">
+        <div className="flex  gap-x-10 justify-center py-16">
           <JobTypeCard
             title="Full-Time Jobs"
             text="if you're set on you're career and want to work full time, then a full time job is just the one for you, clicking here will show you all the current full time jobs in our platform"
@@ -106,6 +107,14 @@ export default function Home() {
                 subtitle="164 Job Vacancy"
                 link=""
               />
+              <a
+                className="w-full h-full flex justify-center items-center flex-col "
+                href=""
+              >
+                <h1 className="font-medium text-dark text-base lg:text-xl xl:text-2xl flex flex-row ">
+                  View all Categories <ImArrowRight className="mt-2 ml-2" />
+                </h1>
+              </a>
             </div>
           </div>
         </div>

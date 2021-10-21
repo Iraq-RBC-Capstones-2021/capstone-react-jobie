@@ -20,7 +20,7 @@ const JobListing = ({
       <div className="flex-none sm:flex space-x-4 items-center justify-center">
         <div className="h-16 w-16 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex justify-center items-center">
           {logo ? (
-            <img src={logo.src} alt={company} width={50} height={50} />
+            <img src={logo} alt={company} width={50} height={50} />
           ) : (
             <div className="h-full border-primary bg-primary-light text-primary w-full inline-flex items-center align-middle justify-center font-bold text-6xl">
               <span>{company.charAt(0)}</span>

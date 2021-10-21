@@ -3,7 +3,7 @@ export default function SearchButton() {
     <div className="relative  ">
       <input
         type="text"
-        className="rounded-full text-black    h-6 w-36 pl-2 text-xs    lg:h-12 lg:w-80 lg:pl-7 lg:pr-20    md:h-8 md:w-60 md:pl-4 "
+        className="rounded-full text-black focus:outline-none   h-6 w-36 pl-2 text-xs    lg:h-12 lg:w-80 lg:pl-7 lg:pr-20    md:h-8 md:w-60 md:pl-4 "
         placeholder="Type to Search..."
       />
 

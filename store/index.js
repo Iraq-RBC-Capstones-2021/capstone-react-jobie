@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import counterSlice from "./counter/counterSlice";
+import { getFirestore, reduxFirestore } from "redux-firestore";
+import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
+import app from "../config/dbConfig";
 
 const makeStore = () =>
   configureStore({
@@ -8,6 +11,17 @@ const makeStore = () =>
       [counterSlice.name]: counterSlice.reducer,
     },
     devTools: true,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: { getFirebase, getFirestore },
+        },
+        serializableCheck: false,
+      }),
+    enhancers: [
+      reactReduxFirebase(app.firebase), // access the inner .firebase instance
+      reduxFirestore(app.firebase),
+    ],
   });
 
 export const wrapper = createWrapper(makeStore);

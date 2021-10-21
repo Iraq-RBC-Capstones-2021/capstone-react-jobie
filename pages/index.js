@@ -137,7 +137,7 @@ export default function Home() {
           {" "}
           We’ve helped 2,568 users to find their dream job.
         </h2>
-        <div className="flex justify-between pb-12">
+        <div className="flex flex-row gap-8 pb-12">
           <CustomerCard
             img={Avatar}
             name="Aya S."

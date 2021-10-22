@@ -28,11 +28,9 @@ export default function PositionSummary() {
         <div className="-ml-20">
           <h1 className="text-xl text-secondary font-bold">offered salary</h1>
           <h1 className="text-base">
-            {summary.salaryMin +
-              summary.currency.symbolShort +
-              "-" +
-              summary.salaryMax +
-              summary.currency.symbolShort}
+            {`${summary.salaryMin + summary.currency.symbolShort}-${
+              summary.salaryMax
+            }${summary.currency.symbolShort}`}
           </h1>
         </div>
       </div>

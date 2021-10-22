@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";

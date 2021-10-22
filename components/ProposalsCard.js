@@ -2,7 +2,6 @@ function ProposalsCard({
   name = "Bruse Lee ",
   title = "Frontend Developer",
   location = "California",
-
   date = "2021/10/10",
   image = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) {

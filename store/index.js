@@ -5,10 +5,13 @@ import { getFirestore, reduxFirestore } from "redux-firestore";
 import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import app from "../config/dbConfig";
 
+import jobsSlice from "./jobs/jobsSlice";
+
 const makeStore = () =>
   configureStore({
     reducer: {
       [counterSlice.name]: counterSlice.reducer,
+      [jobsSlice.name]: jobsSlice.reducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) =>

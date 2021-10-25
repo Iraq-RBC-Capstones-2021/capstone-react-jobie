@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { collection, getDocs } from "firebase/firestore";
+import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   jobs: [],
@@ -8,18 +9,14 @@ const initialState = {
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
-  async (thunkAPI) => {
+  async (_, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    console.log("thunk started");
     // const querySnapshot = await getDocs(collection(firestore, "jobs"));
-    const jobs = await firestore.get("jobs");
-    console.log("jobs");
-
-    jobs.forEach((job) => {
-      // doc.data() is never undefined for query doc snapshots
-      job.id = doc.id;
-      // console.log(doc.id, " => ", doc.data());
+    const collection = await firestore.get("jobs");
+    const jobs = [];
+    collection.forEach((doc) => {
+      jobs.push({ ...doc.data(), id: doc.id });
     });
 
     return jobs;
@@ -36,10 +33,14 @@ const jobsSlice = createSlice({
     },
     [fetchJobs.fulfilled]: (state, action) => {
       state.status = "idle";
-      state.jobs.concat(action.payload);
+      state.jobs = action.payload;
     },
     [fetchJobs.rejected]: (state) => {
       state.status = "error";
+    },
+    [HYDRATE]: (state, action) => {
+      state.status = action.payload.jobs.status;
+      state.jobs = action.payload.jobs.jobs;
     },
   },
 });

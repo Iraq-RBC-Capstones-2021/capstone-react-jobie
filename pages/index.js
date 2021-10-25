@@ -25,12 +25,6 @@ import { wrapper } from "../store";
 
 export default function Home() {
   const jobs = useSelector((state) => state.jobs.jobs);
-  // console.log(jobs);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchJobs());
-  //   console.log(jobs);
-  // }, []);
 
   const Color1 = "borderColor1";
   const Color2 = "borderColor2";
@@ -185,6 +179,5 @@ export default function Home() {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     await store.dispatch(fetchJobs());
-    console.log("dispatched");
   }
 );

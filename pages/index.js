@@ -1,7 +1,7 @@
 import Head from "next/head";
 import HeaderImage from "../assets/img_Home.png";
 import Avatar from "../public/img_avatar.png";
-
+import LoginAccountType from "../components/LoginAccountType";
 import Header from "../components/Header";
 import JobTypeCard from "../components/Home/JobTypeCard";
 import SearchButton from "../components/Home/SearchButton";
@@ -166,6 +166,7 @@ export default function Home() {
           <Partners />
         </div>
       </div>
+      <LoginAccountType />
     </div>
   );
 }

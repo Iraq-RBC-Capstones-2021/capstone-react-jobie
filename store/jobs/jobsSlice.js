@@ -16,9 +16,9 @@ export const fetchJobs = createAsyncThunk(
     const collection = await firestore.get("jobs");
     const jobs = [];
     collection.forEach((doc) => {
-      jobs.push({ ...doc.data(), id: doc.id });
+      const data = doc.data();
+      jobs.push({ ...data, id: doc.id, timestamp: data.timestamp.toMillis() });
     });
-
     return jobs;
   }
 );

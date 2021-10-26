@@ -18,6 +18,7 @@ module.exports = {
         borderColor1: "#D4E6F1",
         borderColor2: "#A2D9CE",
         borderColor3: "#EBDEF0",
+        googleBtnBlue: "#4286F5",
       },
     },
   },

@@ -13,9 +13,12 @@ import {
 import { wrapper } from "../store";
 
 import styles from "../styles/Counter.module.css";
+import { fetchJobs } from "../store/jobs/jobsSlice";
 
 export default function Counter() {
   const count = useSelector(selectCount);
+  const jobs = useSelector(state => state.jobs.jobs)
+  console.log(jobs)
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState("2");
 
@@ -72,4 +75,5 @@ export default function Counter() {
 
 export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   await store.dispatch(fetchCount());
+  await store.dispatch(fetchJobs());
 });

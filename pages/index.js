@@ -1,7 +1,7 @@
 import Head from "next/head";
 import HeaderImage from "../assets/img_Home.png";
 import Avatar from "../public/img_avatar.png";
-import LoginAccountType from "../components/LoginAccountType";
+
 import Header from "../components/Header";
 import JobTypeCard from "../components/Home/JobTypeCard";
 import SearchButton from "../components/Home/SearchButton";
@@ -19,7 +19,13 @@ import { FaProjectDiagram } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa";
 import { ImArrowRight } from "react-icons/im";
 
+import { useSelector, useDispatch } from "react-redux";
+import { fetchJobs } from "../store/jobs/jobsSlice";
+import { wrapper } from "../store";
+
 export default function Home() {
+  const jobs = useSelector((state) => state.jobs.jobs);
+
   const Color1 = "borderColor1";
   const Color2 = "borderColor2";
   const Color3 = "borderColor3";
@@ -125,7 +131,7 @@ export default function Home() {
           {" "}
           Latest Jobs
         </h1>
-        <HomeTable />
+        {jobs.length !== 0 ? <HomeTable jobs={jobs} /> : <p>No jobs found</p>}
       </div>
 
       <div className="bg-body px-4 lg:px-48 w-full py-20">
@@ -169,3 +175,9 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    await store.dispatch(fetchJobs());
+  }
+);

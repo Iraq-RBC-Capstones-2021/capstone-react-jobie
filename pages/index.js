@@ -166,7 +166,6 @@ export default function Home() {
           <Partners />
         </div>
       </div>
-      <LoginAccountType />
     </div>
   );
 }

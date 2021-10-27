@@ -7,8 +7,7 @@ export default function LoginAccountType() {
   });
 
   const handleChange = (event) => {
-    setAccountType(event.target.value);
-    console.log(event.target.value);
+    setAccountType({ type: event.target.value });
   };
 
   return (
@@ -30,7 +29,6 @@ export default function LoginAccountType() {
               value="JobSeeker"
               className="w-5 h-5"
               checked={accountType.type === "JobSeeker"}
-              defaultChecked
               onChange={handleChange}
             />
 
@@ -64,7 +62,7 @@ export default function LoginAccountType() {
       </div>
 
       <div>
-        <label>
+        <label className="border-accent">
           <input type="checkbox" className="mr-4  w-4 h-4" />
 
           <span className="text-primary2 text-lg">

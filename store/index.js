@@ -6,12 +6,14 @@ import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import app from "../config/dbConfig";
 
 import jobsSlice from "./jobs/jobsSlice";
+import notificationSlice from "./notification/notificationSlice";
 
 const makeStore = () =>
   configureStore({
     reducer: {
       [counterSlice.name]: counterSlice.reducer,
       [jobsSlice.name]: jobsSlice.reducer,
+      [notificationSlice.name]: notificationSlice.reducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) =>

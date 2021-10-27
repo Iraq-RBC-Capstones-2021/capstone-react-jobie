@@ -14,7 +14,7 @@ function Message({ message }) {
     return function cleanup() {
       clearInterval(timerID);
     };
-  }, []);
+  }, [dispatch, message.id]);
 
   return (
     <div

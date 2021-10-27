@@ -60,8 +60,8 @@ function FilterSidebar() {
       <h2 className="text-3xl text-primary pb-3">Filter</h2>
       <hr className="border-gray-300 mb-5" />
       <FilterGroup title="Salary Range">
-        <div className="flex space-x-5">
-          <div className="flex flex-col">
+        <div className="flex gap-2">
+          <div className="flex flex-col ">
             <label
               htmlFor="salaryFrom"
               className="text-gray-600 select-none font-medium"
@@ -72,7 +72,7 @@ function FilterSidebar() {
               id="salaryFrom"
               type="number"
               name="salaryFrom"
-              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 w-40"
+              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 w-2/3"
             />
           </div>
           <div className="flex flex-col">
@@ -86,7 +86,7 @@ function FilterSidebar() {
               id="salaryTo"
               type="number"
               name="salaryTo"
-              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 w-40"
+              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 w-2/3"
             />
           </div>
         </div>

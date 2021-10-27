@@ -1,5 +1,10 @@
 import Select from "react-select";
-export default function createjob() {
+import { useSelector, useDispatch } from "react-redux";
+import { createJob } from "../store/jobs/jobsSlice";
+import { useState } from "react";
+import Message from "../components/Message";
+
+export default function Createjob() {
   const cities = [
     { value: "Remote", label: "Remote" },
     { value: "Anbar", label: "Anbar" },
@@ -68,6 +73,59 @@ export default function createjob() {
     }),
   };
 
+  const [formData, setFormData] = useState({
+    position: "",
+    address: "",
+    description: "",
+    responsibilities: "",
+    experience: "",
+    salary_from: "",
+    salary_to: "",
+    location: [],
+    employement_type: [],
+    category: [],
+    work_level: [],
+    gender: "",
+    experience_years: "",
+  });
+  const dispatch = useDispatch();
+
+  const handleFormChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleDropDownChange = (values, action) => {
+    if (Array.isArray(values)) {
+      const selectedData = values.map((value) => {
+        return value.value;
+      });
+      setFormData({ ...formData, [action.name]: selectedData });
+    } else {
+      setFormData({ ...formData, [action.name]: values.value });
+    }
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    dispatch(createJob(formData));
+
+    setFormData({
+      position: "",
+      address: "",
+      description: "",
+      responsibilities: "",
+      experience: "",
+      salary_from: "",
+      salary_to: "",
+      location: [],
+      employement_type: [],
+      category: [],
+      work_level: [],
+      gender: "",
+      experience_years: "",
+    });
+  };
+
   return (
     <form className="form">
       <div className="bg-body px-4 lg:px-48 w-full pt-10">
@@ -80,6 +138,7 @@ export default function createjob() {
             <button
               className="text-base rounded-full p-1 px-6   text-white font-semibold  bg-accent"
               type="submit"
+              onClick={handleSave}
             >
               Save
             </button>
@@ -88,17 +147,17 @@ export default function createjob() {
             </button>
           </div>
         </div>
-
-        <h1 className="text-dark font-semibold mt-6 mb-4"> Job Detail</h1>
-
+        <h1 className="text-dark font-semibold mt-6 mb-4">Job Detail</h1>
         <div className="grid grid-rows-5 auto-rows-min">
           <div className="row-1 grid grid-cols-3">
             <div className=" self-center col-1 col-span-2 ">
-              <h5>Title</h5>
+              <h5>Position</h5>
               <input
                 className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-                name="title"
+                name="position"
                 placeholder="web developer"
+                onChange={handleFormChange}
+                value={formData.position}
               />
             </div>
 
@@ -116,13 +175,19 @@ export default function createjob() {
             <div className="self-center col-1">
               <h5>Location</h5>
               <Select
+                instanceId="location"
                 className=" w-full h-11 rounded-lg border-grey border-2"
                 name="location"
                 required
+                isMulti
                 options={cities}
                 styles={style}
-                isMulti
-                placeholder="Select the Locations that applies"
+                placeholder="Select the Location that applies"
+                onChange={handleDropDownChange}
+                value={formData.location.map((item) => {
+                  const options = { value: item, label: item };
+                  return options;
+                })}
               />
             </div>
 
@@ -132,6 +197,8 @@ export default function createjob() {
                 className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                 name="address"
                 placeholder="as sulaymaniyah, Iraq"
+                onChange={handleFormChange}
+                value={formData.address}
               />
             </div>
 
@@ -147,19 +214,26 @@ export default function createjob() {
             <div className="self-center col-1">
               <h5>Type of Employment</h5>
               <Select
+                instanceId="employement_type"
                 className=" w-full h-11 rounded-lg border-grey border-2"
-                name="type"
+                name="employement_type"
                 required
                 options={employment}
                 styles={style}
                 isMulti
                 placeholder="Choose all that applies"
+                onChange={handleDropDownChange}
+                value={formData.employement_type.map((item) => {
+                  const options = { value: item, label: item };
+                  return options;
+                })}
               />
             </div>
 
             <div className="self-center col-2 ml-4">
               <h5>Category</h5>
               <Select
+                instanceId="category"
                 className=" w-full h-11 rounded-lg border-grey border-2"
                 name="category"
                 required
@@ -167,6 +241,12 @@ export default function createjob() {
                 styles={style}
                 isMulti
                 placeholder="Choose all that applies"
+                onChange={handleDropDownChange}
+                defaultValue={formData.category}
+                value={formData.category.map((item) => {
+                  const options = { value: item, label: item };
+                  return options;
+                })}
               />
             </div>
           </div>
@@ -175,25 +255,38 @@ export default function createjob() {
             <div className="self-center col-1">
               <h5>Work Level</h5>
               <Select
+                instanceId="work_level"
                 className=" w-full h-11 rounded-lg border-grey border-2"
-                name="level"
+                name="work_level"
                 required
                 options={level}
                 styles={style}
                 isMulti
                 placeholder="Choose all that applies"
+                onChange={handleDropDownChange}
+                defaultValue={formData.work_level}
+                value={formData.work_level.map((item) => {
+                  const options = { value: item, label: item };
+                  return options;
+                })}
               />
             </div>
 
             <div className="self-center col-2 ml-4">
               <h5>Experience</h5>
               <Select
+                instanceId="experience_years"
                 className=" w-full h-11 rounded-lg border-grey border-2"
-                name="experience"
+                name="experience_years"
                 required
                 options={experience}
                 styles={style}
                 placeholder="how many years of experience"
+                onChange={handleDropDownChange}
+                value={{
+                  value: formData.experience_years,
+                  label: formData.experience_years,
+                }}
               />
             </div>
           </div>
@@ -201,27 +294,33 @@ export default function createjob() {
           <div className="self-center row-5">
             <h5>Gender</h5>
             <Select
+              instanceId="gender"
               className=" w-1/3 h-11 rounded-lg border-grey border-2"
-              name="experience"
+              name="gender"
               required
               options={gender}
               styles={style}
-              placeholder="how many years of experience"
+              placeholder="Choose gender for this position"
+              onChange={handleDropDownChange}
+              value={{ value: formData.gender, label: formData.gender }}
             />
           </div>
         </div>
       </div>
 
       <div className="bg-lightgrey px-4 lg:px-48 w-full py-10">
-        <h1 className="text-dark font-semibold py-4"> Offered Salary</h1>
+        <h1 className="text-dark font-semibold py-4"> Offered Salary ($)</h1>
 
         <div className="grid grid-cols-3">
           <div className="self-center col-1 ">
             <h5 className="pl-2">From</h5>
             <input
               className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-              name="from"
+              type="number"
+              name="salary_from"
               placeholder="From"
+              onChange={handleFormChange}
+              value={formData.salary_from}
             />
           </div>
 
@@ -229,8 +328,11 @@ export default function createjob() {
             <h5 className="pl-2">To</h5>
             <input
               className=" w-full h-10 rounded-lg border-grey border-2 pl-2"
-              name="To"
+              type="number"
+              name="salary_to"
               placeholder="To"
+              onChange={handleFormChange}
+              value={formData.salary_to}
             />
           </div>
 
@@ -253,21 +355,36 @@ export default function createjob() {
           <div className="row-1 grid grid-cols-3">
             <div className="self-center col-1 col-span-2">
               <h5>Description</h5>
-              <textarea className="w-full h-52 mt-2 border-grey border-2" />
+              <textarea
+                className="w-full h-52 mt-2 border-grey border-2"
+                onChange={handleFormChange}
+                name="description"
+                value={formData.description}
+              />
             </div>
           </div>
 
           <div className="row-2 grid grid-cols-3">
             <div className="self-center col-1 col-span-2">
               <h5>Job Responsibilities</h5>
-              <textarea className="w-full h-52 mt-2 border-grey border-2" />
+              <textarea
+                className="w-full h-52 mt-2 border-grey border-2"
+                onChange={handleFormChange}
+                name="responsibilities"
+                value={formData.responsibilities}
+              />
             </div>
           </div>
 
           <div className="row-3 grid grid-cols-3">
             <div className="self-center col-1 col-span-2">
               <h5>Background and Experience</h5>
-              <textarea className="w-full h-52 mt-2 border-grey border-2" />
+              <textarea
+                className="w-full h-52 mt-2 border-grey border-2"
+                onChange={handleFormChange}
+                name="experience"
+                value={formData.experience}
+              />
             </div>
           </div>
         </div>
@@ -277,6 +394,7 @@ export default function createjob() {
             <button
               className="text-base rounded-full p-1 px-6 text-white font-semibold bg-accent"
               type="submit"
+              onClick={handleSave}
             >
               Save
             </button>

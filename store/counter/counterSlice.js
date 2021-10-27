@@ -14,9 +14,14 @@ const initialState = {
 // typically used to make async requests.
 export const incrementAsync = createAsyncThunk(
   "counter/getAmount",
-  async (amount,thunkAPI) => {
+  async (amount, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const response = await getAmount(amount);
+    getFirestore().set(
+      { collection: "test", doc: "count" },
+      { value: response.data }
+    );
+
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }

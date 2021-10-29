@@ -6,6 +6,7 @@ import { getFirebase, reactReduxFirebase } from "react-redux-firebase";
 import app from "../config/dbConfig";
 
 import jobsSlice from "./jobs/jobsSlice";
+import profileSlice from "./profiles/profileSlice";
 import notificationSlice from "./notification/notificationSlice";
 import authSlice from "./auth/authSlice";
 
@@ -14,6 +15,7 @@ const makeStore = () =>
     reducer: {
       [counterSlice.name]: counterSlice.reducer,
       [jobsSlice.name]: jobsSlice.reducer,
+      [profileSlice.name]: profileSlice.reducer,
       [notificationSlice.name]: notificationSlice.reducer,
       [authSlice.name]: authSlice.reducer,
     },

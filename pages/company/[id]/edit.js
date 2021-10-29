@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProfile, fetchProfile } from "../../../store/profiles/profileSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { storage } from "../../../config/dbConfig";
 
 const profile = {
   is_company: true,

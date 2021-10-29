@@ -2,19 +2,14 @@ import Select from "react-select";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addprofile,
-  fetchprofiles,
-} from "../../../store/profiles/profileSlice";
-import { wrapper } from "../../../store";
+import { addProfile, fetchProfile } from "../../../store/profiles/profileSlice";
 import { useRouter } from "next/router";
-import { onSnapshot, collection, addDoc, firebase } from "@firebase/firestore";
 import { useState, useEffect } from "react";
 
 export default function Edit() {
   const router = useRouter();
   const { id } = router.query;
-  const profiles = useSelector((state) => state.profiles);
+  const profile = useSelector((state) => state.profile);
   const category = [
     { value: "Design", label: "Design" },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -41,17 +36,17 @@ export default function Edit() {
   const addData = (e) => {
     e.preventDefault();
 
-    dispatch(addprofile(formdata));
+    dispatch(addProfile(formdata));
     alert("changes succesfully");
     window.location.reload();
   };
 
   useEffect(() => {
-    dispatch(fetchprofiles(id));
+    dispatch(fetchProfile(id));
   }, [dispatch, id]);
 
-  if (profiles.profiles[0]) {
-    const company_info = profiles.profiles[0].newProfile;
+  if (profile.profiles[0]) {
+    const company_info = profile.profiles[0].newProfile;
     return (
       <>
         {" "}
@@ -325,6 +320,6 @@ export default function Edit() {
 
 /*export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
-    await store.dispatch(fetchprofiles("Iw6Df6nY6VtShhrhD3iY"));
+    await store.dispatch(fetchProfile("Iw6Df6nY6VtShhrhD3iY"));
   }
 );*/

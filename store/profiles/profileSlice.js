@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDocs } from "firebase/firestore";
 import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
-  profiles: [],
+  profile: [],
   status: "idle",
 };
 
-export const fetchprofiles = createAsyncThunk(
-  "profiles/fetchprofile",
+export const fetchProfile = createAsyncThunk(
+  "profile/fetchProfile",
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
@@ -24,13 +23,12 @@ export const fetchprofiles = createAsyncThunk(
     return profiles;
   }
 );
-export const addprofile = createAsyncThunk(
-  "profiles/addprofile",
+export const addProfile = createAsyncThunk(
+  "profile/addProfile",
   async (newProfile, thunkAPI) => {
     const { getFirestore, getFirebase } = thunkAPI.extra;
     const firestore = getFirestore();
     const firebase = getFirebase();
-    // const querySnapshot = await getDocs(collection(firestore, "jobs"));
     const newProfileData = {
       newProfile,
     };
@@ -41,28 +39,28 @@ export const addprofile = createAsyncThunk(
 );
 
 const profileSlice = createSlice({
-  name: "profiles",
+  name: "profile",
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchprofiles.pending]: (state) => {
+    [fetchProfile.pending]: (state) => {
       state.status = "loading";
     },
-    [fetchprofiles.fulfilled]: (state, action) => {
+    [fetchProfile.fulfilled]: (state, action) => {
       state.status = "loaded";
       state.profiles = action.payload;
     },
-    [fetchprofiles.rejected]: (state) => {
+    [fetchProfile.rejected]: (state) => {
       state.status = "error";
     },
-    [addprofile.pending]: (state) => {
+    [addProfile.pending]: (state) => {
       state.status = "loading";
     },
-    [addprofile.fulfilled]: (state, action) => {
+    [addProfile.fulfilled]: (state, action) => {
       state.status = "added";
       state.profiles = action.payload;
     },
-    [addprofile.rejected]: (state) => {
+    [addProfile.rejected]: (state) => {
       state.status = "error";
     },
     [HYDRATE]: (state, action) => {

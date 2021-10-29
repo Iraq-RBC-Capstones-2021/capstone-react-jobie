@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { collection, getDocs } from "firebase/firestore";
 import { HYDRATE } from "next-redux-wrapper";
+import { notifySuccess, notifyError } from "../notification/notificationSlice";
 
 const initialState = {
   jobs: [],
   status: "idle",
+  lastRequest: null,
 };
 
 export const fetchJobs = createAsyncThunk(
@@ -12,14 +13,55 @@ export const fetchJobs = createAsyncThunk(
   async (_, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    // const querySnapshot = await getDocs(collection(firestore, "jobs"));
     const collection = await firestore.get("jobs");
     const jobs = [];
     collection.forEach((doc) => {
-      jobs.push({ ...doc.data(), id: doc.id });
+      const data = doc.data();
+      jobs.push({ ...data, id: doc.id, timestamp: data.timestamp.toMillis() });
     });
-
     return jobs;
+  }
+);
+
+export const createJob = createAsyncThunk(
+  "jobs/createJob",
+  async (newJob, thunkAPI) => {
+    const { getFirestore, getFirebase } = thunkAPI.extra;
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    const dispatch = thunkAPI.dispatch;
+
+    // todo for later when auth is finished
+    // get current user
+    // if company continue
+
+    const newJobData = {
+      ...newJob,
+      company_id: "company id from auth",
+      timestamp: firestore.FieldValue.serverTimestamp(),
+      // timestamp: new Date(),
+    };
+
+    try {
+      const doc = await firestore.add({ collection: "jobs" }, newJobData);
+      dispatch(
+        notifySuccess({
+          text: "Job has been created successfully.",
+          action: "Create new",
+        })
+      );
+      return {
+        ...newJobData,
+        id: doc.id,
+      };
+    } catch (ex) {
+      dispatch(
+        notifyError({
+          text: "Job was not created.Please try again later.",
+          action: "Cancel",
+        })
+      );
+    }
   }
 );
 
@@ -36,6 +78,16 @@ const jobsSlice = createSlice({
       state.jobs = action.payload;
     },
     [fetchJobs.rejected]: (state) => {
+      state.status = "error";
+    },
+    [createJob.pending]: (state) => {
+      state.status = "loading";
+    },
+    [createJob.fulfilled]: (state, action) => {
+      state.status = "idle";
+      state.jobs = action.payload;
+    },
+    [createJob.rejected]: (state) => {
       state.status = "error";
     },
     [HYDRATE]: (state, action) => {

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
+import { notifySuccess, notifyError } from "../notification/notificationSlice";
 
 const initialState = {
   profile: [],
@@ -11,7 +12,6 @@ export const fetchProfile = createAsyncThunk(
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    // const querySnapshot = await getDocs(collection(firestore, "jobs"));
     const collection = await firestore.get("profiles");
     const profiles = [];
     collection.forEach((doc) => {
@@ -29,12 +29,39 @@ export const addProfile = createAsyncThunk(
     const { getFirestore, getFirebase } = thunkAPI.extra;
     const firestore = getFirestore();
     const firebase = getFirebase();
-    const newProfileData = {
-      newProfile,
-    };
-    const doc = await firestore.add({ collection: "profiles" }, newProfileData);
+    const dispatch = thunkAPI.dispatch;
 
-    return { ...newProfileData, id: doc.id };
+    // set logo
+    const logo = newProfile.logo;
+    let url = "";
+
+    if (logo) {
+      const storageRef = firebase.storage().ref("/images");
+      const fileRef = storageRef.child(logo.name);
+      await fileRef.put(logo);
+      url = await fileRef.getDownloadURL();
+    }
+
+    try {
+      const doc = await firestore.add(
+        { collection: "profiles" },
+        { ...newProfile, logo: url }
+      );
+      dispatch(
+        notifySuccess({
+          text: "Profile has been updated successfully.",
+          action: "Create new",
+        })
+      );
+      return { ...newProfile, id: doc.id };
+    } catch (ex) {
+      dispatch(
+        notifyError({
+          text: "Profile could not be updated.Please try again later.",
+          action: "Cancel",
+        })
+      );
+    }
   }
 );
 
@@ -58,14 +85,14 @@ const profileSlice = createSlice({
     },
     [addProfile.fulfilled]: (state, action) => {
       state.status = "added";
-      state.profiles = action.payload;
+      state.profile = action.payload;
     },
     [addProfile.rejected]: (state) => {
       state.status = "error";
     },
     [HYDRATE]: (state, action) => {
-      state.status = action.payload.profiles.status;
-      state.profiles = action.payload.profiles.profiles;
+      state.status = action.payload.profile.status;
+      state.profile = action.payload.profile.profile;
     },
   },
 });

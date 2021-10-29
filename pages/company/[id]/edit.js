@@ -19,7 +19,7 @@ const profile = {
   github: "irure",
   facebook: "eu",
   specialities: [
-    "velit",
+    "velitt",
     "id",
     "dolore",
     "consequat",

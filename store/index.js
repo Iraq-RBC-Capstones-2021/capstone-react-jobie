@@ -7,6 +7,7 @@ import app from "../config/dbConfig";
 
 import jobsSlice from "./jobs/jobsSlice";
 import notificationSlice from "./notification/notificationSlice";
+import authSlice from "./auth/authSlice";
 
 const makeStore = () =>
   configureStore({
@@ -14,6 +15,7 @@ const makeStore = () =>
       [counterSlice.name]: counterSlice.reducer,
       [jobsSlice.name]: jobsSlice.reducer,
       [notificationSlice.name]: notificationSlice.reducer,
+      [authSlice.name]: authSlice.reducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) =>

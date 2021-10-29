@@ -128,21 +128,21 @@ export default function Edit() {
     e.preventDefault();
 
     dispatch(addProfile(profileData));
-    setProfileData({
-      name: "",
-      category: "",
-      website: "",
-      about: "",
-      location: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
-      facebook: "",
-      specialities: [],
-      logo: "",
-    });
-    setLogoPreview("");
+    // setProfileData({
+    //   name: "",
+    //   category: "",
+    //   website: "",
+    //   about: "",
+    //   location: "",
+    //   email: "",
+    //   phone: "",
+    //   linkedin: "",
+    //   github: "",
+    //   facebook: "",
+    //   specialities: [],
+    //   logo: "",
+    // });
+    // setLogoPreview("");
   };
 
   useEffect(() => {

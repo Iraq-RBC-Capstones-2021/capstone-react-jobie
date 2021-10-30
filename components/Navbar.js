@@ -135,7 +135,7 @@ function Navbar() {
                       aria-labelledby="menu-button"
                       tabIndex="-1"
                     >
-                      <Link href="#">
+                      <Link href={`/company/${auth.currentUser}`}>
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"

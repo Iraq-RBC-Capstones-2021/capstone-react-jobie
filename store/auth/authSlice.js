@@ -30,6 +30,7 @@ export const registerWithGoogle = createAsyncThunk(
           data.profileCompleted = false;
         } else {
           // old user
+          console.log(result.additionalUserInfo);
           data.currentUser = auth.currentUser.uid;
           data.profileCompleted = true;
         }

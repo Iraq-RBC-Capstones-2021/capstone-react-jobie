@@ -4,6 +4,7 @@ import { notifySuccess, notifyError } from "../notification/notificationSlice";
 
 const initialState = {
   profile: [],
+  visitedProfile: [],
   status: "idle",
 };
 
@@ -12,15 +13,13 @@ export const fetchProfile = createAsyncThunk(
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    const collection = await firestore.get("profiles");
-    const profiles = [];
-    collection.forEach((doc) => {
-      if (doc.id === id) {
-        profiles.push(doc.data());
-      }
-    });
-
-    return profiles;
+    const profile = await firestore.get({ collection: "profiles", doc: id });
+    // collection.forEach((doc) => {
+    //   if (doc.id === id) {
+    //     profiles.push(doc.data());
+    //   }
+    // });
+    return profile;
   }
 );
 export const addProfile = createAsyncThunk(
@@ -89,7 +88,7 @@ const profileSlice = createSlice({
     },
     [fetchProfile.fulfilled]: (state, action) => {
       state.status = "loaded";
-      state.profiles = action.payload;
+      state.visitedProfile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
       state.status = "error";

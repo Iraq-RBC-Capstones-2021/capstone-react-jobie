@@ -1,13 +1,30 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createProfile } from "../store/profiles/profileSlice";
+import { setProfileComplete } from "../store/auth/authSlice";
 
 export default function LoginAccountType() {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [accountType, setAccountType] = useState({
     type: "JobSeeker",
   });
 
   const handleChange = (event) => {
     setAccountType({ type: event.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      id: auth.currentUser,
+      is_company: accountType.type === "company" ? true : false,
+    };
+
+    dispatch(createProfile(data));
+    dispatch(setProfileComplete());
   };
 
   return (
@@ -75,7 +92,10 @@ export default function LoginAccountType() {
               <span className="text-accent  text-lg">terms and conditions</span>
             </span>
           </label>
-          <button className="mt-8 block bg-primary2 text-white rounded-full py-2 px-6 text-2xl">
+          <button
+            className="mt-8 block bg-primary2 text-white rounded-full py-2 px-6 text-2xl"
+            onClick={handleSubmit}
+          >
             Continue
           </button>
         </div>

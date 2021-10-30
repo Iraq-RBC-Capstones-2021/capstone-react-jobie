@@ -26,11 +26,11 @@ export const registerWithGoogle = createAsyncThunk(
       .then((result) => {
         if (result.additionalUserInfo.isNewUser) {
           //new user
-          data.currentUser = result.additionalUserInfo.profile.id;
+          data.currentUser = auth.currentUser.uid;
           data.profileCompleted = false;
         } else {
           // old user
-          data.currentUser = result.additionalUserInfo.profile.id;
+          data.currentUser = auth.currentUser.uid;
           data.profileCompleted = true;
         }
       })
@@ -62,7 +62,11 @@ export const logoutGoogle = createAsyncThunk(
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setProfileComplete: (state) => {
+      state.profileCompleted = true;
+    },
+  },
   extraReducers: {
     [registerWithGoogle.pending]: (state) => {
       state.status = "loading";
@@ -94,6 +98,6 @@ const authSlice = createSlice({
   },
 });
 
-export const {} = authSlice.actions;
+export const { setProfileComplete } = authSlice.actions;
 
 export default authSlice;

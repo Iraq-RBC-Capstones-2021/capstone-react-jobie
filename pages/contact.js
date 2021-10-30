@@ -13,7 +13,7 @@ export default function Home() {
   function sendFeedback(e) {
     e.preventDefault();
 
-    emailjs.sendForm('gmail', 'template_gp268sw', form.current, 'user_sRP5iBhZmFEbxe9NtZU2b')
+    emailjs.sendForm('service_m2azucq', 'template_gp268sw', form.current, 'user_sRP5iBhZmFEbxe9NtZU2b')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
@@ -31,34 +31,39 @@ export default function Home() {
           <h1 className="pb-8 lg:text-4xl">Get in Touch</h1>
 
           <form className="form mr-8 "ref={form} onSubmit={sendFeedback}>
-            <label className="flex space-x-2 my-3">
-              First Name
-              <input
-                name = "first-name"
-                type="text"
-                placeholder="First Name"
-                className="border p-2 mr-4  w-1/2 border-dark"
-              />
-              Last Name
-              <input
-                name ="last-name"
-                type="text"
-                placeholder="Last Name"
-                className="border p-2 w-1/2 border-dark"
-              />
-            </label>
+            <div className="flex space-x-2 my-3">
+              <label className="w-full">
+                First Name <br/>
+                <input
+                  name = "first-name"
+                  type="text"
+                  placeholder="First Name"
+                  className="border p-2 mt-3 w-full  border-dark"
+                />
+              </label>
+
+              <label className="w-full">
+                Last Name <br/>
+                <input
+                  name ="last-name"
+                  type="text"
+                  placeholder="Last Name"
+                  className="border p-2 mt-3  w-full border-dark"
+                />
+              </label>
+            </div>
 
             <label>Email</label>
             <input
               type="email"
               name="email"
-              id=""
               placeholder="Your Email"
-              className="border p-2 w-full mt-3 border-dark"
+              className="border p-2 w-full my-3 border-dark"
             />
             <label> Message </label>
             <textarea
               name="message"
+              placeholder="Write your message here..."
               className="border p-2 mt-3 w-full border-dark"
             />
 
@@ -68,6 +73,7 @@ export default function Home() {
               className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent" 
             />
           </form>
+
         </div>
 
         <div className="col-2 ml-auto w-3/4 lg:w-4/5 xl:w-2/3 ">

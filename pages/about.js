@@ -9,6 +9,7 @@ import Aya from "../assets/TeamPic/aya.jpg";
 import Zahraa from "../assets/TeamPic/zahraa.jpg";
 import Bnar from "../assets/TeamPic/bnar.jpg";
 import Lara from "../assets/TeamPic/Lara.jpg";
+import Wisam from "../assets/TeamPic/Wisam.jpg";
 
 import { BsFillFileEarmarkTextFill } from "react-icons/bs";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -136,12 +137,21 @@ export default function aboutus() {
         </h1>
         <div className="flex justify-between pb-20">
           <TeamProfile name="Zahraa YH" pic={Zahraa} role="Web Developer" />
-          <TeamProfile name="Rebaz Farid" pic={Rebaz} role="Web Developer" />
-          <TeamProfile name="Lara Raoof " pic={Lara} role="Web Developer" />
+          <TeamProfile name="Wisam Naji " pic={Wisam} role="Supervisor" />
+          <TeamProfile name="Rebaz Farid" pic={Rebaz} role="Project manager" />
         </div>
-        <div className="grid grid-cols-2 place-items-center">
+        <div className="grid grid-cols-3 place-items-center">
           <TeamProfile name="Aya Abdulsalm " pic={Aya} role="Web Developer" />
-          <TeamProfile name="Bnar Kamal" pic={Bnar} role="Web Developer" />
+          <TeamProfile
+            name="Bnar Kamal"
+            pic={Bnar}
+            role="Developer | Designer"
+          />
+          <TeamProfile
+            name="Lara Raoof "
+            pic={Lara}
+            role="Developer | Designer"
+          />
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">

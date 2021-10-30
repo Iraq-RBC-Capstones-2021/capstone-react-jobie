@@ -15,9 +15,9 @@ export default function Home() {
 
     emailjs.sendForm('service_m2azucq', 'template_gp268sw', form.current, 'user_sRP5iBhZmFEbxe9NtZU2b')
       .then((result) => {
-          console.log(result.text);
+        alert("Message was sent successfully");
       }, (error) => {
-          console.log(error.text);
+        alert("Message was not sent successfully");
       });
   }
   return (
@@ -39,6 +39,7 @@ export default function Home() {
                   type="text"
                   placeholder="First Name"
                   className="border p-2 mt-3 w-full  border-dark"
+                  required
                 />
               </label>
 
@@ -49,6 +50,7 @@ export default function Home() {
                   type="text"
                   placeholder="Last Name"
                   className="border p-2 mt-3  w-full border-dark"
+                  required
                 />
               </label>
             </div>
@@ -59,6 +61,7 @@ export default function Home() {
               name="email"
               placeholder="Your Email"
               className="border p-2 w-full my-3 border-dark"
+              required
             />
             <label> Message </label>
             <textarea
@@ -71,6 +74,7 @@ export default function Home() {
               type="submit" 
               value="Send" 
               className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent" 
+              required
             />
           </form>
 

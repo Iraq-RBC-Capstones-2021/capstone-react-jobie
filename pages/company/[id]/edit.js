@@ -235,6 +235,7 @@ export default function Edit() {
                       name="company_name"
                       onChange={handleChange}
                       value={profileData.name}
+                      required
                     />
                   </div>
                   <div className="self-center col-1 ml-4">
@@ -316,6 +317,7 @@ export default function Edit() {
                       name="email"
                       onChange={handleChange}
                       value={profileData.email}
+                      required
                     />
                   </div>
                   <div className="self-center col-2 ml-4">
@@ -325,6 +327,7 @@ export default function Edit() {
                       name="phone"
                       onChange={handleChange}
                       value={profileData.phone}
+                      required
                     />
                   </div>
                 </div>

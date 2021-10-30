@@ -114,7 +114,8 @@ function Edit() {
                 <input
                   className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                   name="first Name"
-                  placeholder="first name"
+                  placeholder="first-name"
+                  required
                 />
               </div>
               <div className="self-center col-2 ml-4">
@@ -122,7 +123,8 @@ function Edit() {
                 <input
                   className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                   name="last Name"
-                  placeholder="last name"
+                  placeholder="last-name"
+                  required
                 />
               </div>
               <div className="self-center col-2 ml-4">
@@ -161,6 +163,7 @@ function Edit() {
                   className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                   name="address"
                   placeholder="example@gmail.com"
+                  required
                 />
               </div>
               <div className="self-center col-2 ml-4">

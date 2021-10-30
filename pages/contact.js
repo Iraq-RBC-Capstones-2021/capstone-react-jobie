@@ -18,11 +18,13 @@ export default function Home() {
           <form className="form mr-8 ">
             <div className="flex space-x-5 mt-3">
               <input
+                name = "first-name"
                 type="text"
                 placeholder="First Name"
                 className="border p-2  w-1/2 border-dark"
               />
               <input
+                name ="last-name"
                 type="text"
                 placeholder="Last Name"
                 className="border p-2 w-1/2 border-dark"
@@ -31,14 +33,14 @@ export default function Home() {
 
             <input
               type="email"
-              name=""
+              name="email"
               id=""
               placeholder="Your Email"
               className="border p-2 w-full mt-3 border-dark"
             />
 
             <textarea
-              name=""
+              name="message"
               id=""
               cols="10"
               rows="3"

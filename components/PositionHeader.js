@@ -14,6 +14,8 @@ const PositionHeader = ({
   logo = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) => {
   const [saved, setsaved] = useState(true);
+  // userid will store the id of the user that will be used to generate the user link
+  let userid
   const emailtest = {
     username: "john",
     useremail: "john123@gmail.com",

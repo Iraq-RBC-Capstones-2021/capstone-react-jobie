@@ -8,6 +8,8 @@ import { VscArrowRight } from "react-icons/vsc";
 
 import allJobs from "../../../data.json";
 
+// userid will store the id of the user that will be used to generate the user link
+let userid
 const emailtest = {
   username: "john",
   useremail: "john123@gmail.com",

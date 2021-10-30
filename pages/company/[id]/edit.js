@@ -10,6 +10,7 @@ import { wrapper } from "../../../store";
 import { useRouter } from "next/router";
 import { onSnapshot, collection, addDoc, firebase } from "@firebase/firestore";
 import { useState, useEffect } from "react";
+import { storage } from "../../../config/dbConfig";
 
 export default function Edit() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function Edit() {
     { value: "Data", label: "Data" },
   ];
   const [formdata, setFormData] = useState({});
+  const [file, setFile] = useState();
 
   const handleChange = (e) => {
     setFormData({
@@ -33,17 +35,41 @@ export default function Edit() {
       [e.target.name]: e.target.value,
     });
   };
-  const getAllFormData = (e) => {
+
+  const handleupload = (e) => {
     e.preventDefault();
+    setFile(e.target.files[0]);
   };
 
   const dispatch = useDispatch();
   const addData = (e) => {
     e.preventDefault();
-
-    dispatch(addprofile(formdata));
-    alert("changes succesfully");
-    window.location.reload();
+    if (file) {
+      const uploadtask = storage.ref(`files/${file.name}`).put(file);
+      uploadtask.on(
+        "state_changed",
+        (snapshot) => {
+          console.log("load");
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          storage
+            .ref("/files")
+            .child(file.name)
+            .getDownloadURL()
+            .then((url) => {
+              setFormData({
+                ...formdata,
+                ["image"]: url,
+              });
+              console.log(url);
+              dispatch(addprofile(formdata));
+            });
+        }
+      );
+    }
   };
 
   useEffect(() => {
@@ -89,21 +115,33 @@ export default function Edit() {
                     <div className="flex items-center justify-between sm:mt-2">
                       <div className="flex items-center">
                         <div className="flex flex-col">
-                          <div className="flex-auto text-gray-500 mt-4">
-                            <button
-                              className="rounded-full bg-secondary px-6 py-1 text-white font-medium mr-3"
-                              onClick={getAllFormData}
-                            >
-                              Upload photo
-                            </button>
-
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="rounded-full border-2 border-secondary px-6 py-1 text-secondary font-medium "
-                            >
-                              Delete
-                            </a>
+                          <div className="flex text-gray-500 mt-4">
+                            <div>
+                              <div>
+                                <label>
+                                  <div className="flex">
+                                    <h1 className="text-base rounded-full p-1 px-6  -mt-1 mr-2 text-white font-semibold  bg-secondary">
+                                      Upload photo
+                                    </h1>{" "}
+                                    <input
+                                      type="file"
+                                      className="w-full h-20 mt-2 border-grey border-2 bg-dark"
+                                      style={{ display: "none" }}
+                                      onChange={handleupload}
+                                    />
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            <div>
+                              <a
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full border-2 border-secondary px-6 py-1 text-secondary font-medium "
+                              >
+                                Delete
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>

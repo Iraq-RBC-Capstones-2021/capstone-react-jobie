@@ -136,12 +136,28 @@ export default function aboutus() {
           <span className="text-accent">Team</span>
         </h1>
         <div className="flex justify-between pb-20">
-          <TeamProfile name="Zahraa YH" pic={Zahraa} role="Web Developer" />
-          <TeamProfile name="Wisam Naji " pic={Wisam} role="Supervisor" />
-          <TeamProfile name="Rebaz Farid" pic={Rebaz} role="Project manager" />
+          <TeamProfile 
+            name="Zahraa YH" 
+            pic={Zahraa} 
+            role="Senior Developer | Designer" 
+          />
+          <TeamProfile 
+            name="Wisam Naji " 
+            pic={Wisam} 
+            role="Supervisor" 
+          />
+          <TeamProfile 
+            name="Rebaz Farid" 
+            pic={Rebaz} 
+            role="Project manager | Developer" 
+          />
         </div>
         <div className="grid grid-cols-3 place-items-center">
-          <TeamProfile name="Aya Abdulsalm " pic={Aya} role="Web Developer" />
+          <TeamProfile 
+            name="Aya Abdulsalm " 
+            pic={Aya} 
+            role="Developer | Translator" 
+          />
           <TeamProfile
             name="Bnar Kamal"
             pic={Bnar}

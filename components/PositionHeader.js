@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from 'emailjs-com';
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
@@ -13,11 +14,28 @@ const PositionHeader = ({
   logo = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) => {
   const [saved, setsaved] = useState(true);
+  const emailtest = {
+    username: "john",
+    useremail: "john123@gmail.com",
+    userlink: `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
+    companyemail: "rebaz415@gmail.com",
+    companyname: "google"
+  }
 
   function SaveButton() {
     setsaved(false);
     setsaved(!saved);
   }
+  const sendUserInfo = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_m2azucq', 'template_6qnh9fc', emailtest, 'user_sRP5iBhZmFEbxe9NtZU2b')
+      .then((result) => {
+        alert("Application was submitted successfully");
+      }, (error) => {
+        alert("Application was not submitted successfully");
+      });
+  };
 
   return (
     <div className="bg-light w-full">
@@ -59,7 +77,10 @@ const PositionHeader = ({
                 </div>
               )}
             </button>
-            <button className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2">
+            <button 
+              className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
+              onClick={sendUserInfo}
+            >
               <span>Apply Now</span> <VscArrowRight />
             </button>
           </div>

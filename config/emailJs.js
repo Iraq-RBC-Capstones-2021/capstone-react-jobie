@@ -1,7 +1,7 @@
 import emailjs from 'emailjs-com';
 
 // to send user data when applying
- function sendUserData({emailtest}){
+ const sendUserData = function UserData({emailtest}){
     e.preventDefault();
 
     emailjs.sendForm('service_m2azucq', 'template_6qnh9fc', emailtest, 'user_sRP5iBhZmFEbxe9NtZU2b')
@@ -13,7 +13,7 @@ import emailjs from 'emailjs-com';
   };
 
 // contact us page
- function sendFeedback({formref}) {
+ const sendFeedback = function Feedback({formref}) {
     e.preventDefault();
 
     emailjs.sendForm('service_m2azucq', 'template_gp268sw', formref, 'user_sRP5iBhZmFEbxe9NtZU2b')

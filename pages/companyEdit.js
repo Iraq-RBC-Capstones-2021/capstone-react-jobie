@@ -234,7 +234,7 @@ export default function Edit() {
                       styles={style}
                       placeholder="Select the Location that applies"
                       onChange={(e) => {
-                        console.log(e);
+                        // console.log(e);
                         setProfileData({
                           ...profileData,
                           ["location"]: e.value,

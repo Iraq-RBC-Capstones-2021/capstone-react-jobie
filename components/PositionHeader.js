@@ -17,11 +17,11 @@ const PositionHeader = ({
   // userid will store the id of the user that will be used to generate the user link
   let userid
   const emailtest = {
-    username: "john",
-    useremail: "john123@gmail.com",
-    userlink: `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
-    companyemail: "rebaz415@gmail.com",
-    companyname: "google"
+    "username": "john",
+    "useremail": "john123@gmail.com",
+    "userlink": `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
+    "companyemail": "rebaz415@gmail.com",
+    "companyname": "google"
   }
 
   function SaveButton() {

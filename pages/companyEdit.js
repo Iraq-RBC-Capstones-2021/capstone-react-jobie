@@ -1,7 +1,8 @@
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { addProfile } from "../../../store/profiles/profileSlice";
+import { addProfile } from "../store/profiles/profileSlice";
 import { useState, useEffect } from "react";
+import { useRef } from "react";
 
 export default function Edit() {
   const category = [
@@ -47,10 +48,10 @@ export default function Edit() {
 
   const profile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
+  const imagePreviewRef = useRef();
 
   const [profileData, setProfileData] = useState(profile);
   const [logoPreview, setLogoPreview] = useState(profileData.logo);
-  console.log("profile", profile);
 
   const handleChange = (e) => {
     setProfileData({
@@ -74,6 +75,7 @@ export default function Edit() {
       ...profileData,
       logo: "",
     });
+    imagePreviewRef.current.value = "";
     setLogoPreview("");
   };
 
@@ -139,6 +141,7 @@ export default function Edit() {
                                     type="file"
                                     className="w-full h-20 mt-2 border-grey border-2 bg-dark hidden"
                                     onChange={handleUpload}
+                                    ref={imagePreviewRef}
                                   />
                                 </div>
                               </label>
@@ -313,12 +316,7 @@ export default function Edit() {
                       type="text"
                       name="specialities"
                       placeholder="web,network,internet"
-                      onChange={(e) => {
-                        setProfileData({
-                          ...profileData,
-                          specialities: e.target.value.split(),
-                        });
-                      }}
+                      onChange={handleChange}
                       value={profileData.specialities}
                     />
                   </div>

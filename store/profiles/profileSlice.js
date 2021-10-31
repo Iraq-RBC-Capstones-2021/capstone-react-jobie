@@ -4,7 +4,6 @@ import { notifySuccess, notifyError } from "../notification/notificationSlice";
 
 const initialState = {
   profile: [],
-  visitedProfile: [],
   status: "idle",
 };
 
@@ -14,7 +13,6 @@ export const fetchProfile = createAsyncThunk(
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
     const doc = await firestore.get({ collection: "profiles", doc: id });
-    console.log("in profile fetch", doc.data());
     // console.log("data", profile.data());
     // collection.forEach((doc) => {
     //   if (doc.id === id) {
@@ -33,13 +31,13 @@ export const addProfile = createAsyncThunk(
     const dispatch = thunkAPI.dispatch;
 
     // set logo
-    const logo = newProfile.logo;
-    let url = "";
+    const logoFile = newProfile.logo;
+    let url = newProfile.logo;
 
-    if (logo) {
+    if (logoFile && typeof logoFile === "object") {
       const storageRef = firebase.storage().ref("/images");
-      const fileRef = storageRef.child(logo.name);
-      await fileRef.put(logo);
+      const fileRef = storageRef.child(logoFile.name);
+      await fileRef.put(logoFile);
       url = await fileRef.getDownloadURL();
     }
 
@@ -56,7 +54,7 @@ export const addProfile = createAsyncThunk(
           action: "Create new",
         })
       );
-      return { ...newProfile, id: doc.id };
+      return { ...newProfile, logo: url };
     } catch (ex) {
       dispatch(
         notifyError({

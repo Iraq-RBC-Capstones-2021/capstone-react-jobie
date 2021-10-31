@@ -9,34 +9,22 @@ import JobListing from "../../../components/JobListing";
 import jobsData from "../../../data.json";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProfile } from "../../../store/profiles/profileSlice";
+import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
+import { wrapper } from "../../../store";
 
 function Company() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  const [companyProfile, setCompanyProfile] = useState([]);
-  // const [companyProfile, setCompanyProfile] = useState(state.profile.profile);
   const router = useRouter();
+  const companyStore = useSelector((state) => state.tempStorage.company);
+  const [companyProfile, setCompanyProfile] = useState([]);
 
   const [jobs, setJobs] = useState([]);
-  const profile = useSelector((state) => state.profile.profile);
   useEffect(() => {
-    const id = router.query;
-    dispatch(fetchProfile(id));
-    setCompanyProfile({ ...profile });
-    // if (state.auth.currentUser === router.query) {
-    //   const profile = state.profile.profile;
-    //   setCompanyProfile({ ...companyProfile, profile });
-    // } else {
-    //   dispatch(fetchProfile(router.query));
-    //   const profile = state.profile.visitedProfile;
-    //   setCompanyProfile({ ...companyProfile, profile });
-    // }
-
+    const data = companyStore.filter((item) => item.id === router.query.id);
+    setCompanyProfile({ ...data[0] });
     setJobs(jobsData.Posts.filter((e) => e.company_id === companyProfile.id));
-  }, [companyProfile.id, dispatch, router.query]);
+  }, [companyProfile.id, companyStore, router.query.id]);
 
-  console.log(companyProfile);
   return (
     <div>
       <CompanyProfileHeader companyProfile={companyProfile} />
@@ -71,9 +59,9 @@ function Company() {
           <div>
             <h1 className="mb-4 font-semibold text-secondary">Specialities</h1>
             <div className="flex gap-3 text-dark flex-wrap">
-              {typeof companyProfile.specialties === "undefined"
+              {typeof companyProfile.specialities === "undefined"
                 ? "No specialities were added"
-                : companyProfile.specialties.map((item, key) => {
+                : companyProfile.specialities.split(",").map((item, key) => {
                     return (
                       <div
                         key={key}
@@ -103,3 +91,13 @@ function Company() {
 }
 
 export default Company;
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+  await store.dispatch(fetchCompany());
+});

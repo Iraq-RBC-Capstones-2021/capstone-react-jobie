@@ -79,7 +79,7 @@ function Navbar() {
           >
             <ul className="md:flex-row md:flex items-center md:gap-5">
               <li className="list-none">
-                <Link href="/">
+                <Link href="/" shallow={true}>
                   <a className="flex w-full text-base px-2.5">Home</a>
                 </Link>
               </li>
@@ -141,16 +141,18 @@ function Navbar() {
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-0"
+                          onClick={handleAccountMenu}
                         >
                           View Profile
                         </a>
                       </Link>
-                      <Link href={`/company/${auth.currentUser}/edit`}>
+                      <Link href={`/companyEdit`}>
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-1"
+                          onClick={handleAccountMenu}
                         >
                           Edit Profile
                         </a>
@@ -162,6 +164,7 @@ function Navbar() {
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-1"
+                            onClick={handleAccountMenu}
                           >
                             Post Job
                           </a>

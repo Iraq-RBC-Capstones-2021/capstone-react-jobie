@@ -12,6 +12,7 @@ import { logoutGoogle } from "../store/auth/authSlice";
 
 function Navbar() {
   const auth = useSelector((state) => state.auth);
+  const userProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
@@ -45,8 +46,7 @@ function Navbar() {
     setShowLoginModal(!showLoginModal);
   };
 
-  const handleLogoutClick = (e) => {
-    e.preventDefault();
+  const handleLogoutClick = () => {
     setAccountMenuActive(false);
     dispatch(logoutGoogle());
   };
@@ -145,7 +145,7 @@ function Navbar() {
                           View Profile
                         </a>
                       </Link>
-                      <Link href="#">
+                      <Link href={`/company/${auth.currentUser}/edit`}>
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"
@@ -155,10 +155,22 @@ function Navbar() {
                           Edit Profile
                         </a>
                       </Link>
+                      {userProfile?.is_company && (
+                        <Link href="/createjob">
+                          <a
+                            className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-1"
+                          >
+                            Post Job
+                          </a>
+                        </Link>
+                      )}
 
                       <div className="py-1 " role="none">
                         <button
-                          type="submit"
+                          type="button"
                           className="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 border-t border-gray-200"
                           role="menuitem"
                           tabIndex="-1"

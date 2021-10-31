@@ -15,23 +15,28 @@ function Company() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [companyProfile, setCompanyProfile] = useState([]);
+  // const [companyProfile, setCompanyProfile] = useState(state.profile.profile);
   const router = useRouter();
 
   const [jobs, setJobs] = useState([]);
+  const profile = useSelector((state) => state.profile.profile);
+  useEffect(() => {
+    const id = router.query;
+    dispatch(fetchProfile(id));
+    setCompanyProfile({ ...profile });
+    // if (state.auth.currentUser === router.query) {
+    //   const profile = state.profile.profile;
+    //   setCompanyProfile({ ...companyProfile, profile });
+    // } else {
+    //   dispatch(fetchProfile(router.query));
+    //   const profile = state.profile.visitedProfile;
+    //   setCompanyProfile({ ...companyProfile, profile });
+    // }
 
-  // useEffect(() => {
-  //   if (state.auth.currentUser === router.query) {
-  //     const profile = state.profile.profile;
-  //     setCompanyProfile({ ...companyProfile, profile });
-  //   } else {
-  //     dispatch(fetchProfile(router.query));
-  //     const profile = state.profile.visitedProfile;
-  //     setCompanyProfile({ ...companyProfile, profile });
-  //   }
+    setJobs(jobsData.Posts.filter((e) => e.company_id === companyProfile.id));
+  }, [companyProfile.id, dispatch, router.query]);
 
-  //   setJobs(jobsData.Posts.filter((e) => e.company_id === companyProfile.id));
-  // }, [companyProfile.id, router.query, companyProfile, dispatch]);
-
+  console.log(companyProfile);
   return (
     <div>
       <CompanyProfileHeader companyProfile={companyProfile} />

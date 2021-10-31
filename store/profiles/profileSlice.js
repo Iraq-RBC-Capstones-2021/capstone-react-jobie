@@ -13,13 +13,15 @@ export const fetchProfile = createAsyncThunk(
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    const profile = await firestore.get({ collection: "profiles", doc: id });
+    const doc = await firestore.get({ collection: "profiles", doc: id });
+    console.log("in profile fetch", doc.data());
+    // console.log("data", profile.data());
     // collection.forEach((doc) => {
     //   if (doc.id === id) {
     //     profiles.push(doc.data());
     //   }
     // });
-    return profile;
+    return { ...doc.data() };
   }
 );
 export const addProfile = createAsyncThunk(
@@ -41,9 +43,11 @@ export const addProfile = createAsyncThunk(
       url = await fileRef.getDownloadURL();
     }
 
+    const currentUser = firebase.auth().currentUser.uid;
+
     try {
-      const doc = await firestore.add(
-        { collection: "profiles" },
+      const doc = await firestore.update(
+        { collection: "profiles", doc: currentUser },
         { ...newProfile, logo: url }
       );
       dispatch(
@@ -71,7 +75,7 @@ export const createProfile = createAsyncThunk(
     const firestore = getFirestore();
     const doc = await firestore.set(
       { collection: "profiles", doc: data.id },
-      { data }
+      { ...data }
     );
 
     return data;
@@ -88,7 +92,7 @@ const profileSlice = createSlice({
     },
     [fetchProfile.fulfilled]: (state, action) => {
       state.status = "loaded";
-      state.visitedProfile = action.payload;
+      state.profile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
       state.status = "error";

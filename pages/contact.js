@@ -1,4 +1,5 @@
 import react, { useRef } from 'react';
+import {sendFeedback} from '../config/emailJs'
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";

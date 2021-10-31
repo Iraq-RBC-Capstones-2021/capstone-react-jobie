@@ -11,9 +11,6 @@ export const fetchCompany = createAsyncThunk(
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    // const collection = await firestore.get({ collection: "profiles", doc: id });
-    // return { ...collection.data() };
-
     const collection = await firestore.get("profiles");
     let companies = [];
 

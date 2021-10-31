@@ -8,12 +8,11 @@ import CompanyProfileHeader from "../../../components/CompanyProfileHeader";
 import JobListing from "../../../components/JobListing";
 import jobsData from "../../../data.json";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
 import { wrapper } from "../../../store";
 
 function Company() {
-  const dispatch = useDispatch();
   const router = useRouter();
   const companyStore = useSelector((state) => state.tempStorage.company);
   const [companyProfile, setCompanyProfile] = useState([]);

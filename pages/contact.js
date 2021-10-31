@@ -3,23 +3,13 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
-import emailjs from 'emailjs-com';
 
 import pic from "../assets/img_contact.png";
 export default function Home() {
 
   const form = useRef();
+  const formref = form.current;
 
-  function sendFeedback(e) {
-    e.preventDefault();
-
-    emailjs.sendForm('service_m2azucq', 'template_gp268sw', form.current, 'user_sRP5iBhZmFEbxe9NtZU2b')
-      .then((result) => {
-        alert("Message was sent successfully");
-      }, (error) => {
-        alert("Message was not sent successfully");
-      });
-  }
   return (
     <div className=" bg-body text-dark px-4 lg:px-48 w-full">
       <div className="pb-10">
@@ -30,7 +20,7 @@ export default function Home() {
         <div className="col-1">
           <h1 className="pb-8 lg:text-4xl">Get in Touch</h1>
 
-          <form className="form mr-8 "ref={form} onSubmit={sendFeedback}>
+          <form className="form mr-8 "ref={form} onSubmit={sendFeedback({formref})}>
             <div className="flex space-x-2 my-3">
               <label className="w-full">
                 First Name <br/>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from 'emailjs-com';
+import {sendUserData} from "../../../config/emailJs"
 import PositionHeader from "../../../components/PositionHeader";
 import PositionSummary from "../../../components/PositionSummary";
 import JobListing from "../../../components/JobListing";
@@ -12,7 +12,7 @@ import allJobs from "../../../data.json";
 let userid
 const emailtest = {
   "username": "john",
-  "useremail": "john123@gmail.com",
+  "useremail": "rebaz415@gmail.com",
   "userlink": `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
   "companyemail": "rebaz415@gmail.com",
   "companyname": "google"
@@ -65,16 +65,7 @@ function Job() {
       }
     }
   };
-  const sendUserData = (e) => {
-    e.preventDefault();
 
-    emailjs.sendForm('service_m2azucq', 'template_6qnh9fc', emailtest, 'user_sRP5iBhZmFEbxe9NtZU2b')
-      .then((result) => {
-        alert("Application was submitted successfully");
-      }, (error) => {
-        alert("Application was not submitted successfully");
-      });
-  };
   return (
     <div>
       <PositionHeader />
@@ -144,7 +135,7 @@ function Job() {
               <div className="mt-10">
                 <button 
                   className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
-                  onClick={sendUserData}
+                  onClick={sendUserData({emailtest})}
                 >
                   <span>Apply Now</span> <VscArrowRight />
                 </button>

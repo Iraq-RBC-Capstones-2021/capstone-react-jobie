@@ -9,8 +9,14 @@ import LoginPopup from "./LoginPopup";
 import LoginAccountTpe from "./LoginAccountType";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutGoogle } from "../store/auth/authSlice";
-
+import { useRouter } from "next/router";
+import en from "../locales/en";
+import ar from "../locales/ar";
 function Navbar() {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
+
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -80,27 +86,27 @@ function Navbar() {
             <ul className="md:flex-row md:flex items-center md:gap-5">
               <li className="list-none">
                 <Link href="/">
-                  <a className="flex w-full text-base px-2.5">Home</a>
+                  <a className="flex w-full text-base px-2.5">{t.Home}</a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/about">
-                  <a className="flex w-full text-base px-2.5">About</a>
+                  <a className="flex w-full text-base px-2.5">{t.About}</a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/roadmaps">
-                  <a className="flex w-full text-base px-2.5">Roadmaps</a>
+                  <a className="flex w-full text-base px-2.5">{t.Roadmaps}</a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/jobs">
-                  <a className="flex w-full text-base px-2.5">Jobs</a>
+                  <a className="flex w-full text-base px-2.5">{t.Jobs}</a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/contact">
-                  <a className="flex w-full text-base px-2.5">Contact</a>
+                  <a className="flex w-full text-base px-2.5">{t.Contact}</a>
                 </Link>
               </li>
               <li className="list-none">
@@ -114,7 +120,7 @@ function Navbar() {
                     className=" text-white rounded-full px-7 py-1 bg-accent"
                     onClick={handleLoginModal}
                   >
-                    Login
+                    {t.Login}
                   </button>
                 ) : (
                   <div className="relative inline-block" ref={accountMenuRef}>
@@ -123,7 +129,7 @@ function Navbar() {
                       className=" text-white rounded-full px-7 py-1 bg-accent inline-flex justify-center items-center"
                       onClick={handleAccountMenu}
                     >
-                      Account
+                      {t.Account}
                       <FaAngleDown />
                     </button>
                     <div
@@ -142,7 +148,7 @@ function Navbar() {
                           tabIndex="-1"
                           id="menu-item-0"
                         >
-                          View Profile
+                          {t.ViewProfile}
                         </a>
                       </Link>
                       <Link href="#">
@@ -152,7 +158,7 @@ function Navbar() {
                           tabIndex="-1"
                           id="menu-item-1"
                         >
-                          Edit Profile
+                          {t.EditProfile}
                         </a>
                       </Link>
 
@@ -165,7 +171,7 @@ function Navbar() {
                           id="menu-item-3"
                           onClick={handleLogoutClick}
                         >
-                          Logout
+                          {t.Logout}
                         </button>
                       </div>
                     </div>

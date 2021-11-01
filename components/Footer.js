@@ -6,6 +6,9 @@ import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineBehance } from "react-icons/ai";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import en from "../locales/en";
+import ar from "../locales/ar";
 
 const links = [
   {
@@ -42,6 +45,10 @@ const links = [
   },
 ];
 export default function Footer() {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
+
   return (
     <div className="w-full">
       <div className="text-white px-4 lg:px-48 py-4 bg-footer md:h-80 h-auto w-full">

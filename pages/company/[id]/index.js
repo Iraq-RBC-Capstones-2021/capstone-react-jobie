@@ -8,46 +8,32 @@ import CompanyProfileHeader from "../../../components/CompanyProfileHeader";
 import JobListing from "../../../components/JobListing";
 import jobsData from "../../../data.json";
 
-const data = {
-  id: 1,
-  name: "Google",
-  category: "Internet",
-  website: "https://www.google.com/",
-  logo: "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
-  img: "",
-  about:
-    "Google LLC is an American multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
-  contact: {
-    location: {
-      country: "United States",
-      city: " Mountain View, California",
-    },
-    email: "contact@google.com",
-    phone: "650 253-0000",
-  },
-  specialties: ["search", "mobile", "technology", "hardware", "software"],
-  social: {
-    linkedin: "linkedin/google",
-    github: "google",
-    facebook: "google",
-  },
-};
+import { useSelector } from "react-redux";
+import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
+import { wrapper } from "../../../store";
 
 function Company() {
-  const [jobs, setJobs] = useState([]);
   const router = useRouter();
-  const { companyId } = router.query;
+  const companyStore = useSelector((state) => state.tempStorage.company);
+  const [companyProfile, setCompanyProfile] = useState([]);
 
+  const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    setJobs(jobsData.Posts.filter((e) => e.company_id === data.id));
-  }, []);
+    const data = companyStore.filter((item) => item.id === router.query.id);
+    setCompanyProfile({ ...data[0] });
+    setJobs(jobsData.Posts.filter((e) => e.company_id === companyProfile.id));
+  }, [companyProfile.id, companyStore, router.query.id]);
 
   return (
     <div>
-      <CompanyProfileHeader />
+      <CompanyProfileHeader companyProfile={companyProfile} />
       <div className="mx-auto px-4 lg:px-48 w-full">
         <div className="pt-10">
-          <p>{data.about}</p>
+          <p>
+            {companyProfile.about
+              ? companyProfile.about
+              : "This company has not added an about text yet."}
+          </p>
         </div>
 
         <div className="flex flex-row pt-12 gap-x-32">
@@ -56,34 +42,34 @@ function Company() {
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaMapMarkerAlt />
-              <p className="ml-2">
-                {data.contact.location.country},{data.contact.location.city}
-              </p>
+              <p className="ml-2">{companyProfile.location}</p>
             </div>
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaEnvelope />
-              <p className="ml-2">{data.contact.email}</p>
+              <p className="ml-2">{companyProfile.email}</p>
             </div>
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaPhoneAlt />
-              <p className="ml-2">{data.contact.phone}</p>
+              <p className="ml-2">{companyProfile.phone}</p>
             </div>
           </div>
           <div>
             <h1 className="mb-4 font-semibold text-secondary">Specialities</h1>
             <div className="flex gap-3 text-dark flex-wrap">
-              {data.specialties.map((item, key) => {
-                return (
-                  <div
-                    key={key}
-                    className="inline-flex bg-lightblue py-0.5 px-3 rounded-lg"
-                  >
-                    {item}
-                  </div>
-                );
-              })}
+              {typeof companyProfile.specialities === "undefined"
+                ? "No specialities were added"
+                : companyProfile.specialities.split(",").map((item, key) => {
+                    return (
+                      <div
+                        key={key}
+                        className="inline-flex bg-lightblue py-0.5 px-3 rounded-lg"
+                      >
+                        {item}
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
@@ -104,3 +90,13 @@ function Company() {
 }
 
 export default Company;
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+  await store.dispatch(fetchCompany());
+});

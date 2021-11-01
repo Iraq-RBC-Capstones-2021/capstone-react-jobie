@@ -20,7 +20,11 @@ export default function LoginPopup({ handleLoginModal, showLoginModal }) {
     >
       <div className="rounded-md shadow-md w-1/4 bg-white">
         <div className="flex items-end  justify-end">
-          <button className="p-4 text-xl" onClick={handleLoginModal}>
+          <button
+            type="button"
+            className="p-4 text-xl"
+            onClick={handleLoginModal}
+          >
             <FaTimes />
           </button>
         </div>
@@ -34,6 +38,7 @@ export default function LoginPopup({ handleLoginModal, showLoginModal }) {
           </div>
           <button
             className="my-15 bg-googleBtnBlue rounded-sm flex items-center justify-between py-0.25 px-0.25"
+            type="button"
             onClick={handleLoginClick}
           >
             <span className="bg-white p-1 m-1 rounded-sm ">

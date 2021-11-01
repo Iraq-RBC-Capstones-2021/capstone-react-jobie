@@ -12,6 +12,7 @@ import { logoutGoogle } from "../store/auth/authSlice";
 
 function Navbar() {
   const auth = useSelector((state) => state.auth);
+  const userProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
@@ -45,8 +46,7 @@ function Navbar() {
     setShowLoginModal(!showLoginModal);
   };
 
-  const handleLogoutClick = (e) => {
-    e.preventDefault();
+  const handleLogoutClick = () => {
     setAccountMenuActive(false);
     dispatch(logoutGoogle());
   };
@@ -79,7 +79,7 @@ function Navbar() {
           >
             <ul className="md:flex-row md:flex items-center md:gap-5">
               <li className="list-none">
-                <Link href="/">
+                <Link href="/" shallow={true}>
                   <a className="flex w-full text-base px-2.5">Home</a>
                 </Link>
               </li>
@@ -135,30 +135,45 @@ function Navbar() {
                       aria-labelledby="menu-button"
                       tabIndex="-1"
                     >
-                      <Link href="#">
+                      <Link href={`/company/${auth.currentUser}`}>
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-0"
+                          onClick={handleAccountMenu}
                         >
                           View Profile
                         </a>
                       </Link>
-                      <Link href="#">
+                      <Link href={`/companyEdit`}>
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"
                           tabIndex="-1"
                           id="menu-item-1"
+                          onClick={handleAccountMenu}
                         >
                           Edit Profile
                         </a>
                       </Link>
+                      {userProfile?.is_company && (
+                        <Link href="/createjob">
+                          <a
+                            className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-1"
+                            onClick={handleAccountMenu}
+                          >
+                            Post Job
+                          </a>
+                        </Link>
+                      )}
 
                       <div className="py-1 " role="none">
                         <button
-                          type="submit"
+                          type="button"
                           className="text-gray-700 block w-full text-left px-4 py-2 text-sm hover:bg-gray-200 border-t border-gray-200"
                           role="menuitem"
                           tabIndex="-1"

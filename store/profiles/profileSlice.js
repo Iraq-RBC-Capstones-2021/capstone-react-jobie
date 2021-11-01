@@ -12,15 +12,14 @@ export const fetchProfile = createAsyncThunk(
   async (id, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    const collection = await firestore.get("profiles");
-    const profiles = [];
-    collection.forEach((doc) => {
-      if (doc.id === id) {
-        profiles.push(doc.data());
-      }
-    });
-
-    return profiles;
+    const doc = await firestore.get({ collection: "profiles", doc: id });
+    // console.log("data", profile.data());
+    // collection.forEach((doc) => {
+    //   if (doc.id === id) {
+    //     profiles.push(doc.data());
+    //   }
+    // });
+    return { ...doc.data() };
   }
 );
 export const addProfile = createAsyncThunk(
@@ -32,19 +31,21 @@ export const addProfile = createAsyncThunk(
     const dispatch = thunkAPI.dispatch;
 
     // set logo
-    const logo = newProfile.logo;
-    let url = "";
+    const logoFile = newProfile.logo;
+    let url = newProfile.logo;
 
-    if (logo) {
+    if (logoFile && typeof logoFile === "object") {
       const storageRef = firebase.storage().ref("/images");
-      const fileRef = storageRef.child(logo.name);
-      await fileRef.put(logo);
+      const fileRef = storageRef.child(logoFile.name);
+      await fileRef.put(logoFile);
       url = await fileRef.getDownloadURL();
     }
 
+    const currentUser = firebase.auth().currentUser.uid;
+
     try {
-      const doc = await firestore.add(
-        { collection: "profiles" },
+      const doc = await firestore.update(
+        { collection: "profiles", doc: currentUser },
         { ...newProfile, logo: url }
       );
       dispatch(
@@ -53,7 +54,7 @@ export const addProfile = createAsyncThunk(
           action: "Create new",
         })
       );
-      return { ...newProfile, id: doc.id };
+      return { ...newProfile, logo: url };
     } catch (ex) {
       dispatch(
         notifyError({
@@ -72,7 +73,7 @@ export const createProfile = createAsyncThunk(
     const firestore = getFirestore();
     const doc = await firestore.set(
       { collection: "profiles", doc: data.id },
-      { data }
+      { ...data }
     );
 
     return data;
@@ -89,7 +90,7 @@ const profileSlice = createSlice({
     },
     [fetchProfile.fulfilled]: (state, action) => {
       state.status = "loaded";
-      state.profiles = action.payload;
+      state.profile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
       state.status = "error";

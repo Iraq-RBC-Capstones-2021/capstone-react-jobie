@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProfile, fetchProfile } from "../store/profiles/profileSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
-import { storage } from "../config/dbConfig";
-import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import Img from "./../assets/TeamPic/Lara.jpg";
 import Education from "../components/Education";
 import WorkExperience from "../components/WorkExperience";
+import { cities } from "../selectData";
+import { nanoid } from "@reduxjs/toolkit";
+
 const userProfile = {
   is_company: false,
   // img: "",
@@ -33,7 +34,7 @@ const userProfile = {
       location: "Erbil",
       typeOfEmploy: "Fulltime",
       position: "intern",
-      date: "2021/9/1",
+      date: "2021-05-05",
     },
     {
       id: 2,
@@ -41,7 +42,7 @@ const userProfile = {
       location: "Erbil",
       typeOfEmploy: "Fulltime",
       position: "intern",
-      date: "2021/9/1",
+      date: "",
     },
   ],
   education: [
@@ -56,28 +57,6 @@ export default function Edit() {
   const router = useRouter();
   const { id } = router.query;
   const imagePreviewRef = useRef();
-
-  const cities = [
-    { value: "Remote", label: "Remote" },
-    { value: "Anbar", label: "Anbar" },
-    { value: "Babylon", label: "Babylon" },
-    { value: "Baghdad", label: "Baghdad" },
-    { value: "Basrah", label: "Basrah" },
-    { value: "Dahuk", label: "Dahuk" },
-    { value: "Diyala", label: "Diyala" },
-    { value: "Erbil", label: "Erbil" },
-    { value: "Kerbala", label: "Kerbala" },
-    { value: "Missan", label: "Missan" },
-    { value: "Muthanna", label: "Muthanna" },
-    { value: "Najaf", label: "Najaf" },
-    { value: "Ninewa", label: "Ninewa" },
-    { value: "Qadissiya", label: "Qadissiya" },
-    { value: "Salah al-Din", label: "Salah al-Din" },
-    { value: "Sulaymaniyah", label: "Sulaymaniyah" },
-    { value: "Tameem", label: "Tameem" },
-    { value: "Thi-Qar", label: "Thi-Qar" },
-    { value: "Wassit", label: "Wassit" },
-  ];
 
   const style = {
     control: (base) => ({
@@ -98,6 +77,45 @@ export default function Edit() {
       ...profileData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleWorkAdd = (e) => {
+    const workItem = { id: nanoid(), company: "", location: "", position: "" };
+    const workItems = [...profileData.workExperience, workItem];
+    setProfileData({
+      ...profileData,
+      workExperience: workItems,
+    });
+  };
+
+  const handleWorkRemove = (id) => {
+    const workItems = profileData.workExperience.filter(
+      (item) => item.id !== id
+    );
+    setProfileData({ ...profileData, workExperience: workItems });
+  };
+
+  const handleWorkChange = (e, id) => {
+    const workItem = profileData.workExperience.filter(
+      (item) => item.id === id
+    );
+
+    const name = e.target.name;
+    const value = e.target.value;
+
+    const newItem = { ...workItem[0], [e.target.name]: e.target.value };
+
+    const newProfileData = profileData.workExperience.map((work) =>
+      work.id === id ? (work.name = value) : (work.name = work.name)
+    );
+
+    console.log(newProfileData);
+
+    // const newItem = [{ ...workItem, [e.target.name]: e.target.value }];
+    // console.log("update", workItem);
+    // const workItems = [...profileData.workExperience, newItem];
+
+    // setProfileData({ ...profileData, workExperience: workItems });
   };
 
   const handleUpload = (e) => {
@@ -328,7 +346,7 @@ export default function Edit() {
                     name="email"
                     placeholder="example@gmail.com"
                     onChange={handleChange}
-                    defaultValue={profileData.contact.email}
+                    defaultValue={profileData.email}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
@@ -338,7 +356,7 @@ export default function Edit() {
                     name="phone"
                     placeholder="+96477055555"
                     onChange={handleChange}
-                    defaultValue={profileData.contact.phone}
+                    defaultValue={profileData.phone}
                   />
                 </div>
               </div>
@@ -404,24 +422,32 @@ export default function Edit() {
             </div>
           </div>
 
-          <div className="w-full  flex flex-col items-center justify-center  mb-20">
-            <div className="w-3/4 border-b-2">
+          <div className="w-full  flex flex-col items-center justify-center bg-body">
+            <div className="px-4 lg:px-48 w-full pt-10 pb-14">
               <h1 className=" text-3xl text-primary mt-4">Work Experience</h1>
-
-              {profileData.workExperience.map((work) => {
-                return (
-                  <WorkExperience
-                    key={work.id}
-                    handleChange={handleChange}
-                    work={work}
-                  />
-                );
-              })}
-
-              {/* <WorkExperience
-                handleChange={handleChange}
-                workExperience={profileData.workExperience}
-              /> */}
+              <div className="mt-5 ">
+                <button
+                  className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"
+                  onClick={handleWorkAdd}
+                  type="button"
+                >
+                  <FaPlus className="mt-1 mr-1" />
+                  Add item
+                </button>
+              </div>
+              {console.log(profileData.workExperience)}
+              {profileData?.workExperience
+                ? profileData.workExperience.map((work) => {
+                    return (
+                      <WorkExperience
+                        key={work.id}
+                        work={work}
+                        handleWorkRemove={handleWorkRemove}
+                        handleWorkChange={handleWorkChange}
+                      />
+                    );
+                  })
+                : "No work experience added yet."}
 
               {/* <div className="flex mt-4">
                 <h1 className="mb-10 mt-4 text-xl text-primary">
@@ -489,17 +515,6 @@ export default function Edit() {
             </div>
 
             <div className="w-3/4 ">
-              <div className="flex mt-4">
-                {/* <h1 className="mb-10 mt-4 text-xl text-primary">
-                  Experience item
-                </h1> */}
-                <div className="mt-2 ml-6">
-                  <button className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium ml-3 mt-1">
-                    <FaPlus className="mt-1 mr-1" />
-                    Add item
-                  </button>
-                </div>
-              </div>
               {/* <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">Company</h5>
@@ -565,10 +580,10 @@ export default function Edit() {
               {/* {educationData.map((edu) => {
                 <Education handleChange={handleChange} educationData={edu} />;
               })} */}
-              <Education
+              {/* <Education
                 handleChange={handleChange}
                 educationData={profileData.workExperience}
-              />
+              /> */}
               <div className="mt-2 ml-6">
                 <button className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium ml-3 mt-1">
                   <FaPlus className="mt-1 mr-1" />

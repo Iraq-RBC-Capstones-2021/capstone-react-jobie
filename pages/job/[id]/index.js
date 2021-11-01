@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {sendUserData} from "../../../config/emailJs"
+import {sendUserData} from "../../../config/emailConfig"
 import PositionHeader from "../../../components/PositionHeader";
 import PositionSummary from "../../../components/PositionSummary";
 import JobListing from "../../../components/JobListing";
@@ -135,7 +135,7 @@ function Job() {
               <div className="mt-10">
                 <button 
                   className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
-                  onClick={sendUserData({emailtest})}
+                  onClick={(e) => sendUserData(e, emailtest)}
                 >
                   <span>Apply Now</span> <VscArrowRight />
                 </button>

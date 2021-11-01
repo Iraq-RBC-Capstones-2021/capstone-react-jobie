@@ -1,7 +1,7 @@
 import emailjs from 'emailjs-com';
 
 // to send user data when applying
- function UserData ({emailtest}){
+ export function sendUserData (e,emailtest){
     e.preventDefault();
 
     emailjs.sendForm('service_m2azucq', 'template_6qnh9fc', emailtest, 'user_sRP5iBhZmFEbxe9NtZU2b')
@@ -13,7 +13,7 @@ import emailjs from 'emailjs-com';
   };
 
 // contact us page
- function Feedback({formref}) {
+ export function sendFeedback(e,formref) {
     e.preventDefault();
 
     emailjs.sendForm('service_m2azucq', 'template_gp268sw', formref, 'user_sRP5iBhZmFEbxe9NtZU2b')
@@ -22,6 +22,4 @@ import emailjs from 'emailjs-com';
       }, (error) => {
         alert("Message was not sent successfully");
       });
-  }
-  export const sendUserData = UserData();
-  export const sendFeedback = Feedback();
+  };

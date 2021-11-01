@@ -1,5 +1,5 @@
 import react, { useRef } from 'react';
-import {sendFeedback} from '../config/emailJs'
+import {sendFeedback} from '../config/emailConfig'
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
@@ -10,6 +10,15 @@ export default function Home() {
 
   const form = useRef();
   const formref = form.current;
+  function submit(e,formref) {
+    sendFeedback(e,formref)
+    Array.from(document.querySelectorAll("input")).forEach(
+      input => (input.value = "")
+    );
+    Array.from(document.querySelectorAll("textarea")).forEach(
+      textarea => (textarea.value = "")
+    );
+  }
 
   return (
     <div className=" bg-body text-dark px-4 lg:px-48 w-full">
@@ -21,7 +30,7 @@ export default function Home() {
         <div className="col-1">
           <h1 className="pb-8 lg:text-4xl">Get in Touch</h1>
 
-          <form className="form mr-8 "ref={form} onSubmit={sendFeedback({formref})}>
+          <form className="form mr-8 "ref={form} >
             <div className="flex space-x-2 my-3">
               <label className="w-full">
                 First Name <br/>
@@ -61,12 +70,13 @@ export default function Home() {
               className="border p-2 mt-3 w-full border-dark"
             />
 
-            <input 
+            <button 
               type="submit" 
               value="Send" 
               className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent" 
-              required
-            />
+              onClick={(e) => submit(e,formref)}
+
+            >Send</button>
           </form>
 
         </div>

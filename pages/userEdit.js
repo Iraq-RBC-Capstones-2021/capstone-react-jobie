@@ -1,14 +1,14 @@
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { addProfile, fetchProfile } from "../../../store/profiles/profileSlice";
+import { addProfile, fetchProfile } from "../store/profiles/profileSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { storage } from "../../../config/dbConfig";
+import { storage } from "../config/dbConfig";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
-import Img from "../../../assets/TeamPic/Lara.jpg";
-import Education from "../../../components/Education";
-import WorkExperience from "../../../components/WorkExperience";
+import Img from "./../assets/TeamPic/Lara.jpg";
+import Education from "../components/Education";
+import WorkExperience from "../components/WorkExperience";
 const userProfile = {
   is_company: false,
   // img: "",

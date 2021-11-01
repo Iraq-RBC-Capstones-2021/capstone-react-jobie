@@ -8,12 +8,11 @@ import { VscArrowRight } from "react-icons/vsc";
 
 import allJobs from "../../../data.json";
 
-// userid will store the id of the user that will be used to generate the user link
-let userid;
-const emailtest = {
+// when applying the following data needs to be saved and passed down to sendUserData
+const data = {
   username: "john",
-  useremail: "rebaz415@gmail.com",
-  userlink: `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
+  useremail: "sahrayarub@yahoo.de",
+  userlink: "link",
   companyemail: "rebaz415@gmail.com",
   companyname: "google",
 };
@@ -135,7 +134,7 @@ function Job() {
               <div className="mt-10">
                 <button
                   className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
-                  onClick={(e) => sendUserData(e, emailtest)}
+                  onClick={(e) => sendUserData(e, data)}
                 >
                   <span>Apply Now</span> <VscArrowRight />
                 </button>

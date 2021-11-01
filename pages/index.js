@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HeaderImage from "../assets/img_Home.png";
 import Avatar from "../public/img_avatar.png";
+import AvatarMale from "../public/AvatarMale.jpg";
 
 import Header from "../components/Header";
 import JobTypeCard from "../components/Home/JobTypeCard";
@@ -151,7 +152,7 @@ export default function Home() {
             feedback="Jobie is always true to its internal mission statement: Putting the job seeker first. The mission does not waiver, and all decisions are made to create a better world with job seekers who feel that they can make good decisions for their future."
           />
           <CustomerCard
-            img={Avatar}
+            img={AvatarMale}
             name="Rebaz Farid"
             position="CEO Co-Founder, Jobie"
             feedback="Jobie is always true to its internal mission statement: Putting the job seeker first. The mission does not waiver, and all decisions are made to create a better world with job seekers who feel that they can make good decisions for their future."

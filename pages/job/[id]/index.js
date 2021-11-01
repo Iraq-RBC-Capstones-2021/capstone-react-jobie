@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sendUserData } from "../../../config/emailConfig";
 import PositionHeader from "../../../components/PositionHeader";
 import PositionSummary from "../../../components/PositionSummary";
 import JobListing from "../../../components/JobListing";
@@ -6,6 +7,16 @@ import ProposalsCard from "../../../components/ProposalsCard";
 import { VscArrowRight } from "react-icons/vsc";
 
 import allJobs from "../../../data.json";
+
+// userid will store the id of the user that will be used to generate the user link
+let userid;
+const emailtest = {
+  username: "john",
+  useremail: "rebaz415@gmail.com",
+  userlink: `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
+  companyemail: "rebaz415@gmail.com",
+  companyname: "google",
+};
 
 const job = {
   id: 1,
@@ -54,6 +65,7 @@ function Job() {
       }
     }
   };
+
   return (
     <div>
       <PositionHeader />
@@ -121,7 +133,10 @@ function Job() {
               </div>
 
               <div className="mt-10">
-                <button className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2">
+                <button
+                  className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
+                  onClick={(e) => sendUserData(e, emailtest)}
+                >
                   <span>Apply Now</span> <VscArrowRight />
                 </button>
               </div>

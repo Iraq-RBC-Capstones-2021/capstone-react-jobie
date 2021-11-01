@@ -1,9 +1,5 @@
 import TableRow from "./TableRow";
-export default function HomeTable({
-  Position = "UI/UX Designer",
-  Salary = "5000$",
-  Date = "3 hours ago",
-}) {
+export default function HomeTable({ jobs }) {
   return (
     <>
       <div className=" text-right space-x-6 ">
@@ -30,13 +26,20 @@ export default function HomeTable({
           </tr>
         </thead>
         <tbody className="bg-white">
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
-          <TableRow Position={Position} Salary={Salary} Date={Date} Link={""} />
+          {jobs.map((job) => {
+            return (
+              <TableRow
+                Position={job.position}
+                Salary={{
+                  salary_from: job.salary_from,
+                  salary_to: job.salary_to,
+                }}
+                timestamp={job.timestamp}
+                id={job.id}
+                key={job.id}
+              />
+            );
+          })}
         </tbody>
       </table>
     </>

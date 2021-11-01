@@ -18,12 +18,14 @@ export default function LoginAccountType() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const data = {
-      id: auth.currentUser,
-      is_company: accountType.type === "company" ? true : false,
-    };
-
-    dispatch(createProfile(data));
+    dispatch(
+      createProfile({
+        id: auth.currentUser,
+        is_company: accountType.type === "company" ? true : false,
+        email: auth.userEmail,
+        name: auth.userName,
+      })
+    );
     dispatch(setProfileComplete());
   };
 

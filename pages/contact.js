@@ -1,3 +1,5 @@
+import react, { useRef } from "react";
+import { sendFeedback } from "../config/emailConfig";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
@@ -5,53 +7,75 @@ import { IoTimeOutline } from "react-icons/io5";
 
 import pic from "../assets/img_contact.png";
 export default function Home() {
+  const form = useRef();
+  const formref = form.current;
+  function submit(e, formref) {
+    sendFeedback(e, formref);
+    Array.from(document.querySelectorAll("input")).forEach(
+      (input) => (input.value = "")
+    );
+    Array.from(document.querySelectorAll("textarea")).forEach(
+      (textarea) => (textarea.value = "")
+    );
+  }
+
   return (
     <div className=" bg-body text-dark px-4 lg:px-48 w-full">
       <div className="pb-10">
-        <img alt="section image" src={pic.src} className="h-full" />
+        <img alt="section image" src={pic.src} className="w-full" />
       </div>
 
       <div className="grid grid-cols-2 font-medium p-6 ">
         <div className="col-1">
           <h1 className="pb-8 lg:text-4xl">Get in Touch</h1>
 
-          <form className="form mr-8 ">
-            <div className="flex space-x-5 mt-3">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="border p-2  w-1/2 border-dark"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="border p-2 w-1/2 border-dark"
-              />
+          <form className="form mr-8 " ref={form}>
+            <div className="flex space-x-2 my-3">
+              <label className="w-full">
+                First Name <br />
+                <input
+                  name="first-name"
+                  type="text"
+                  placeholder="First Name"
+                  className="border p-2 mt-3 w-full  border-dark"
+                  required
+                />
+              </label>
+
+              <label className="w-full">
+                Last Name <br />
+                <input
+                  name="last-name"
+                  type="text"
+                  placeholder="Last Name"
+                  className="border p-2 mt-3  w-full border-dark"
+                  required
+                />
+              </label>
             </div>
 
+            <label>Email</label>
             <input
               type="email"
-              name=""
-              id=""
+              name="email"
               placeholder="Your Email"
-              className="border p-2 w-full mt-3 border-dark"
+              className="border p-2 w-full my-3 border-dark"
+              required
             />
-
+            <label> Message </label>
             <textarea
-              name=""
-              id=""
-              cols="10"
-              rows="3"
-              placeholder="How can we help?"
+              name="message"
+              placeholder="Write your message here..."
               className="border p-2 mt-3 w-full border-dark"
             />
 
             <button
               type="submit"
+              value="Send"
               className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent"
+              onClick={(e) => submit(e, formref)}
             >
-              {" "}
-              Send{" "}
+              Send
             </button>
           </form>
         </div>

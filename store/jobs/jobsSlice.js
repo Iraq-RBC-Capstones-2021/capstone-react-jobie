@@ -14,10 +14,15 @@ export const fetchJobs = createAsyncThunk(
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
     const collection = await firestore.get("jobs");
-    const jobs = [];
+    let jobs = [];
+
     collection.forEach((doc) => {
       const data = doc.data();
-      jobs.push({ ...data, id: doc.id, timestamp: data.timestamp.toMillis() });
+      jobs.push({
+        ...data,
+        id: doc.id,
+        timestamp: data.timestamp.toMillis(),
+      });
     });
     return jobs;
   }
@@ -35,9 +40,12 @@ export const createJob = createAsyncThunk(
     // get current user
     // if company continue
 
+    const currentUser = firebase.auth().currentUser.uid;
+    console.log(currentUser);
+
     const newJobData = {
       ...newJob,
-      company_id: "company id from auth",
+      company_id: currentUser,
       timestamp: firestore.FieldValue.serverTimestamp(),
       // timestamp: new Date(),
     };

@@ -21,11 +21,9 @@ const userProfile = {
     biography:
       "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
   },
-  contact: {
-    location: "Kirkuk",
-    email: "larawf0019@gmail.com",
-    phone: "07730000000",
-  },
+  location: "Kerbala",
+  email: "larawf0019@gmail.com",
+  phone: "07730000000",
   social: {
     linkedIn: "https://www.linkedin.com/in/geshben",
     github: "https://github.com/Ge6ben",
@@ -254,7 +252,7 @@ export default function Edit() {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="mb-10 text-3xl text-primary">basic info</h1>
+              <h1 className="mb-10 text-3xl text-primary">Basic info</h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">First Name</h5>
@@ -263,17 +261,17 @@ export default function Edit() {
                     name="firstName"
                     placeholder="First name"
                     onChange={handleChange}
-                    defaultValue={profileData.basicInfo.firstName}
+                    value={profileData.basicInfo.firstName}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">last Name</h5>
+                  <h5 className="mb-2">Last Name</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="lastName"
                     placeholder="Last name"
                     onChange={handleChange}
-                    defaultValue={profileData.basicInfo.lastName}
+                    value={profileData.basicInfo.lastName}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
@@ -283,7 +281,7 @@ export default function Edit() {
                     name="title"
                     placeholder=""
                     onChange={handleChange}
-                    defaultValue={profileData.basicInfo.title}
+                    value={profileData.basicInfo.title}
                   />
                 </div>
               </div>
@@ -294,17 +292,15 @@ export default function Edit() {
                     className="w-full h-40 mt-2 border-grey border-2"
                     name="biography"
                     onChange={handleChange}
-                    defaultValue={profileData.basicInfo.biography}
+                    value={profileData.basicInfo.biography}
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Start */}
-
-          <div className="w-full bg-lightgrey flex flex-col items-center justify-center h-64">
-            <div className="w-3/4 ">
+          <div className="bg-lightgrey flex flex-col items-center justify-center w-full ">
+            <div className="px-4 lg:px-48 w-full pt-10 pb-14 ">
               <h1 className="mb-10 text-3xl text-primary">Contact</h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
@@ -321,12 +317,12 @@ export default function Edit() {
                     onChange={(e) => {
                       setProfileData({
                         ...profileData,
-                        ["location"]: e,
+                        ["location"]: e.value,
                       });
                     }}
                     value={{
-                      value: profileData.contact.location,
-                      label: profileData.contact.location,
+                      value: profileData.location,
+                      label: profileData.location,
                     }}
                   />
                 </div>

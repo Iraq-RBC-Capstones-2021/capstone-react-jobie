@@ -14,21 +14,17 @@ const userProfile = {
   // img: "",
   img: Img.src,
   resumeFile: "",
-  basicInfo: {
-    firstName: "Lara",
-    lastName: "Raoof",
-    title: "Frontend Developer",
-    biography:
-      "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
-  },
+  firstName: "Lara",
+  lastName: "Raoof",
+  title: "Frontend Developer",
+  biography:
+    "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
   location: "Kerbala",
   email: "larawf0019@gmail.com",
   phone: "07730000000",
-  social: {
-    linkedIn: "https://www.linkedin.com/in/geshben",
-    github: "https://github.com/Ge6ben",
-    facebook: "https://www.facebook.com/geshben",
-  },
+  linkedIn: "https://www.linkedin.com/in/geshben",
+  github: "https://github.com/Ge6ben",
+  facebook: "https://www.facebook.com/geshben",
   skills: ["React", "Node js ", "MySql", "Express", "Tailwind", "jQuery"],
   workExperience: [
     {
@@ -97,7 +93,6 @@ export default function Edit() {
   const [profileData, setProfileData] = useState(userProfile);
   const [imgPreview, setImgPreview] = useState(profileData.img);
   const [cvPreview, setCvPreview] = useState("");
-  // console.log(profileData.workExperience);
   const handleChange = (e) => {
     setProfileData({
       ...profileData,
@@ -152,8 +147,7 @@ export default function Edit() {
             <div className="border-b-2 grid grid-cols-3">
               <div className="col-1 col-span-2">
                 <h1 className="text-dark font-semibold text-4xl">
-                  {profileData.basicInfo.firstName}{" "}
-                  {profileData.basicInfo.lastName} / Edit Profile
+                  {profileData.firstName} {profileData.lastName} / Edit Profile
                 </h1>
                 <h4 className="mb-10">Set up your personal resume page</h4>
               </div>
@@ -261,7 +255,7 @@ export default function Edit() {
                     name="firstName"
                     placeholder="First name"
                     onChange={handleChange}
-                    value={profileData.basicInfo.firstName}
+                    value={profileData.firstName}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
@@ -271,7 +265,7 @@ export default function Edit() {
                     name="lastName"
                     placeholder="Last name"
                     onChange={handleChange}
-                    value={profileData.basicInfo.lastName}
+                    value={profileData.lastName}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
@@ -281,7 +275,7 @@ export default function Edit() {
                     name="title"
                     placeholder=""
                     onChange={handleChange}
-                    value={profileData.basicInfo.title}
+                    value={profileData.title}
                   />
                 </div>
               </div>
@@ -292,7 +286,7 @@ export default function Edit() {
                     className="w-full h-40 mt-2 border-grey border-2"
                     name="biography"
                     onChange={handleChange}
-                    value={profileData.basicInfo.biography}
+                    value={profileData.biography}
                   />
                 </div>
               </div>
@@ -350,8 +344,8 @@ export default function Edit() {
               </div>
             </div>
           </div>
-          <div className="w-full  flex flex-col items-center justify-center h-64">
-            <div className="w-3/4 ">
+          <div className="w-full  flex flex-col items-center justify-center bg-body">
+            <div className="px-4 lg:px-48 w-full pt-10 pb-14">
               <h1 className="mb-10 text-3xl text-primary">Social</h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
@@ -361,7 +355,7 @@ export default function Edit() {
                     name="linkedin"
                     placeholder="Linkedin"
                     onChange={handleChange}
-                    defaultValue={profileData.social.linkedIn}
+                    defaultValue={profileData.linkedIn}
                   />
                 </div>
 
@@ -372,7 +366,7 @@ export default function Edit() {
                     name="github"
                     placeholder="Github"
                     onChange={handleChange}
-                    defaultValue={profileData.social.github}
+                    defaultValue={profileData.github}
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
@@ -382,7 +376,7 @@ export default function Edit() {
                     name="facebook"
                     placeholder="Facebook"
                     onChange={handleChange}
-                    defaultValue={profileData.social.facebook}
+                    defaultValue={profileData.facebook}
                   />
                 </div>
               </div>

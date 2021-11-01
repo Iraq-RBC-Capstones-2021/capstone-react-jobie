@@ -2,7 +2,7 @@ import React from "react";
 import { FaMinus } from "react-icons/fa";
 
 export default function WorkExperience({ handleChange, workExperienceData }) {
-  console.log(workworkExperienceData);
+  //   console.log(workworkExperienceData);
   return (
     <div>
       <div className="flex mt-4">

@@ -144,7 +144,7 @@ export default function Edit() {
   useEffect(() => {
     dispatch(fetchProfile(id));
   }, [dispatch, id]);
-
+  const educationData = profileData.education;
   if (userProfile) {
     return (
       <>
@@ -452,6 +452,11 @@ export default function Edit() {
                   workExperienceData={work}
                 />;
               })}
+              <WorkExperience
+                handleChange={handleChange}
+                workExperienceData={profileData.workExperience}
+              />
+
               {/* <div className="flex mt-4">
                 <h1 className="mb-10 mt-4 text-xl text-primary">
                   Experience item
@@ -591,9 +596,12 @@ export default function Edit() {
                   </button>
                 </div>
               </div> */}
+              {/* {educationData.map((edu) => {
+                <Education handleChange={handleChange} educationData={edu} />;
+              })} */}
               <Education
                 handleChange={handleChange}
-                educationData={profileData.education}
+                educationData={profileData.workExperience}
               />
               <div className="mt-2 ml-6">
                 <button className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium ml-3 mt-1">

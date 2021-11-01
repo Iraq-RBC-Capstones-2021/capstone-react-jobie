@@ -14,21 +14,20 @@ const PositionHeader = ({
   logo = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) => {
   const [saved, setsaved] = useState(true);
-  // userid will store the id of the user that will be used to generate the user link
-  let userid
-  const emailtest = {
-    "username": "john",
-    "useremail": "john123@gmail.com",
-    "userlink": `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
-    "companyemail": "rebaz415@gmail.com",
-    "companyname": "google"
-  }
+
+  // when applying the following data needs to be saved and passed down to sendUserData
+  const data = {
+    username: "john",
+    useremail: "sahrayarub@yahoo.de",
+    userlink: "link",
+    companyemail: "rebaz415@gmail.com",
+    companyname: "google"
+  };
 
   function SaveButton() {
     setsaved(false);
     setsaved(!saved);
   }
-
 
   return (
     <div className="bg-light w-full">
@@ -72,7 +71,7 @@ const PositionHeader = ({
             </button>
             <button 
               className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
-              onClick={(e) => sendUserData(e, emailtest)}
+              onClick={(e) => sendUserData(e,data)}
             >
               <span>Apply Now</span> <VscArrowRight />
             </button>

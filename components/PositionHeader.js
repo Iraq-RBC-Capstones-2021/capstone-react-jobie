@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {sendUserData} from "../../../config/emailJs"
+import {sendUserData} from "../config/emailConfig"
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";

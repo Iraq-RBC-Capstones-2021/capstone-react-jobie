@@ -2,7 +2,7 @@ import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { addProfile, fetchProfile } from "../store/profiles/profileSlice";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { storage } from "../config/dbConfig";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
@@ -61,6 +61,7 @@ const userProfile = {
 export default function Edit() {
   const router = useRouter();
   const { id } = router.query;
+  const imagePreviewRef = useRef();
 
   const cities = [
     { value: "Remote", label: "Remote" },
@@ -96,7 +97,7 @@ export default function Edit() {
   const dispatch = useDispatch();
 
   const [profileData, setProfileData] = useState(userProfile);
-  const [logoPreview, setLogoPreview] = useState(profileData.img);
+  const [imgPreview, setImgPreview] = useState(profileData.img);
   const [cvPreview, setCvPreview] = useState("");
   // console.log(profileData.workExperience);
   const handleChange = (e) => {
@@ -112,8 +113,7 @@ export default function Edit() {
       ...profileData,
       img: e.target.files[0],
     });
-    setLogoPreview(URL.createObjectURL(e.target.files[0]));
-    console.log(logoPreview);
+    setImgPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const handleUploadCV = (e) => {
@@ -127,13 +127,14 @@ export default function Edit() {
     console.log(cvPreview);
   };
 
-  const handleLogoDelete = (e) => {
+  const handleImgDelete = (e) => {
     e.preventDefault();
     setProfileData({
       ...profileData,
       img: "",
     });
-    setLogoPreview("");
+    imagePreviewRef.current.value = "";
+    setImgPreview("");
   };
 
   const addData = (e) => {
@@ -175,56 +176,46 @@ export default function Edit() {
             <div className="mt-16 pb-16">
               <div className="flex-none sm:flex">
                 <div className="h-32 w-32 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex items-center justify-center">
-                  {logoPreview ? (
+                  {imgPreview ? (
                     <img
-                      src={logoPreview}
-                      alt={profileData.img}
-                      className="object-cover rounded-2xl"
+                      src={imgPreview}
+                      alt={profileData.name}
+                      className="w-28 h-28 object-cover rounded-2xl"
                     />
                   ) : (
                     <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl">
-                      <span>{profileData.basicInfo.firstName.charAt(0)}</span>
+                      <span>
+                        {profileData.name ? profileData.name.charAt(0) : "P"}
+                      </span>
                     </div>
                   )}
                 </div>
-                <div className="flex-auto sm:ml-5 justify-evenly pl-10">
+                <div className="flex-auto sm:ml-5 justify-evenly pl-5">
                   <div className="flex items-center justify-between sm:mt-2">
                     <div className="flex items-center">
                       <div className="flex flex-col">
-                        <div className="flex text-gray-500 mt-4">
-                          <div>
-                            <div>
-                              <label>
-                                <div className="flex">
-                                  <h1 className="text-base rounded-full p-1 px-6  -mt-1 mr-2 text-white font-semibold  bg-secondary">
-                                    Upload photo
-                                  </h1>
-                                </div>
+                        <div className="flex-auto text-gray-500 mt-2">
+                          <div className="mb-2">
+                            <label>
+                              <div className="flex">
+                                <h1 className="text-base rounded-full p-1 px-6 mr-2 text-white font-semibold border-2 border-secondary bg-secondary cursor-pointer w-40">
+                                  Upload photo
+                                </h1>{" "}
                                 <input
                                   type="file"
                                   className="w-full h-20 mt-2 border-grey border-2 bg-dark hidden"
                                   onChange={handleUpload}
+                                  ref={imagePreviewRef}
                                 />
-                                <input
-                                  type="file"
-                                  // name="img"
-                                  className="w-full h-20 mt-2 border-grey border-2 bg-dark"
-                                  style={{ display: "none" }}
-                                  onChange={handleUpload}
-                                />
-                              </label>
-                            </div>
+                              </div>
+                            </label>
                           </div>
-                          <div>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="rounded-full border-2 border-secondary px-6 py-1 text-secondary font-medium "
-                              onClick={handleLogoDelete}
-                            >
-                              Delete
-                            </a>
-                          </div>
+                          <button
+                            className="rounded-full border-2 border-secondary px-6 py-1 text-secondary font-medium w-40"
+                            onClick={handleImgDelete}
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </div>

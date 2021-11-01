@@ -122,7 +122,9 @@ export default function Edit() {
                       />
                     ) : (
                       <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl">
-                        <span>{profileData.name.charAt(0)}</span>
+                        <span>
+                          {profileData.name ? profileData.name.charAt(0) : "C"}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -234,7 +236,6 @@ export default function Edit() {
                       styles={style}
                       placeholder="Select the Location that applies"
                       onChange={(e) => {
-                        // console.log(e);
                         setProfileData({
                           ...profileData,
                           ["location"]: e.value,

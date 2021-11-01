@@ -72,7 +72,7 @@ const PositionHeader = ({
             </button>
             <button 
               className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
-              onClick={sendUserData({emailtest})}
+              onClick={(e) => sendUserData(e, emailtest)}
             >
               <span>Apply Now</span> <VscArrowRight />
             </button>

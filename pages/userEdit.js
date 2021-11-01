@@ -123,8 +123,7 @@ export default function Edit() {
       ...profileData,
       resumeFile: e.target.files[0],
     });
-    // setCvPreview(URL.createObjectURL(e.target.files[0]));
-    console.log(cvPreview);
+    setCvPreview(e.target.files[0]);
   };
 
   const handleImgDelete = (e) => {
@@ -203,6 +202,7 @@ export default function Edit() {
                                 </h1>{" "}
                                 <input
                                   type="file"
+                                  accept="image/*"
                                   className="w-full h-20 mt-2 border-grey border-2 bg-dark hidden"
                                   onChange={handleUpload}
                                   ref={imagePreviewRef}
@@ -237,13 +237,14 @@ export default function Edit() {
                           Choose
                         </h1>
                         <p className="text-darkgrey mt-1 ml-4">
-                          {cvPreview === "" ? "No File Chosen" : cvPreview}
+                          {cvPreview?.name ? cvPreview.name : "No File Chosen"}
                         </p>
                       </div>
                       <input
                         onChange={handleUploadCV}
                         name="resumeFile"
                         type="file"
+                        accept="application/pdf"
                         className="w-full h-20 mt-2 border-grey border-2 bg-dark"
                         style={{ display: "none" }}
                       />

@@ -9,6 +9,7 @@ import jobsSlice from "./jobs/jobsSlice";
 import profileSlice from "./profiles/profileSlice";
 import notificationSlice from "./notification/notificationSlice";
 import authSlice from "./auth/authSlice";
+import tempStorageSlice from "./tempStorage/tempStorageSlice";
 
 const makeStore = () =>
   configureStore({
@@ -18,6 +19,7 @@ const makeStore = () =>
       [profileSlice.name]: profileSlice.reducer,
       [notificationSlice.name]: notificationSlice.reducer,
       [authSlice.name]: authSlice.reducer,
+      [tempStorageSlice.name]: tempStorageSlice.reducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) =>

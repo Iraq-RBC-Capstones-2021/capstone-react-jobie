@@ -2,7 +2,7 @@ import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { createJob } from "../store/jobs/jobsSlice";
 import { useState } from "react";
-import Message from "../components/Message";
+import { useRouter } from "next/router";
 
 export default function Createjob() {
   const cities = [
@@ -73,6 +73,8 @@ export default function Createjob() {
     }),
   };
 
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     position: "",
     address: "",
@@ -81,9 +83,9 @@ export default function Createjob() {
     experience: "",
     salary_from: "",
     salary_to: "",
-    location: [],
+    location: "",
     employement_type: [],
-    category: [],
+    category: "",
     work_level: [],
     gender: "",
     experience_years: "",
@@ -117,10 +119,10 @@ export default function Createjob() {
       experience: "",
       salary_from: "",
       salary_to: "",
-      location: [],
-      employement_type: [],
-      category: [],
-      work_level: [],
+      location: "",
+      employement_type: "",
+      category: "",
+      work_level: "",
       gender: "",
       experience_years: "",
     });
@@ -142,7 +144,11 @@ export default function Createjob() {
             >
               Save
             </button>
-            <button className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey">
+            <button
+              className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey"
+              type="button"
+              onClick={() => router.back()}
+            >
               Cancel
             </button>
           </div>
@@ -179,15 +185,14 @@ export default function Createjob() {
                 className=" w-full h-11 rounded-lg border-grey border-2"
                 name="location"
                 required
-                isMulti
                 options={cities}
                 styles={style}
                 placeholder="Select the Location that applies"
                 onChange={handleDropDownChange}
-                value={formData.location.map((item) => {
-                  const options = { value: item, label: item };
-                  return options;
-                })}
+                value={{
+                  value: formData.location,
+                  label: formData.location,
+                }}
               />
             </div>
 
@@ -220,13 +225,12 @@ export default function Createjob() {
                 required
                 options={employment}
                 styles={style}
-                isMulti
                 placeholder="Choose all that applies"
                 onChange={handleDropDownChange}
-                value={formData.employement_type.map((item) => {
-                  const options = { value: item, label: item };
-                  return options;
-                })}
+                value={{
+                  value: formData.employement_type,
+                  label: formData.employement_type,
+                }}
               />
             </div>
 
@@ -239,14 +243,12 @@ export default function Createjob() {
                 required
                 options={category}
                 styles={style}
-                isMulti
                 placeholder="Choose all that applies"
                 onChange={handleDropDownChange}
-                defaultValue={formData.category}
-                value={formData.category.map((item) => {
-                  const options = { value: item, label: item };
-                  return options;
-                })}
+                value={{
+                  value: formData.category,
+                  label: formData.category,
+                }}
               />
             </div>
           </div>
@@ -261,14 +263,12 @@ export default function Createjob() {
                 required
                 options={level}
                 styles={style}
-                isMulti
                 placeholder="Choose all that applies"
                 onChange={handleDropDownChange}
-                defaultValue={formData.work_level}
-                value={formData.work_level.map((item) => {
-                  const options = { value: item, label: item };
-                  return options;
-                })}
+                value={{
+                  value: formData.work_level,
+                  label: formData.work_level,
+                }}
               />
             </div>
 
@@ -398,7 +398,11 @@ export default function Createjob() {
             >
               Save
             </button>
-            <button className="text-base rounded-full p-1 px-6 ml-6 text-dark  font-semibold bg-lightgrey">
+            <button
+              className="text-base rounded-full p-1 px-6 ml-6 text-dark  font-semibold bg-lightgrey"
+              type="button"
+              onClick={() => router.back()}
+            >
               Cancel
             </button>
           </div>

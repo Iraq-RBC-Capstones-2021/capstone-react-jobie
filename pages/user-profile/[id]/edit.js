@@ -154,8 +154,8 @@ export default function Edit() {
             <div className="border-b-2 grid grid-cols-3">
               <div className="col-1 col-span-2">
                 <h1 className="text-dark font-semibold text-4xl">
-                  {userProfile.basicInfo.firstName}{" "}
-                  {userProfile.basicInfo.lastName} / Edit Profile
+                  {profileData.basicInfo.firstName}{" "}
+                  {profileData.basicInfo.lastName} / Edit Profile
                 </h1>
                 <h4 className="mb-10">Set up your personal resume page</h4>
               </div>
@@ -445,17 +445,22 @@ export default function Edit() {
           <div className="w-full  flex flex-col items-center justify-center  mb-20">
             <div className="w-3/4 border-b-2">
               <h1 className=" text-3xl text-primary mt-4">Work Experience</h1>
+
               {profileData.workExperience.map((work) => {
-                <WorkExperience
-                  key={work.id}
-                  handleChange={handleChange}
-                  workExperienceData={work}
-                />;
+                console.log("Test ", work);
+                return (
+                  <WorkExperience
+                    key={work.id}
+                    handleChange={handleChange}
+                    work={work}
+                  />
+                );
               })}
-              <WorkExperience
+
+              {/* <WorkExperience
                 handleChange={handleChange}
-                workExperienceData={profileData.workExperience}
-              />
+                workExperience={profileData.workExperience}
+              /> */}
 
               {/* <div className="flex mt-4">
                 <h1 className="mb-10 mt-4 text-xl text-primary">

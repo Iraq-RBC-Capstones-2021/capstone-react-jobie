@@ -25,7 +25,7 @@ const userProfile = {
   linkedIn: "https://www.linkedin.com/in/geshben",
   github: "https://github.com/Ge6ben",
   facebook: "https://www.facebook.com/geshben",
-  skills: ["React", "Node js ", "MySql", "Express", "Tailwind", "jQuery"],
+  skills: "React,Node js,MySql",
   workExperience: [
     {
       id: 1,
@@ -382,43 +382,23 @@ export default function Edit() {
               </div>
             </div>
           </div>
-          {/* Test */}
+
           <div className="w-full bg-lightgrey flex flex-col items-center justify-center ">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <div className="mb-10 ">
+              <div className="">
                 <h1 className="text-3xl text-primary mb-5">Skills</h1>
-                <p>Separate Skills by commas</p>
+                <p>Add skills as comma seperated values.</p>
               </div>
-              <div className="pb-20 mt-10">
+              <div className=" mt-10">
                 <div className="self-center col-1 col-span-2">
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     type="text"
                     name="skills"
                     placeholder="react,tailwind,node js"
-                    onChange={(e) => {
-                      setProfileData({
-                        ...profileData,
-                        skills: e.target.value.split(),
-                      });
-                    }}
-                    defaultValue={profileData.skills.join()}
+                    onChange={handleChange}
+                    value={profileData.skills}
                   />
-                </div>
-              </div>
-
-              <div className="w-full  mb-20">
-                <div className="col-start-3 my-10 flex justify-end ">
-                  <button
-                    className="text-base rounded-full p-1 px-6   text-white font-semibold  bg-accent"
-                    type="submit"
-                    onClick={addData}
-                  >
-                    Save
-                  </button>
-                  <button className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey">
-                    Cancel
-                  </button>
                 </div>
               </div>
             </div>
@@ -429,7 +409,6 @@ export default function Edit() {
               <h1 className=" text-3xl text-primary mt-4">Work Experience</h1>
 
               {profileData.workExperience.map((work) => {
-                console.log("Test ", work);
                 return (
                   <WorkExperience
                     key={work.id}

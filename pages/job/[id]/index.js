@@ -1,22 +1,25 @@
-import { useState } from "react";
-import {sendUserData} from "../../../config/emailConfig"
+import { useState, useEffect } from "react";
+import { sendUserData } from "../../../config/emailConfig";
 import PositionHeader from "../../../components/PositionHeader";
 import PositionSummary from "../../../components/PositionSummary";
 import JobListing from "../../../components/JobListing";
 import ProposalsCard from "../../../components/ProposalsCard";
 import { VscArrowRight } from "react-icons/vsc";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchJobs } from "../../../store/jobs/jobsSlice";
+import { useRouter } from "next/router";
 
 import allJobs from "../../../data.json";
 
 // userid will store the id of the user that will be used to generate the user link
-let userid
+let userid;
 const emailtest = {
-  "username": "john",
-  "useremail": "rebaz415@gmail.com",
-  "userlink": `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
-  "companyemail": "rebaz415@gmail.com",
-  "companyname": "google"
-}
+  username: "john",
+  useremail: "rebaz415@gmail.com",
+  userlink: `{"https://rbc-jobie.netlify.app/user/${userid}"}`,
+  companyemail: "rebaz415@gmail.com",
+  companyname: "google",
+};
 
 const job = {
   id: 1,
@@ -54,6 +57,14 @@ const similarJobs = allJobs.Posts.filter(
 );
 
 function Job() {
+  //fetch data
+  const jobs = useSelector((state) => state.jobs.jobs);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  useEffect(() => {
+    dispatch(fetchJobs());
+  }, [dispatch, router.query]);
+
   const [activeTab, setActiveTab] = useState("details");
 
   const handleTabs = (e) => {
@@ -133,7 +144,7 @@ function Job() {
               </div>
 
               <div className="mt-10">
-                <button 
+                <button
                   className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
                   onClick={(e) => sendUserData(e, emailtest)}
                 >

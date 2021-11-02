@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {sendUserData} from "../config/emailConfig"
+import { sendUserData } from "../config/emailConfig";
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
@@ -21,7 +21,7 @@ const PositionHeader = ({
     useremail: "sahrayarub@yahoo.de",
     userlink: "link",
     companyemail: "rebaz415@gmail.com",
-    companyname: "google"
+    companyname: "google",
   };
 
   function SaveButton() {
@@ -69,9 +69,9 @@ const PositionHeader = ({
                 </div>
               )}
             </button>
-            <button 
+            <button
               className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
-              onClick={(e) => sendUserData(e,data)}
+              onClick={(e) => sendUserData(e, data)}
             >
               <span>Apply Now</span> <VscArrowRight />
             </button>

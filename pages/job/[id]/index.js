@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {sendUserData} from "../../../config/emailConfig"
+import { sendUserData } from "../../../config/emailConfig";
 import PositionHeader from "../../../components/PositionHeader";
 import PositionSummary from "../../../components/PositionSummary";
 import JobListing from "../../../components/JobListing";
@@ -14,7 +14,7 @@ const data = {
   useremail: "sahrayarub@yahoo.de",
   userlink: "link",
   companyemail: "rebaz415@gmail.com",
-  companyname: "google"
+  companyname: "google",
 };
 
 const job = {
@@ -132,9 +132,9 @@ function Job() {
               </div>
 
               <div className="mt-10">
-                <button 
+                <button
                   className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
-                  onClick={(e) => sendUserData(e,data)}
+                  onClick={(e) => sendUserData(e, data)}
                 >
                   <span>Apply Now</span> <VscArrowRight />
                 </button>

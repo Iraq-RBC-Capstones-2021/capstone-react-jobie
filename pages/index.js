@@ -1,7 +1,7 @@
 import Head from "next/head";
 import HeaderImage from "../assets/img_Home.png";
 import Avatar from "../public/img_avatar.png";
-import AvatarMale from "../public/AvatarMale.jpg"
+import AvatarMale from "../public/AvatarMale.jpg";
 
 import Header from "../components/Header";
 import JobTypeCard from "../components/Home/JobTypeCard";

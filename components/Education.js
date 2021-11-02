@@ -1,13 +1,21 @@
 import React from "react";
 import { FaMinus } from "react-icons/fa";
 
-export default function Education({ handleChange, educationData }) {
+export default function Education({
+  edu,
+  handleEducationChange,
+  handleEducationRemove,
+}) {
   return (
     <div>
       <div className="flex mt-4">
         <h1 className="mb-10 mt-4 text-xl text-primary">Education Item</h1>
         <div className="mt-2 ml-6">
-          <button className="flex justify-center rounded-full border-2 border-secondary text-secondary px-6 py-1 text-white font-medium ml-3 mt-1">
+          <button
+            className="flex justify-center rounded-full border-2 border-secondary text-secondary px-6 py-1 font-medium ml-3 mt-1"
+            onClick={() => handleEducationRemove(edu.id)}
+            type="button"
+          >
             <FaMinus className="mt-1 mr-1" />
             Remove
           </button>
@@ -18,10 +26,10 @@ export default function Education({ handleChange, educationData }) {
           <h5 className="mb-2">University / School</h5>
           <input
             className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-            name="address"
+            name="school"
             placeholder=""
-            onChange={handleChange}
-            defaultValue={educationData.university}
+            onChange={(e) => handleEducationChange(e, edu.id)}
+            value={edu.school}
           />
         </div>
         <div className="self-center col-2 ml-4">
@@ -30,8 +38,8 @@ export default function Education({ handleChange, educationData }) {
             className="h-11 w-full rounded-lg border-grey border-2 pl-2"
             name="major"
             placeholder=""
-            onChange={handleChange}
-            defaultValue={educationData.major}
+            onChange={(e) => handleEducationChange(e, edu.id)}
+            value={edu.major}
           />
         </div>
         <div className="self-center col-2 ml-4">
@@ -40,8 +48,8 @@ export default function Education({ handleChange, educationData }) {
             className="h-11 w-full rounded-lg border-grey border-2 pl-2"
             name="date"
             placeholder=""
-            onChange={handleChange}
-            defaultValue={educationData.date}
+            onChange={(e) => handleEducationChange(e, edu.id)}
+            value={edu.date}
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { notifySuccess, notifyError } from "../notification/notificationSlice";
 
@@ -66,11 +66,66 @@ export const addProfile = createAsyncThunk(
   }
 );
 
+export const addUserProfile = createAsyncThunk(
+  "profile/addUserProfile",
+  async (newProfile, thunkAPI) => {
+    const { getFirestore, getFirebase } = thunkAPI.extra;
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    const dispatch = thunkAPI.dispatch;
+
+    console.log("sice new profile", newProfile);
+    const logoFile = newProfile.img;
+    let url = newProfile.img;
+
+    if (logoFile && typeof logoFile === "object") {
+      const storageRef = firebase.storage().ref("/images");
+      const fileRef = storageRef.child(logoFile.name);
+      await fileRef.put(logoFile);
+      url = await fileRef.getDownloadURL();
+    }
+
+    // const url = "";
+    const currentUser = firebase.auth().currentUser.uid;
+    console.log("slice", newProfile);
+
+    try {
+      const doc = await firestore.update(
+        { collection: "profiles", doc: currentUser },
+        { ...newProfile, img: url }
+      );
+      dispatch(
+        notifySuccess({
+          text: "Profile has been updated successfully.",
+          action: "Create new",
+        })
+      );
+      return { ...newProfile, img: url };
+    } catch (ex) {
+      dispatch(
+        notifyError({
+          text: "Profile could not be updated.Please try again later.",
+          action: "Cancel",
+        })
+      );
+    }
+  }
+);
+
 export const createProfile = createAsyncThunk(
   "profile/createProfile",
   async (data, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
+    if (!data.is_company) {
+      data = {
+        ...data,
+        workExperience: [],
+        education: [],
+        firstName: "",
+        lastName: "",
+      };
+    }
     const doc = await firestore.set(
       { collection: "profiles", doc: data.id },
       { ...data }
@@ -103,6 +158,16 @@ const profileSlice = createSlice({
       state.profile = action.payload;
     },
     [addProfile.rejected]: (state) => {
+      state.status = "error";
+    },
+    [addUserProfile.pending]: (state) => {
+      state.status = "loading";
+    },
+    [addUserProfile.fulfilled]: (state, action) => {
+      state.status = "added";
+      state.profile = action.payload;
+    },
+    [addUserProfile.rejected]: (state) => {
       state.status = "error";
     },
     [createProfile.pending]: (state) => {

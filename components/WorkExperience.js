@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { FaMinus } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import { cities, employment } from "../selectData";
 
@@ -17,16 +16,8 @@ export default function WorkExperience({
   handleWorkChange,
   work,
   handleWorkRemove,
+  handleDropDownChange,
 }) {
-  // const [formData, setFormData] = useState(work);
-  // const handleFormChange = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  // };
-  // const handle_Change = (e) => {
-  //   handleChange(e);
-  // };
-  // const work = workExperience;
-
   return (
     <div>
       <div className="flex mt-4">
@@ -49,8 +40,8 @@ export default function WorkExperience({
             className="h-11 w-full rounded-lg border-grey border-2 pl-2"
             name="company"
             placeholder=""
-            // onChange={handleChange}
-            // value={work.company}
+            onChange={(e) => handleWorkChange(e, work.id)}
+            value={work.company}
           />
         </div>
         <div className="self-center col-2 ml-4">
@@ -58,21 +49,16 @@ export default function WorkExperience({
           <Select
             instanceId="location"
             className=" w-full h-11 rounded-lg border-grey border-2"
-            name="work_location"
+            name="location"
             required
             options={cities}
             styles={style}
             placeholder="Select the Location that applies"
-            // onChange={(e) => {
-            //   setProfileData({
-            //     ...profileData,
-            //     ["work_location"]: e.value,
-            //   });
-            // }}
-            // value={{
-            //   value: work.location,
-            //   label: work.location,
-            // }}
+            onChange={(e) => handleDropDownChange(e, work.id, "location")}
+            value={{
+              value: work.location,
+              label: work.location,
+            }}
           />
         </div>
         <div className="self-center col-2 ml-4">
@@ -80,16 +66,18 @@ export default function WorkExperience({
           <Select
             instanceId="employement_type"
             className=" w-full h-11 rounded-lg border-grey border-2"
-            name="work_employement_type"
+            name="employment_type"
             required
             options={employment}
             styles={style}
             placeholder="Choose one that applies"
-            // onChange={handleDropDownChange}
-            // value={{
-            //   value: formData.employement_type,
-            //   label: formData.employement_type,
-            // }}
+            onChange={(e) =>
+              handleDropDownChange(e, work.id, "employment_type")
+            }
+            value={{
+              value: work.employment_type,
+              label: work.employment_type,
+            }}
           />
         </div>{" "}
         <div className="self-center col-2 mt-6 mb-4">
@@ -107,9 +95,8 @@ export default function WorkExperience({
             className="h-11 w-full rounded-lg border-grey border-2 pl-2"
             type="date"
             name="date"
-            placeholder=""
-            // onChange={handleChange}
-            // value={work.date}
+            onChange={(e) => handleWorkChange(e, work.id)}
+            value={work.date}
           />
         </div>
       </div>

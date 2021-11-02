@@ -1,6 +1,6 @@
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { addProfile, fetchProfile } from "../store/profiles/profileSlice";
+import { addUserProfile, fetchProfile } from "../store/profiles/profileSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
 import { FaPlus } from "react-icons/fa";
@@ -10,53 +10,55 @@ import WorkExperience from "../components/WorkExperience";
 import { cities } from "../selectData";
 import { nanoid } from "@reduxjs/toolkit";
 
-const userProfile = {
-  is_company: false,
-  // img: "",
-  img: Img.src,
-  resumeFile: "",
-  firstName: "Lara",
-  lastName: "Raoof",
-  title: "Frontend Developer",
-  biography:
-    "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
-  location: "Kerbala",
-  email: "larawf0019@gmail.com",
-  phone: "07730000000",
-  linkedIn: "https://www.linkedin.com/in/geshben",
-  github: "https://github.com/Ge6ben",
-  facebook: "https://www.facebook.com/geshben",
-  skills: "React,Node js,MySql",
-  workExperience: [
-    {
-      id: 1,
-      company: "HiTech",
-      location: "Erbil",
-      typeOfEmploy: "Fulltime",
-      position: "intern",
-      date: "2021-05-05",
-    },
-    {
-      id: 2,
-      company: "HiTech",
-      location: "Erbil",
-      typeOfEmploy: "Fulltime",
-      position: "intern",
-      date: "",
-    },
-  ],
-  education: [
-    { id: 1, university: "TCK", major: "B.S", date: "2016-2020" },
-    { id: 2, university: "TCK", major: "B.S", date: "2016-2020" },
-  ],
-};
-
-// const [profileData, setProfileData] = useState(userProfile);
+// const userProfile = {
+//   is_company: false,
+//   // img: "",
+//   img: Img.src,
+//   resumeFile: "",
+//   firstName: "Lara",
+//   lastName: "Raoof",
+//   title: "Frontend Developer",
+//   biography:
+//     "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
+//   location: "Kerbala",
+//   email: "larawf0019@gmail.com",
+//   phone: "07730000000",
+//   linkedIn: "https://www.linkedin.com/in/geshben",
+//   github: "https://github.com/Ge6ben",
+//   facebook: "https://www.facebook.com/geshben",
+//   skills: "React,Node js,MySql",
+//   workExperience: [
+//     {
+//       id: 1,
+//       company: "HiTech",
+//       location: "Erbil",
+//       employment_type: "Full Time",
+//       position: "intern",
+//       date: "2021-05-05",
+//     },
+//     {
+//       id: 2,
+//       company: "HiTech",
+//       location: "Erbil",
+//       employment_type: "Full Time",
+//       position: "intern",
+//       date: "",
+//     },
+//   ],
+//   education: [
+//     { id: 1, university: "TCK", major: "B.S", date: "2016-2020" },
+//     { id: 2, university: "TCK", major: "B.S", date: "2016-2020" },
+//   ],
+// };
 
 export default function Edit() {
+  const userProfile = useSelector((state) => state.profile.profile);
+  const [profileData, setProfileData] = useState(userProfile);
+  const [imgPreview, setImgPreview] = useState(profileData.img);
+  const [cvPreview, setCvPreview] = useState("");
   const router = useRouter();
-  const { id } = router.query;
   const imagePreviewRef = useRef();
+  const dispatch = useDispatch();
 
   const style = {
     control: (base) => ({
@@ -67,11 +69,6 @@ export default function Edit() {
     }),
   };
 
-  const dispatch = useDispatch();
-
-  const [profileData, setProfileData] = useState(userProfile);
-  const [imgPreview, setImgPreview] = useState(profileData.img);
-  const [cvPreview, setCvPreview] = useState("");
   const handleChange = (e) => {
     setProfileData({
       ...profileData,
@@ -80,7 +77,14 @@ export default function Edit() {
   };
 
   const handleWorkAdd = (e) => {
-    const workItem = { id: nanoid(), company: "", location: "", position: "" };
+    const workItem = {
+      id: nanoid(),
+      company: "",
+      location: "",
+      position: "",
+      date: "",
+      employment_type: "",
+    };
     const workItems = [...profileData.workExperience, workItem];
     setProfileData({
       ...profileData,
@@ -100,22 +104,51 @@ export default function Edit() {
       (item) => item.id === id
     );
 
-    const name = e.target.name;
-    const value = e.target.value;
-
     const newItem = { ...workItem[0], [e.target.name]: e.target.value };
-
-    const newProfileData = profileData.workExperience.map((work) =>
-      work.id === id ? (work.name = value) : (work.name = work.name)
+    const newExp = profileData.workExperience.map((work) =>
+      work.id === id ? newItem : work
     );
 
-    console.log(newProfileData);
+    setProfileData({ ...profileData, workExperience: newExp });
+  };
 
-    // const newItem = [{ ...workItem, [e.target.name]: e.target.value }];
-    // console.log("update", workItem);
-    // const workItems = [...profileData.workExperience, newItem];
+  const handleEducationAdd = (e) => {
+    console.log("click");
+    const eduItem = { id: nanoid(), school: "", major: "", date: "" };
+    const eduItems = [...profileData.education, eduItem];
 
-    // setProfileData({ ...profileData, workExperience: workItems });
+    setProfileData({
+      ...profileData,
+      education: eduItems,
+    });
+  };
+
+  const handleEducationChange = (e, id) => {
+    const eduItem = profileData.education.filter((item) => item.id === id);
+
+    const newItem = { ...eduItem[0], [e.target.name]: e.target.value };
+    const newExp = profileData.education.map((work) =>
+      work.id === id ? newItem : work
+    );
+
+    setProfileData({ ...profileData, education: newExp });
+  };
+
+  const handleEducationRemove = (id) => {
+    const eduItems = profileData.education.filter((item) => item.id !== id);
+    setProfileData({ ...profileData, education: eduItems });
+  };
+
+  const handleDropDownChange = (e, id, action) => {
+    const workItem = profileData.workExperience.filter(
+      (item) => item.id === id
+    );
+    const newItem = { ...workItem[0], [action]: e.value };
+    const newExp = profileData.workExperience.map((work) =>
+      work.id === id ? newItem : work
+    );
+
+    setProfileData({ ...profileData, workExperience: newExp });
   };
 
   const handleUpload = (e) => {
@@ -149,13 +182,9 @@ export default function Edit() {
 
   const addData = (e) => {
     e.preventDefault();
-    dispatch(addProfile(profileData));
+    dispatch(addUserProfile(profileData));
   };
 
-  useEffect(() => {
-    dispatch(fetchProfile(id));
-  }, [dispatch, id]);
-  const educationData = profileData.education;
   if (userProfile) {
     return (
       <>
@@ -165,7 +194,10 @@ export default function Edit() {
             <div className="border-b-2 grid grid-cols-3">
               <div className="col-1 col-span-2">
                 <h1 className="text-dark font-semibold text-4xl">
-                  {profileData.firstName} {profileData.lastName} / Edit Profile
+                  {profileData.firstName !== ""
+                    ? `${profileData.firstName} ${profileData.lastName}`
+                    : `${profileData.name}`}{" "}
+                  / Edit Profile
                 </h1>
                 <h4 className="mb-10">Set up your personal resume page</h4>
               </div>
@@ -177,7 +209,11 @@ export default function Edit() {
                 >
                   Save
                 </button>
-                <button className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey">
+                <button
+                  className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey"
+                  type="button"
+                  onClick={() => router.back()}
+                >
                   Cancel
                 </button>
               </div>
@@ -251,7 +287,7 @@ export default function Edit() {
                         </p>
                       </div>
                       <input
-                        onChange={handleUploadCV}
+                        // onChange={handleUploadCV}
                         name="resumeFile"
                         type="file"
                         accept="application/pdf"
@@ -435,7 +471,6 @@ export default function Edit() {
                   Add item
                 </button>
               </div>
-              {console.log(profileData.workExperience)}
               {profileData?.workExperience
                 ? profileData.workExperience.map((work) => {
                     return (
@@ -444,240 +479,55 @@ export default function Edit() {
                         work={work}
                         handleWorkRemove={handleWorkRemove}
                         handleWorkChange={handleWorkChange}
+                        handleDropDownChange={handleDropDownChange}
                       />
                     );
                   })
                 : "No work experience added yet."}
-
-              {/* <div className="flex mt-4">
-                <h1 className="mb-10 mt-4 text-xl text-primary">
-                  Experience item
-                </h1>
-                <div className="mt-2 ml-6">
-                  <button className="flex justify-center rounded-full border-2 border-secondary text-secondary px-6 py-1 text-white font-medium ml-3 mt-1">
-                    <FaMinus className="mt-1 mr-1" />
-                    Remove
-                  </button>
-                </div>
-              </div>
-              <div className=" row-2 grid grid-cols-3">
-                <div className="self-center col-2 ">
-                  <h5 className="mb-2">Company</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="company"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.workExperience.company}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Location</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.workExperience.location}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Type of employee</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.workExperience.typeOfEmploy}
-                  />
-                </div>{" "}
-                <div className="self-center col-2 mt-6 mb-4">
-                  <h5 className="mb-2">Position</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.workExperience.position}
-                  />
-                </div>{" "}
-                <div className="self-center col-2 ml-4 mt-6 mb-4">
-                  <h5 className="mb-2">Date</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="date"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.workExperience.date}
-                  />
-                </div>
-              </div> */}
-            </div>
-
-            <div className="w-3/4 ">
-              {/* <div className=" row-2 grid grid-cols-3">
-                <div className="self-center col-2 ">
-                  <h5 className="mb-2">Company</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="company"
-                    placeholder=""
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Location</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Type of employee</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="typeOfEmploy"
-                    placeholder=""
-                  />
-                </div>{" "}
-                <div className="self-center col-2 mt-6 mb-4">
-                  <h5 className="mb-2">Position</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="position"
-                    placeholder=""
-                  />
-                </div>{" "}
-                <div className="self-center col-2 ml-4 mt-6 mb-4">
-                  <h5 className="mb-2">Date</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="date"
-                    placeholder=""
-                  />
-                </div>
-              </div> */}
             </div>
           </div>
-          <div
-            className="w-full
-          
-          bg-lightgrey flex flex-col items-center justify-center"
-          >
-            <div className="w-3/4 border-b-2 border-darkgrey">
+          <div className="w-full  flex flex-col items-center justify-center bg-lightgrey">
+            <div className="px-4 lg:px-48 w-full pt-10 pb-14">
               <h1 className=" text-3xl text-primary mt-4">Education</h1>
-              {/* <div className="flex mt-4">
-                <h1 className="mb-10 mt-4 text-xl text-primary">
-                  Education Item
-                </h1>
-                <div className="mt-2 ml-6">
-                  <button className="flex justify-center rounded-full border-2 border-secondary text-secondary px-6 py-1 text-white font-medium ml-3 mt-1">
-                    <FaMinus className="mt-1 mr-1" />
-                    Remove
-                  </button>
-                </div>
-              </div> */}
-              {/* {educationData.map((edu) => {
-                <Education handleChange={handleChange} educationData={edu} />;
-              })} */}
-              {/* <Education
-                handleChange={handleChange}
-                educationData={profileData.workExperience}
-              /> */}
-              <div className="mt-2 ml-6">
-                <button className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium ml-3 mt-1">
+              <div className="mt-5 ">
+                <button
+                  className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"
+                  onClick={handleEducationAdd}
+                  type="button"
+                >
                   <FaPlus className="mt-1 mr-1" />
                   Add item
                 </button>
-              </div>
-              {/* <div className=" row-2 grid grid-cols-3 mb-4">
-                <div className="self-center col-2 ">
-                  <h5 className="mb-2">University / School</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.education.university}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Major</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="major"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.education.major}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Date</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="date"
-                    placeholder=""
-                    onChange={handleChange}
-                    defaultValue={profileData.education.date}
-                  />
-                </div>
 
-              </div> 
-            </div>
-            <div className="w-3/4 ">
-              <div className="flex mt-4">
-                <h1 className="mb-10 mt-4 text-xl text-primary">
-                  Education item
-                </h1>
-                <div className="mt-2 ml-6">
-                  <button className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium ml-3 mt-1">
-                    <FaPlus className="mt-1 mr-1" />
-                    Add item
-                  </button>
-                </div>
+                {profileData?.education
+                  ? profileData.education.map((edu) => {
+                      return (
+                        <Education
+                          key={edu.id}
+                          edu={edu}
+                          handleEducationRemove={handleEducationRemove}
+                          handleEducationChange={handleEducationChange}
+                          handleDropDownChange={handleDropDownChange}
+                        />
+                      );
+                    })
+                  : "No education added yet."}
               </div>
-              {/* <div className=" row-2 grid grid-cols-3">
-                <div className="self-center col-2 ">
-                  <h5 className="mb-2">University / School</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="university"
-                    placeholder=""
-                    // onChange={handleChange}
-                    // value={profileData.education.university}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Major</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="address"
-                    placeholder=""
-                    // onChange={handleChange}
-                    // value={profileData.education.major}
-                  />
-                </div>
-                <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Date</h5>
-                  <input
-                    className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                    name="date"
-                    placeholder=""
-                    // onChange={handleChange}
-                    // value={profileData.education.date}
-                  />
-                </div>
-              </div> */}{" "}
+
               <div className="w-full pt-12 mb-20">
                 <div className="col-start-3 my-10 flex justify-end ">
                   <button
                     className="text-base rounded-full p-1 px-6   text-white font-semibold  bg-accent"
                     type="submit"
-                    onChange={addData}
+                    onClick={addData}
                   >
                     Save
                   </button>
-                  <button className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightblue">
+                  <button
+                    className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightblue"
+                    type="button"
+                    onClick={() => router.back()}
+                  >
                     Cancel
                   </button>
                 </div>

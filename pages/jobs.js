@@ -12,7 +12,7 @@ import { fetchProfile, fetchProfilebyid } from "../store/profiles/profileSlice";
 import { fetchCompany } from "../store/tempStorage/tempStorageSlice";
 import { useEffect } from "react";
 
-function jobFinder() {
+function JobFinder() {
   const jobs = useSelector((state) => state.jobs.jobs);
 
   /* const companyProfile = useSelector((state) => state.profile);
@@ -68,4 +68,4 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   await store.dispatch(fetchJobs());
 });
 
-export default jobFinder;
+export default JobFinder;

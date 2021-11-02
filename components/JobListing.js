@@ -18,8 +18,8 @@ const JobListing = (jobs) => {
 
   return (
     <div className="bg-white shadow-lg w-full py-4 px-6 flex justify-between items-center rounded-xl mb-8">
-      <div className="flex-none sm:flex space-x-4 items-center justify-center">
-        <div className="h-16 w-16 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex justify-center items-center">
+      <div className="flex-none sm:flex space-x-4 items-center  w-5/12">
+        <div className="h-16 w-16 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex justify-center items-center ">
           {logo ? (
             <img src={logo} alt="company name" width={50} height={50} />
           ) : (
@@ -35,19 +35,19 @@ const JobListing = (jobs) => {
         </div>
       </div>
 
-      <div>
+      <div className="w-3/12">
         <p className="font-bold font-primary text-lg">{job.location}</p>
         <p>part Time</p>
       </div>
 
-      <div>
+      <div className="w-3/12">
         <p className="font-bold font-primary text-lg">
           {"$" + job.salary_from + "-" + " $" + job.salary_to}
         </p>
         <p>Yearly</p>
       </div>
 
-      <span className="flex flex-col space-y-8 ">
+      <span className="flex flex-col space-y-8 w-1/12">
         <button onClick={SaveButton}>
           {saved ? (
             <div className="flex justify-end text-lg">
@@ -59,7 +59,9 @@ const JobListing = (jobs) => {
             </div>
           )}
         </button>
-        <p className="text-sm">{}</p>
+        <p className="text-sm self-end">
+          {new Date(job.timestamp).toLocaleDateString("en-GB")}
+        </p>
       </span>
     </div>
   );

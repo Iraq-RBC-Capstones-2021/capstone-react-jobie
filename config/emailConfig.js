@@ -1,25 +1,37 @@
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 
 // to send user data when applying
- export function sendUserData (e,emailtest){
-    e.preventDefault();
+export function sendUserData(e, data) {
+  e.preventDefault();
 
-    emailjs.sendForm('service_m2azucq', 'template_6qnh9fc', emailtest, 'user_sRP5iBhZmFEbxe9NtZU2b')
-      .then((result) => {
-        alert("Application was submitted successfully");
-      }, (error) => {
-        alert("Application was not submitted successfully");
-      });
-  };
+  emailjs.init("user_sRP5iBhZmFEbxe9NtZU2b");
+  emailjs.send("service_m2azucq", "template_6qnh9fc", data).then(
+    (result) => {
+      alert("Application was submitted successfully");
+    },
+    (error) => {
+      alert("Application was not submitted successfully");
+    }
+  );
+}
 
 // contact us page
- export function sendFeedback(e,formref) {
-    e.preventDefault();
+export function sendFeedback(e, formref) {
+  e.preventDefault();
 
-    emailjs.sendForm('service_m2azucq', 'template_gp268sw', formref, 'user_sRP5iBhZmFEbxe9NtZU2b')
-      .then((result) => {
+  emailjs
+    .sendForm(
+      "service_m2azucq",
+      "template_gp268sw",
+      formref,
+      "user_sRP5iBhZmFEbxe9NtZU2b"
+    )
+    .then(
+      (result) => {
         alert("Message was sent successfully");
-      }, (error) => {
+      },
+      (error) => {
         alert("Message was not sent successfully");
-      });
-  };
+      }
+    );
+}

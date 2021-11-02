@@ -22,6 +22,22 @@ export const fetchProfile = createAsyncThunk(
     return { ...doc.data() };
   }
 );
+export const fetchProfilebyid = createAsyncThunk(
+  "profile/fetchProfilebyid",
+  async (id, thunkAPI) => {
+    const { getFirestore } = thunkAPI.extra;
+    const firestore = getFirestore();
+    const collection = await firestore.get("profiles");
+    const profiles = [];
+    collection.forEach((doc) => {
+      if (doc.id === id) {
+        profiles.push(doc.data());
+      }
+    });
+
+    return profiles;
+  }
+);
 export const addProfile = createAsyncThunk(
   "profile/addProfile",
   async (newProfile, thunkAPI) => {
@@ -93,6 +109,16 @@ const profileSlice = createSlice({
       state.profile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
+      state.status = "error";
+    },
+    [fetchProfilebyid.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchProfilebyid.fulfilled]: (state, action) => {
+      state.status = "loaded";
+      state.profile = action.payload;
+    },
+    [fetchProfilebyid.rejected]: (state) => {
       state.status = "error";
     },
     [addProfile.pending]: (state) => {

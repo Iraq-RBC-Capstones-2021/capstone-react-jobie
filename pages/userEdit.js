@@ -55,7 +55,7 @@ export default function Edit() {
   const userProfile = useSelector((state) => state.profile.profile);
   const [profileData, setProfileData] = useState(userProfile);
   const [imgPreview, setImgPreview] = useState(profileData.img);
-  const [cvPreview, setCvPreview] = useState("");
+  const [cvPreview, setCvPreview] = useState();
   const router = useRouter();
   const imagePreviewRef = useRef();
   const dispatch = useDispatch();
@@ -165,9 +165,10 @@ export default function Edit() {
 
     setProfileData({
       ...profileData,
-      resumeFile: e.target.files[0],
+      cvFile: e.target.files[0],
     });
     setCvPreview(e.target.files[0]);
+    console.log("preview", cvPreview);
   };
 
   const handleImgDelete = (e) => {
@@ -279,7 +280,7 @@ export default function Edit() {
                   <div className="w-full h-20 rounded-md bg-white border-2  flex items-center">
                     <label>
                       <div className="flex">
-                        <h1 className="text-base rounded-full p-1 px-10  ml-10 text-white font-semibold  bg-dark">
+                        <h1 className="text-base rounded-full p-1 px-10  ml-10 text-white font-semibold cursor-pointer bg-dark">
                           Choose
                         </h1>
                         <p className="text-darkgrey mt-1 ml-4">
@@ -287,7 +288,7 @@ export default function Edit() {
                         </p>
                       </div>
                       <input
-                        // onChange={handleUploadCV}
+                        onChange={handleUploadCV}
                         name="resumeFile"
                         type="file"
                         accept="application/pdf"

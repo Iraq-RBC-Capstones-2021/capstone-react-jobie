@@ -75,6 +75,27 @@ export const addUserProfile = createAsyncThunk(
     const dispatch = thunkAPI.dispatch;
 
     console.log("sice new profile", newProfile);
+    // cv
+    const cvFile = newProfile.cvFile;
+    let cvUrl = newProfile.cvFile;
+
+    if (cvFile && typeof cvFile === "object") {
+      // file uploaded
+      console.log("object");
+      const cvStorageRef = firebase.storage().ref("/cv");
+      console.log("1");
+      const cvFileRef = cvStorageRef.child(cvFile.name);
+      console.log("2");
+      await cvFileRef.put(cvFile);
+      console.log("3");
+      cvUrl = await cvFileRef.getDownloadURL();
+      console.log("4");
+    } else if (typeof cvUrl === "undefined") {
+      // property empty
+      cvUrl = "";
+    }
+
+    // img
     const logoFile = newProfile.img;
     let url = newProfile.img;
 
@@ -85,14 +106,12 @@ export const addUserProfile = createAsyncThunk(
       url = await fileRef.getDownloadURL();
     }
 
-    // const url = "";
     const currentUser = firebase.auth().currentUser.uid;
-    console.log("slice", newProfile);
 
     try {
       const doc = await firestore.update(
         { collection: "profiles", doc: currentUser },
-        { ...newProfile, img: url }
+        { ...newProfile, img: url, cvFile: cvUrl }
       );
       dispatch(
         notifySuccess({
@@ -100,7 +119,7 @@ export const addUserProfile = createAsyncThunk(
           action: "Create new",
         })
       );
-      return { ...newProfile, img: url };
+      return { ...newProfile, img: url, cvFile: cvUrl };
     } catch (ex) {
       dispatch(
         notifyError({

@@ -11,8 +11,6 @@ import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
 import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
 
-import allJobs from "../../../data.json";
-
 // when applying the following data needs to be saved and passed down to sendUserData
 const data = {
   username: "john",

@@ -1,6 +1,6 @@
 import FilterGroup from "./FilterGroup";
 import Select from "react-select";
-import countries from "../../countries.json";
+import { cities, employment } from "../../selectData";
 
 export const CheckboxItem = ({ item, name }) => {
   return (
@@ -23,13 +23,6 @@ export const CheckboxItem = ({ item, name }) => {
 };
 
 function FilterSidebar() {
-  const employment = [
-    { value: "Full Time", label: "Full Time" },
-    { value: "Part Time", label: "Part Time" },
-    { value: "Contract", label: "Contract" },
-    { value: "Internship", label: "Internship" },
-  ];
-
   const category = [
     { value: "Design", label: "Design" },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -97,7 +90,7 @@ function FilterSidebar() {
         <Select
           className=" h-11 rounded-lg border-grey border-2"
           name="location"
-          options={countries}
+          options={cities}
           styles={style}
           placeholder="Choose all that applies"
         />

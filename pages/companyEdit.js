@@ -172,7 +172,7 @@ export default function Edit() {
                     <h5 className="mb-2">Company Name</h5>
                     <input
                       className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                      name="company_name"
+                      name="name"
                       onChange={handleChange}
                       value={profileData.name}
                       required

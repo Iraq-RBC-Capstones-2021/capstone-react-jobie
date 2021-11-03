@@ -18,7 +18,7 @@ const summary = {
   category: "Web Development",
 };
 
-export default function PositionSummary() {
+export default function PositionSummary({ job }) {
   return (
     <div className=" bg-light h-auto w-80">
       <div className="ml-5 grid grid-cols-2 w-54 mt-5 mb-6">
@@ -26,13 +26,11 @@ export default function PositionSummary() {
           <BsCurrencyDollar className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">offered salary</h1>
+          <h1 className="text-xl text-secondary font-bold">Offered Salary</h1>
           <h1 className="text-base">
-            {`${summary.salaryMin +
-              summary.currency.symbolShort} 
-              "-" 
-              ${summary.salaryMax +
-              summary.currency.symbolShort}`}
+            {`${job.salary_from + summary.currency.symbolShort} 
+              - 
+              ${job.salary_from + summary.currency.symbolShort}`}
           </h1>
         </div>
       </div>
@@ -42,7 +40,7 @@ export default function PositionSummary() {
         </div>
         <div className="-ml-20">
           <h1 className="text-xl text-secondary font-bold">Gender</h1>
-          <h1 className="text-base">{summary.gender}</h1>
+          <h1 className="text-base">{job.gender}</h1>
         </div>
       </div>
       <div className="ml-5 grid grid-cols-2 w-54 mt-5 mb-6">
@@ -51,7 +49,7 @@ export default function PositionSummary() {
         </div>
         <div className="-ml-20">
           <h1 className="text-xl text-secondary font-bold">Experience</h1>
-          <h1 className="text-base">{summary.experience}</h1>
+          <h1 className="text-base">{job.experience_years}</h1>
         </div>
       </div>
       <div className="ml-5 grid grid-cols-2 w-54 mt-5 mb-6">
@@ -59,8 +57,8 @@ export default function PositionSummary() {
           <FaLayerGroup className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Work Level </h1>
-          <h1 className="text-base"> {summary.workLevel}</h1>
+          <h1 className="text-xl text-secondary font-bold">Work Level</h1>
+          <h1 className="text-base"> {job.work_level}</h1>
         </div>
       </div>
       <div className="ml-5 grid grid-cols-2 w-54 mt-5 mb-6">
@@ -69,7 +67,7 @@ export default function PositionSummary() {
         </div>
         <div className="-ml-20">
           <h1 className="text-xl text-secondary font-bold">Category</h1>
-          <h1 className="text-base">{summary.category}</h1>
+          <h1 className="text-base">{job.category}</h1>
         </div>
       </div>
     </div>

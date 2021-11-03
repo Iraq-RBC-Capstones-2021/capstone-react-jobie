@@ -6,8 +6,7 @@ import { wrapper } from "../store";
 import { fetchCompany } from "../store/tempStorage/tempStorageSlice";
 import Link from "next/link";
 
-const JobListing = (jobs) => {
-  const job = jobs.jobs;
+const JobListing = ({ job }) => {
   const logo =
     "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png";
   const [saved, setsaved] = useState(true);

@@ -113,7 +113,7 @@ export default function Edit() {
   };
 
   const handleEducationAdd = (e) => {
-    console.log("click");
+    // console.log("click");
     const eduItem = { id: nanoid(), school: "", major: "", date: "" };
     const eduItems = [...profileData.education, eduItem];
 
@@ -168,7 +168,7 @@ export default function Edit() {
       cvFile: e.target.files[0],
     });
     setCvPreview(e.target.files[0]);
-    console.log("preview", cvPreview);
+    // console.log("preview", cvPreview);
   };
 
   const handleImgDelete = (e) => {

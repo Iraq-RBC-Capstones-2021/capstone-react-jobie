@@ -141,6 +141,7 @@ export default function Edit() {
                                   </h1>{" "}
                                   <input
                                     type="file"
+                                    accept="image/*"
                                     className="w-full h-20 mt-2 border-grey border-2 bg-dark hidden"
                                     onChange={handleUpload}
                                     ref={imagePreviewRef}

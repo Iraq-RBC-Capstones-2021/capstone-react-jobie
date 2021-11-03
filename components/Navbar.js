@@ -135,7 +135,13 @@ function Navbar() {
                       aria-labelledby="menu-button"
                       tabIndex="-1"
                     >
-                      <Link href={`/company/${auth.currentUser}`}>
+                      <Link
+                        href={
+                          userProfile?.is_company
+                            ? `/company/${auth.currentUser}`
+                            : `/user-profile/${auth.currentUser}`
+                        }
+                      >
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"
@@ -146,7 +152,11 @@ function Navbar() {
                           View Profile
                         </a>
                       </Link>
-                      <Link href={`/companyEdit`}>
+                      <Link
+                        href={
+                          userProfile?.is_company ? "/companyEdit" : "/userEdit"
+                        }
+                      >
                         <a
                           className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                           role="menuitem"

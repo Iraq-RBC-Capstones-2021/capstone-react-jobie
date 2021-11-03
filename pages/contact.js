@@ -1,5 +1,5 @@
-import react, { useRef } from 'react';
-import {sendFeedback} from '../config/emailConfig'
+import react, { useRef } from "react";
+import { sendFeedback } from "../config/emailConfig";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
@@ -7,16 +7,15 @@ import { IoTimeOutline } from "react-icons/io5";
 
 import pic from "../assets/img_contact.png";
 export default function Home() {
-
   const form = useRef();
   const formref = form.current;
-  function submit(e,formref) {
-    sendFeedback(e,formref)
+  function submit(e, formref) {
+    sendFeedback(e, formref);
     Array.from(document.querySelectorAll("input")).forEach(
-      input => (input.value = "")
+      (input) => (input.value = "")
     );
     Array.from(document.querySelectorAll("textarea")).forEach(
-      textarea => (textarea.value = "")
+      (textarea) => (textarea.value = "")
     );
   }
 
@@ -30,12 +29,12 @@ export default function Home() {
         <div className="col-1">
           <h1 className="pb-8 lg:text-4xl">Get in Touch</h1>
 
-          <form className="form mr-8 "ref={form} >
+          <form className="form mr-8 " ref={form}>
             <div className="flex space-x-2 my-3">
               <label className="w-full">
-                First Name <br/>
+                First Name <br />
                 <input
-                  name = "first-name"
+                  name="first-name"
                   type="text"
                   placeholder="First Name"
                   className="border p-2 mt-3 w-full  border-dark"
@@ -44,9 +43,9 @@ export default function Home() {
               </label>
 
               <label className="w-full">
-                Last Name <br/>
+                Last Name <br />
                 <input
-                  name ="last-name"
+                  name="last-name"
                   type="text"
                   placeholder="Last Name"
                   className="border p-2 mt-3  w-full border-dark"
@@ -70,15 +69,15 @@ export default function Home() {
               className="border p-2 mt-3 w-full border-dark"
             />
 
-            <button 
-              type="submit" 
-              value="Send" 
-              className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent" 
-              onClick={(e) => submit(e,formref)}
-
-            >Send</button>
+            <button
+              type="submit"
+              value="Send"
+              className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent"
+              onClick={(e) => submit(e, formref)}
+            >
+              Send
+            </button>
           </form>
-
         </div>
 
         <div className="col-2 ml-auto w-3/4 lg:w-4/5 xl:w-2/3 ">

@@ -6,32 +6,35 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 import CompanyProfileHeader from "../../../components/CompanyProfileHeader";
 import JobListing from "../../../components/JobListing";
-import jobsData from "../../../data.json";
 
-import { useSelector } from "react-redux";
-import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
-import { wrapper } from "../../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSingleProfile } from "../../../store/tempStorage/tempStorageSlice";
+import { fetchJobs } from "../../../store/jobs/jobsSlice";
+import Loading from "../../../components/Loading";
 
 function Company() {
+  const company = useSelector((state) => state.tempStorage.profile);
+  const jobs = useSelector((state) => state.jobs.jobs);
   const router = useRouter();
-  const companyStore = useSelector((state) => state.tempStorage.company);
-  const [companyProfile, setCompanyProfile] = useState([]);
+  const dispatch = useDispatch();
 
-  const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    const data = companyStore.filter((item) => item.id === router.query.id);
-    setCompanyProfile({ ...data[0] });
-    setJobs(jobsData.Posts.filter((e) => e.company_id === companyProfile.id));
-  }, [companyProfile.id, companyStore, router.query.id]);
+    dispatch(fetchSingleProfile(router.query.id));
+    dispatch(fetchJobs());
+  }, [dispatch, router.query.id]);
+
+  if (!company || !jobs) return <Loading />;
+
+  const companyJobs = jobs.filter((job) => job.company_id === company.id);
 
   return (
     <div>
-      <CompanyProfileHeader companyProfile={companyProfile} />
+      <CompanyProfileHeader companyProfile={company} />
       <div className="mx-auto px-4 lg:px-48 w-full">
         <div className="pt-10">
           <p>
-            {companyProfile.about
-              ? companyProfile.about
+            {company.about
+              ? company.about
               : "This company has not added an about text yet."}
           </p>
         </div>
@@ -42,25 +45,25 @@ function Company() {
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaMapMarkerAlt />
-              <p className="ml-2">{companyProfile.location}</p>
+              <p className="ml-2">{company.location}</p>
             </div>
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaEnvelope />
-              <p className="ml-2">{companyProfile.email}</p>
+              <p className="ml-2">{company.email}</p>
             </div>
             <div className="inline-flex items-center mb-3 text-dark">
               {" "}
               <FaPhoneAlt />
-              <p className="ml-2">{companyProfile.phone}</p>
+              <p className="ml-2">{company.phone}</p>
             </div>
           </div>
           <div>
             <h1 className="mb-4 font-semibold text-secondary">Specialities</h1>
             <div className="flex gap-3 text-dark flex-wrap">
-              {typeof companyProfile.specialities === "undefined"
+              {typeof company.specialities === "undefined"
                 ? "No specialities were added"
-                : companyProfile.specialities.split(",").map((item, key) => {
+                : company.specialities.split(",").map((item, key) => {
                     return (
                       <div
                         key={key}
@@ -76,11 +79,12 @@ function Company() {
 
         <div className="pt-12">
           <h1 className="mb-4 font-semibold text-secondary">
-            Offered Jobs: <span className="text-accent">{jobs.length}</span>
+            Offered Jobs:{" "}
+            <span className="text-accent">{companyJobs.length}</span>
           </h1>
           <div className="space-y-3 pb-20">
-            {jobs.map((job) => {
-              return <JobListing key={job.id} />;
+            {companyJobs.map((job) => {
+              return <JobListing key={job.id} job={job} company={company} />;
             })}
           </div>
         </div>
@@ -90,13 +94,3 @@ function Company() {
 }
 
 export default Company;
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
-
-export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(fetchCompany());
-});

@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
-import { useSelector } from "react-redux";
-import { fetchProfile } from "../store/profiles/profileSlice";
-import { wrapper } from "../store";
-import { fetchCompany } from "../store/tempStorage/tempStorageSlice";
 import Link from "next/link";
 
 const JobListing = ({ job, company }) => {
@@ -31,7 +27,14 @@ const JobListing = ({ job, company }) => {
               {job.position}
             </a>
           </Link>
-          <p>{company?.name}</p>
+          <p>
+            {" "}
+            <Link href={`/company/${company?.id}`}>
+              <a className="hover:underline">{company?.name}</a>
+            </Link>
+          </p>
+
+          {/* <p>{company?.name}</p> */}
         </div>
       </div>
 

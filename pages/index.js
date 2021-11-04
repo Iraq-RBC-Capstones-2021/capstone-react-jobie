@@ -24,7 +24,6 @@ import Loading from "../components/Loading";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs } from "../store/jobs/jobsSlice";
-import { wrapper } from "../store";
 
 export default function Home() {
   const jobs = useSelector((state) => state.jobs.jobs);
@@ -185,7 +184,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-//   await store.dispatch(fetchJobs());
-// });

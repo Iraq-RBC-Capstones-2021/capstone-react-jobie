@@ -3,6 +3,7 @@ import { sendUserData } from "../config/emailConfig";
 import { VscArrowRight } from "react-icons/vsc";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
+import Link from "next/link";
 
 const PositionHeader = ({ job, company }) => {
   const [saved, setsaved] = useState(true);
@@ -41,9 +42,13 @@ const PositionHeader = ({ job, company }) => {
               </div>
 
               <div className="flex flex-col pl-5 ">
-                <p className="font-medium text-accent">{company.category}</p>
+                <p className="font-medium text-accent">{job.category}</p>
                 <h1 className="text-3xl text-primary ">{job.position}</h1>
-                <h2 className="font-medium text-accent">{company.name}</h2>
+                <h2 className="font-medium text-accent">
+                  <Link href={`/company/${company?.id}`}>
+                    <a className="hover:underline">{company.name}</a>
+                  </Link>
+                </h2>
                 <h2 className="text-base">
                   {job.location}, {job.address}{" "}
                 </h2>

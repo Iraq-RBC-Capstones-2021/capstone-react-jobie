@@ -19,7 +19,7 @@ export const fetchSingleProfile = createAsyncThunk(
 
 export const fetchCompany = createAsyncThunk(
   "tempStorage/fetchCompany",
-  async (id, thunkAPI) => {
+  async (_, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
     const collection = await firestore.get("profiles");

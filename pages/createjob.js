@@ -84,7 +84,7 @@ export default function Createjob() {
     salary_from: "",
     salary_to: "",
     location: "",
-    employement_type: [],
+    employment_type: [],
     category: "",
     work_level: [],
     gender: "",
@@ -120,7 +120,7 @@ export default function Createjob() {
       salary_from: "",
       salary_to: "",
       location: "",
-      employement_type: "",
+      employment_type: "",
       category: "",
       work_level: "",
       gender: "",
@@ -219,17 +219,17 @@ export default function Createjob() {
             <div className="self-center col-1">
               <h5>Type of Employment</h5>
               <Select
-                instanceId="employement_type"
+                instanceId="employment_type"
                 className=" w-full h-11 rounded-lg border-grey border-2"
-                name="employement_type"
+                name="employment_type"
                 required
                 options={employment}
                 styles={style}
                 placeholder="Choose all that applies"
                 onChange={handleDropDownChange}
                 value={{
-                  value: formData.employement_type,
-                  label: formData.employement_type,
+                  value: formData.employment_type,
+                  label: formData.employment_type,
                 }}
               />
             </div>

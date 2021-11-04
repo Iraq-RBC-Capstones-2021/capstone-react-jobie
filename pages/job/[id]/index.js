@@ -33,11 +33,13 @@ function Job() {
     dispatch(fetchCompany());
   }, [dispatch]);
 
-  const jobData = jobs.filter((item) => item.id === router.query.id);
+  const jobData = jobs
+    ? jobs.filter((item) => item?.id === router.query.id)
+    : [];
   const job = jobData[0];
-  const company = companies.filter((item) => item.id === job.company_id);
+  const company = companies.filter((item) => item?.id === job?.company_id);
   const similarJobs = jobs.filter(
-    (item) => item?.category === job?.category && item.id !== router.query.id
+    (item) => item?.category === job?.category && item?.id !== router.query.id
   );
 
   const [activeTab, setActiveTab] = useState("details");
@@ -70,7 +72,7 @@ function Job() {
                       Details
                     </a>
                   </li>
-                  {auth.currentUser === company[0].id && (
+                  {auth.currentUser === company[0]?.id && (
                     <li
                       className={`px-8 text-xl text-primary font-semibold py-2 rounded-t  ${
                         activeTab === "proposals" && "bg-body"
@@ -145,7 +147,7 @@ function Job() {
                 </div>
 
                 {/* Proposals Tab */}
-                {auth.currentUser === company[0].id && (
+                {auth.currentUser === company[0]?.id && (
                   <div
                     id="proposals"
                     className={` ${activeTab !== "proposals" && "hidden"}`}

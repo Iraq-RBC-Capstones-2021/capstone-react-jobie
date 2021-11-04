@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import HeaderImage from "../assets/img_Home.png";
 import Avatar from "../public/img_avatar.png";
@@ -19,6 +20,7 @@ import { FaUserCog } from "react-icons/fa";
 import { FaProjectDiagram } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa";
 import { ImArrowRight } from "react-icons/im";
+import Loading from "../components/Loading";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs } from "../store/jobs/jobsSlice";
@@ -26,10 +28,17 @@ import { wrapper } from "../store";
 
 export default function Home() {
   const jobs = useSelector((state) => state.jobs.jobs);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchJobs());
+  }, [dispatch]);
 
   const Color1 = "borderColor1";
   const Color2 = "borderColor2";
   const Color3 = "borderColor3";
+
+  if (!jobs) return <Loading />;
   return (
     <div className=" ">
       <Head>
@@ -177,6 +186,6 @@ export default function Home() {
   );
 }
 
-export const getStaticProps = wrapper.getStaticProps((store) => async () => {
-  await store.dispatch(fetchJobs());
-});
+// export const getStaticProps = wrapper.getStaticProps((store) => async () => {
+//   await store.dispatch(fetchJobs());
+// });

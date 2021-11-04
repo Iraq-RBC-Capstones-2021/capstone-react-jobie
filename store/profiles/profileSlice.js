@@ -90,22 +90,16 @@ export const addUserProfile = createAsyncThunk(
     const firebase = getFirebase();
     const dispatch = thunkAPI.dispatch;
 
-    console.log("sice new profile", newProfile);
     // cv
     const cvFile = newProfile.cvFile;
     let cvUrl = newProfile.cvFile;
 
     if (cvFile && typeof cvFile === "object") {
       // file uploaded
-      console.log("object");
       const cvStorageRef = firebase.storage().ref("/cv");
-      console.log("1");
       const cvFileRef = cvStorageRef.child(cvFile.name);
-      console.log("2");
       await cvFileRef.put(cvFile);
-      console.log("3");
       cvUrl = await cvFileRef.getDownloadURL();
-      console.log("4");
     } else if (typeof cvUrl === "undefined") {
       // property empty
       cvUrl = "";

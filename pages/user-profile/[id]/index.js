@@ -63,7 +63,7 @@ export default function UserProfile() {
               <h1 className="text-dark mb-3 font-semibold">Skills</h1>
               <div className="flex flex-wrap flex-row space-x-3 ">
                 {profile?.skills
-                  ? profile.skills.split(",").map((skill, index) => {
+                  ? profile?.skills.split(",").map((skill, index) => {
                       return (
                         <div
                           className="bg-lightblue text-dark rounded-lg py-0.5 px-3 "

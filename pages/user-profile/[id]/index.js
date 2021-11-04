@@ -86,73 +86,79 @@ export default function UserProfile() {
           <h1 className=" mb-6 font-bold text-3xl text-secondary">
             Work Experience
           </h1>
-          {profile?.workExperience.map((experience, index) => {
-            return (
-              <div key={experience.id}>
-                <div className="grid grid-cols-4 gap-y-4 ">
-                  <div className="col-span-3">
-                    <h3 className="text-secondary">{experience.position}</h3>
-                    <div className="flex space-x-5 mt-2 ">
-                      <p className="flex text-darkgrey">
-                        <FaBriefcase className="mr-2 mt-1" />
-                        {experience.company}
-                      </p>
-                      <p className="flex text-darkgrey">
-                        <FaMapMarkerAlt className="mr-2 mt-1" />
-                        {experience.location}
-                      </p>
+          {profile?.workExperience
+            ? profile?.workExperience.map((experience, index) => {
+                return (
+                  <div key={experience.id}>
+                    <div className="grid grid-cols-4 gap-y-4 ">
+                      <div className="col-span-3">
+                        <h3 className="text-secondary">
+                          {experience.position}
+                        </h3>
+                        <div className="flex space-x-5 mt-2 ">
+                          <p className="flex text-darkgrey">
+                            <FaBriefcase className="mr-2 mt-1" />
+                            {experience.company}
+                          </p>
+                          <p className="flex text-darkgrey">
+                            <FaMapMarkerAlt className="mr-2 mt-1" />
+                            {experience.location}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex justify-center flex-col">
+                        <h3 className="text-accent">
+                          {experience.employment_type}
+                        </h3>
+                        <p className="text-darkgrey">{experience.date}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex justify-center flex-col">
-                    <h3 className="text-accent">
-                      {experience.employment_type}
-                    </h3>
-                    <p className="text-darkgrey">{experience.date}</p>
-                  </div>
-                </div>
 
-                {index === profile?.workExperience.length - 1 ? (
-                  ""
-                ) : (
-                  <div className="flex justify-center my-5 ">
-                    <hr className="w-full border-gray-300" />
+                    {index === profile?.workExperience.length - 1 ? (
+                      ""
+                    ) : (
+                      <div className="flex justify-center my-5 ">
+                        <hr className="w-full border-gray-300" />
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            );
-          })}
+                );
+              })
+            : "No work experience added yet"}
         </div>
       </div>
 
       <div className="mx-auto px-4 lg:px-48 w-full py-10">
         <h1 className="  mb-6 font-bold text-3xl text-secondary">Education</h1>
-        {profile?.education.map((education, index) => {
-          return (
-            <div key={education.id}>
-              <div className="grid grid-cols-4 gap-y-4 ">
-                <div className="col-span-3">
-                  <h3 className="text-secondary">{education.major}</h3>
-                  <div className="mt-2">
-                    <p className="flex text-darkgrey">
-                      <FaBriefcase className="mr-2 mt-1" />
-                      {education.school}
-                    </p>
+        {profile?.education
+          ? profile?.education.map((education, index) => {
+              return (
+                <div key={education.id}>
+                  <div className="grid grid-cols-4 gap-y-4 ">
+                    <div className="col-span-3">
+                      <h3 className="text-secondary">{education.major}</h3>
+                      <div className="mt-2">
+                        <p className="flex text-darkgrey">
+                          <FaBriefcase className="mr-2 mt-1" />
+                          {education.school}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <p className="text-darkgrey">{education.date}</p>
+                    </div>
                   </div>
+                  {index === profile?.education.length - 1 ? (
+                    ""
+                  ) : (
+                    <div className="flex justify-center my-5 ">
+                      <hr className="w-full border-gray-300" />
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center">
-                  <p className="text-darkgrey">{education.date}</p>
-                </div>
-              </div>
-              {index === profile?.education.length - 1 ? (
-                ""
-              ) : (
-                <div className="flex justify-center my-5 ">
-                  <hr className="w-full border-gray-300" />
-                </div>
-              )}
-            </div>
-          );
-        })}
+              );
+            })
+          : "No education experience added yet."}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 function ProposalsCard({
+  profile,
   name = "Bruse Lee ",
-  title = "Frontend Developer",
-  location = "California",
   date = "2021/10/10",
   image = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
 }) {
@@ -10,24 +9,29 @@ function ProposalsCard({
       <div className="bg-white shadow-lg w-full py-4 px-6 flex justify-between items-center rounded-xl">
         <div className="flex-none sm:flex space-x-4 items-center justify-center">
           <div className="h-16 w-16 sm:mb-0 mb-3 bg-lightblue rounded-2xl flex justify-center items-center">
-            {image ? (
-              <img src={image} alt={name} width={50} height={50} />
+            {profile?.img ? (
+              <img
+                src={profile.img}
+                alt={profile.name}
+                width={50}
+                height={50}
+              />
             ) : (
               <div className="h-full border-primary bg-primary-light text-primary w-full inline-flex items-center align-middle justify-center font-bold text-6xl">
-                <span>{name.charAt(0)}</span>
+                <span>{profile?.name ? profile.name.charAt(0) : "P"}</span>
               </div>
             )}
           </div>
 
           <div>
-            <p className="font-bold font-primary text-lg">{name}</p>
-            <p>{title}</p>
+            <p className="font-bold font-primary text-lg">{profile.name}</p>
+            <p>{profile?.title}</p>
           </div>
         </div>
 
         <div>
           <p className="font-bold font-primary text-lg">Location</p>
-          <p>{location}</p>
+          <p>{profile?.location}</p>
         </div>
 
         <span>

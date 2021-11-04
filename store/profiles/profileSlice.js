@@ -13,6 +13,7 @@ export const fetchProfile = createAsyncThunk(
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
     const doc = await firestore.get({ collection: "profiles", doc: id });
+    console.log("profile", doc.data());
     // console.log("data", profile.data());
     // collection.forEach((doc) => {
     //   if (doc.id === id) {
@@ -141,6 +142,55 @@ export const addUserProfile = createAsyncThunk(
   }
 );
 
+export const applyJob = createAsyncThunk(
+  "profile/applyJob",
+  async (data, thunkAPI) => {
+    const { getFirestore, getFirebase } = thunkAPI.extra;
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    const dispatch = thunkAPI.dispatch;
+
+    // get current user id
+    const currentUser = firebase.auth().currentUser.uid;
+
+    let jobs = [];
+    const profile = data.profile;
+
+    // check if property applied_jobs exists
+    if (profile.hasOwnProperty("applied_jobs")) {
+      // check if job already applied
+      if (profile.applied_jobs.includes(data.jobId)) {
+        jobs = profile.applied_jobs;
+      } else {
+        jobs = [...profile.applied_jobs, data.jobId];
+        console.log("jobs", jobs);
+      }
+    }
+    try {
+      const doc = await firestore.update(
+        { collection: "profiles", doc: currentUser },
+        { ...profile, applied_jobs: jobs }
+      );
+      dispatch(
+        notifySuccess({
+          text: "Applied successfully.",
+          action: "Create new",
+        })
+      );
+      return { ...profile, applied_jobs: jobs };
+    } catch (ex) {
+      dispatch(
+        notifyError({
+          text: "Something went wrong.Please try again later.",
+          action: "Cancel",
+        })
+      );
+    }
+
+    return { ...data.profile };
+  }
+);
+
 export const createProfile = createAsyncThunk(
   "profile/createProfile",
   async (data, thunkAPI) => {
@@ -173,7 +223,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [fetchProfile.fulfilled]: (state, action) => {
-      state.status = "loaded";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
@@ -183,7 +233,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [fetchProfilebyid.fulfilled]: (state, action) => {
-      state.status = "loaded";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [fetchProfilebyid.rejected]: (state) => {
@@ -193,7 +243,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [addProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [addProfile.rejected]: (state) => {
@@ -203,7 +253,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [addUserProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [addUserProfile.rejected]: (state) => {
@@ -213,10 +263,20 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [createProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [createProfile.rejected]: (state) => {
+      state.status = "error";
+    },
+    [applyJob.pending]: (state) => {
+      state.status = "loading";
+    },
+    [applyJob.fulfilled]: (state, action) => {
+      state.status = "idle";
+      state.profile = action.payload;
+    },
+    [applyJob.rejected]: (state) => {
       state.status = "error";
     },
     [HYDRATE]: (state, action) => {

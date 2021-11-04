@@ -7,7 +7,10 @@ import ProposalsCard from "../../../components/ProposalsCard";
 import { VscArrowRight } from "react-icons/vsc";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs } from "../../../store/jobs/jobsSlice";
-import { fetchCompany } from "../../../store/tempStorage/tempStorageSlice";
+import {
+  fetchCompany,
+  fetchAppliedProfiles,
+} from "../../../store/tempStorage/tempStorageSlice";
 import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
 
@@ -24,6 +27,7 @@ function Job() {
   //fetch data
   const jobs = useSelector((state) => state.jobs.jobs);
   const companies = useSelector((state) => state.tempStorage.company);
+  const profiles = useSelector((state) => state.tempStorage.applied_profiles);
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const router = useRouter();
@@ -31,6 +35,7 @@ function Job() {
   useEffect(() => {
     dispatch(fetchJobs());
     dispatch(fetchCompany());
+    dispatch(fetchAppliedProfiles());
   }, [dispatch]);
 
   const jobData = jobs
@@ -41,6 +46,16 @@ function Job() {
   const similarJobs = jobs.filter(
     (item) => item?.category === job?.category && item?.id !== router.query.id
   );
+
+  // let appliedProfiles = []
+  // if(companies && )
+
+  const appliedProfiles = profiles
+    ? profiles.filter(
+        (item) =>
+          item?.applied_jobs && item?.applied_jobs.includes(router.query.id)
+      )
+    : [];
 
   const [activeTab, setActiveTab] = useState("details");
 
@@ -151,7 +166,10 @@ function Job() {
                 className={` ${activeTab !== "proposals" && "hidden"}`}
               >
                 <h1 className="text-primary font-bold mb-5">Proposals</h1>
-                <ProposalsCard />
+                {appliedProfiles &&
+                  appliedProfiles.map((profile) => {
+                    return <ProposalsCard key={profile.id} profile={profile} />;
+                  })}
               </div>
             )}
           </div>

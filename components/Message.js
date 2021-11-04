@@ -18,7 +18,7 @@ function Message({ message }) {
 
   return (
     <div
-      className={`alert flex flex-row items-center p-4 rounded border-b-2 absolute right-0 ${
+      className={`alert flex flex-row items-center p-4 rounded border-b-2 fixed right-0 top-8 ${
         message.type === "success"
           ? "bg-green-100  border-green-300"
           : "bg-red-100  border-red-300"

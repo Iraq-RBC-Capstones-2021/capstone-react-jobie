@@ -13,7 +13,6 @@ export const fetchProfile = createAsyncThunk(
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
     const doc = await firestore.get({ collection: "profiles", doc: id });
-    console.log("profile", doc.data());
     // console.log("data", profile.data());
     // collection.forEach((doc) => {
     //   if (doc.id === id) {
@@ -163,7 +162,6 @@ export const applyJob = createAsyncThunk(
         jobs = profile.applied_jobs;
       } else {
         jobs = [...profile.applied_jobs, data.jobId];
-        console.log("jobs", jobs);
       }
     }
     try {

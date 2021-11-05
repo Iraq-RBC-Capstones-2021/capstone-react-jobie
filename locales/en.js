@@ -135,9 +135,28 @@ export default {
     LaraFeedback: "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
 
     UsingOurServices: "More than 20,000 companies are using our service to hire their employees."
-
   },
-  roadmap:{},
+
+  roadmap:{
+    Htitle: "Developer Roadmaps",
+    HSubTitle: "Follow these roadmaps and become a hero in any path you choose!",
+    
+    WebDevelopment:"Web Development",
+    Frontend:"Frontend",
+    Backend:"Backend",
+    FullStack:"Full Stack",
+
+    Design: "Design",
+    UIUX: "UI/UX",
+    Graphic: "Graphics",
+    Logo: "Logo",
+
+    Network: "Network & Security",
+    Network: "Network",
+    Security: "Security",
+    Cloud: "Cloud",
+  },
+  
   jobs:{},
   navbar:{},
   footer:{},

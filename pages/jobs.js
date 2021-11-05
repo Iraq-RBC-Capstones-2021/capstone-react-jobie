@@ -1,9 +1,25 @@
 import JobListing from "../components/JobListing";
 import FilterSidebar from "../components/Filter/FilterSidebar";
-import jobData from "../data.json";
 import SearchButton from "../components/Home/SearchButton";
+import Loading from "../components/Loading";
 
-function jobFinder() {
+import { fetchJobs } from "../store/jobs/jobsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCompany } from "../store/tempStorage/tempStorageSlice";
+import { useEffect } from "react";
+
+function JobFinder() {
+  const jobs = useSelector((state) => state.jobs.jobs);
+  const companies = useSelector((state) => state.tempStorage.company);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchJobs());
+    dispatch(fetchCompany());
+  }, [dispatch]);
+
+  if (!jobs || !companies) return <Loading />;
+
   return (
     <div>
       <div className="bg-light">
@@ -27,10 +43,21 @@ function jobFinder() {
           <div className="pl-8 lg:pr-48 w-full py-10 ">
             {" "}
             <div className="flex justify-between mb-5">
-              <p>Total {jobData.Posts.length} Results</p>
+              <p>Total {jobs.length} Results</p>
               <p>Sort by: Newest</p>
             </div>
-            <JobListing />
+            {jobs.map((jobsData, index) => {
+              // console.log(jobsData);
+              const company = companies.filter(
+                (item) => item.id === jobsData.company_id
+              );
+
+              return (
+                <div key={index}>
+                  <JobListing job={jobsData} company={company[0]} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -38,4 +65,4 @@ function jobFinder() {
   );
 }
 
-export default jobFinder;
+export default JobFinder;

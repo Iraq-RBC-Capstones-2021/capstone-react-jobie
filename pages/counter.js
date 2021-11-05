@@ -17,8 +17,8 @@ import { fetchJobs } from "../store/jobs/jobsSlice";
 
 export default function Counter() {
   const count = useSelector(selectCount);
-  const jobs = useSelector(state => state.jobs.jobs)
-  console.log(jobs)
+  const jobs = useSelector((state) => state.jobs.jobs);
+  // console.log(jobs)
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState("2");
 

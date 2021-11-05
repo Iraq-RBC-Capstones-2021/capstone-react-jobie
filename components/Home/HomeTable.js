@@ -2,11 +2,8 @@ import TableRow from "./TableRow";
 import { useRouter } from "next/router";
 import en from "../../locales/en";
 import ar from "../../locales/ar";
-export default function HomeTable({
-  Position = "UI/UX Designer",
-  Salary = "5000$",
-  Date = "3 hours ago",
-}) {
+
+export default function HomeTable({ jobs }) {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "ar" ? ar : en;
@@ -36,48 +33,21 @@ export default function HomeTable({
           </tr>
         </thead>
         <tbody className="bg-white">
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
-          <TableRow
-            Position={t.Position}
-            Salary={t.Salary}
-            Date={t.Date}
-            Link={""}
-          />
+
+          {jobs.map((job) => {
+            return (
+              <TableRow
+                Position={job.position}
+                Salary={{
+                  salary_from: job.salary_from,
+                  salary_to: job.salary_to,
+                }}
+                timestamp={job.timestamp}
+                id={job.id}
+                key={job.id}
+              />
+            );
+          })}
         </tbody>
       </table>
     </>

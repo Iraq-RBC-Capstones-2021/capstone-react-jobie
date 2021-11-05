@@ -9,6 +9,7 @@ import Aya from "../assets/TeamPic/aya.jpg";
 import Zahraa from "../assets/TeamPic/zahraa.jpg";
 import Bnar from "../assets/TeamPic/bnar.jpg";
 import Lara from "../assets/TeamPic/Lara.jpg";
+import Wisam from "../assets/TeamPic/Wisam.jpg";
 
 import { BsFillFileEarmarkTextFill } from "react-icons/bs";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -27,8 +28,8 @@ import en from "../locales/en";
 import ar from "../locales/ar";
 
 export default function aboutus() {
-  const router = useRouter();
-  const { locale } = router;
+  const Router = useRouter();
+  const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 
   const Sec1 = [
@@ -131,13 +132,38 @@ export default function aboutus() {
           <span className="text-accent">{t.team}</span>
         </h1>
         <div className="flex justify-between pb-20">
-          <TeamProfile name={t.zahraa} pic={Zahraa} role={t.webDev} />
-          <TeamProfile name={t.rebaz} pic={Rebaz} role={t.webDev} />
-          <TeamProfile name={t.lara} pic={Lara} role={t.webDev} />
+          <TeamProfile
+            name={t.zahraa}
+            pic={Zahraa}
+            role={t.ZahraRole}
+          />
+          <TeamProfile 
+            name={t.wisam} 
+            pic={Wisam} 
+            role={t.WisamRole}
+          />
+          <TeamProfile
+            name={t.rebaz}
+            pic={Rebaz}
+            role={t.RebazRole}
+          />
         </div>
-        <div className="grid grid-cols-2 place-items-center">
-          <TeamProfile name={t.aya} pic={Aya} role={t.webDev} />
-          <TeamProfile name={t.banar} pic={Bnar} role={t.webDev} />
+        <div className="grid grid-cols-3 place-items-center">
+          <TeamProfile
+            name={t.aya}
+            pic={Aya}
+            role={t.AyaRole}
+          />
+          <TeamProfile
+            name={t.bnar}
+            pic={Bnar}
+            role={t.BnarRole}
+          />
+          <TeamProfile
+            name={t.lara}
+            pic={Lara}
+            role={t.LaraRole}
+          />
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">

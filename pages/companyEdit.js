@@ -1,38 +1,18 @@
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
-import { addProfile, fetchProfile } from "../../../store/profiles/profileSlice";
-import { useRouter } from "next/router";
+import { addProfile } from "../store/profiles/profileSlice";
 import { useState, useEffect } from "react";
-import { storage } from "../../../config/dbConfig";
-
-const profile = {
-  is_company: true,
-  name: "Pearlessa",
-  category: "Design",
-  website: "aliqua",
-  about:
-    "Reprehenderit officia exercitation commodo eiusmod cillum. Veniam consectetur adipisicing adipisicing labore incididunt exercitation exercitation est est adipisicing. Eiusmod amet est commodo eu tempor exercitation eu ullamco incididunt non dolore. Do laborum culpa eiusmod non et in cillum reprehenderit anim. Velit irure ullamco culpa eiusmod adipisicing adipisicing tempor culpa cillum deserunt. Ullamco id eiusmod ut id consequat proident proident fugiat nulla consectetur magna reprehenderit amet laboris. Aliqua labore cupidatat Lorem ad fugiat qui cillum do ex amet et occaecat.\r\n",
-  location: "Babylon",
-  email: "bobbimacdonald@pearlessa.com",
-  phone: "+1 (996) 429-3906",
-  linkedin: "quis",
-  github: "irure",
-  facebook: "eu",
-  specialities: [
-    "velitt",
-    "id",
-    "dolore",
-    "consequat",
-    "cupidatat",
-    "non",
-    "proident",
-  ],
-  logo: "",
-};
+import { useRef } from "react";
+import { useRouter } from "next/router";
+import useIsLoggedIn from "../config/useIsLoggedIn";
+import Loading from "../components/Loading";
 
 export default function Edit() {
   const router = useRouter();
-  const { id } = router.query;
+  const [loading, setLoading] = useState(true);
+  useIsLoggedIn().then((value) => {
+    setLoading(value);
+  });
   const category = [
     { value: "Design", label: "Design" },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -74,25 +54,11 @@ export default function Edit() {
     }),
   };
 
+  const profile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
+  const imagePreviewRef = useRef();
 
-  const [profileData, setProfileData] = useState(
-    profile
-    // {
-    //   name: "Google",
-    //   category: "",
-    //   website: "",
-    //   about: "",
-    //   location: "",
-    //   email: "",
-    //   phone: "",
-    //   linkedin: "",
-    //   github: "",
-    //   facebook: "",
-    //   specialities: [],
-    //   logo: "",
-    // }
-  );
+  const [profileData, setProfileData] = useState(profile);
   const [logoPreview, setLogoPreview] = useState(profileData.logo);
 
   const handleChange = (e) => {
@@ -101,10 +67,6 @@ export default function Edit() {
       [e.target.name]: e.target.value,
     });
   };
-
-  // const getAllFormData = (e) => {
-  //   e.preventDefault();
-  // };
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -121,6 +83,7 @@ export default function Edit() {
       ...profileData,
       logo: "",
     });
+    imagePreviewRef.current.value = "";
     setLogoPreview("");
   };
 
@@ -128,28 +91,10 @@ export default function Edit() {
     e.preventDefault();
 
     dispatch(addProfile(profileData));
-    // setProfileData({
-    //   name: "",
-    //   category: "",
-    //   website: "",
-    //   about: "",
-    //   location: "",
-    //   email: "",
-    //   phone: "",
-    //   linkedin: "",
-    //   github: "",
-    //   facebook: "",
-    //   specialities: [],
-    //   logo: "",
-    // });
-    // setLogoPreview("");
   };
 
-  useEffect(() => {
-    dispatch(fetchProfile(id));
-  }, [dispatch, id]);
-
-  if (profile) {
+  if (!profile || loading) return <Loading />;
+  else
     return (
       <>
         {" "}
@@ -186,7 +131,9 @@ export default function Edit() {
                       />
                     ) : (
                       <div className="h-full border-primary bg-primary-light text-primary w-full rounded-full inline-flex items-center align-middle justify-center font-bold text-8xl">
-                        <span>{profileData.name.charAt(0)}</span>
+                        <span>
+                          {profileData.name ? profileData.name.charAt(0) : "C"}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -203,8 +150,10 @@ export default function Edit() {
                                   </h1>{" "}
                                   <input
                                     type="file"
+                                    accept="image/*"
                                     className="w-full h-20 mt-2 border-grey border-2 bg-dark hidden"
                                     onChange={handleUpload}
+                                    ref={imagePreviewRef}
                                   />
                                 </div>
                               </label>
@@ -232,9 +181,10 @@ export default function Edit() {
                     <h5 className="mb-2">Company Name</h5>
                     <input
                       className="h-11 w-full rounded-lg border-grey border-2 pl-2"
-                      name="company_name"
+                      name="name"
                       onChange={handleChange}
                       value={profileData.name}
+                      required
                     />
                   </div>
                   <div className="self-center col-1 ml-4">
@@ -247,9 +197,9 @@ export default function Edit() {
                       options={category}
                       instanceId="category"
                       onChange={(e) => {
-                        setFormData({
-                          ...formdata,
-                          ["category"]: e,
+                        setProfileData({
+                          ...profileData,
+                          ["category"]: e.value,
                         });
                       }}
                       value={{
@@ -297,9 +247,9 @@ export default function Edit() {
                       styles={style}
                       placeholder="Select the Location that applies"
                       onChange={(e) => {
-                        setFormData({
-                          ...formdata,
-                          ["location"]: e,
+                        setProfileData({
+                          ...profileData,
+                          ["location"]: e.value,
                         });
                       }}
                       value={{
@@ -316,6 +266,7 @@ export default function Edit() {
                       name="email"
                       onChange={handleChange}
                       value={profileData.email}
+                      required
                     />
                   </div>
                   <div className="self-center col-2 ml-4">
@@ -325,6 +276,7 @@ export default function Edit() {
                       name="phone"
                       onChange={handleChange}
                       value={profileData.phone}
+                      required
                     />
                   </div>
                 </div>
@@ -378,13 +330,8 @@ export default function Edit() {
                       type="text"
                       name="specialities"
                       placeholder="web,network,internet"
-                      onChange={(e) => {
-                        setProfileData({
-                          ...profileData,
-                          specialities: e.target.value.split(),
-                        });
-                      }}
-                      value={profileData.specialities.join()}
+                      onChange={handleChange}
+                      value={profileData.specialities}
                     />
                   </div>
                 </div>
@@ -409,6 +356,4 @@ export default function Edit() {
         </div>
       </>
     );
-  }
-  return <>loading</>;
 }

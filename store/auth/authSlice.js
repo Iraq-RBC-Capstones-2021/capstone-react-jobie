@@ -46,7 +46,7 @@ export const registerWithGoogle = createAsyncThunk(
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
     return data;
   }
@@ -65,7 +65,6 @@ export const logoutGoogle = createAsyncThunk(
       })
       .catch(function (error) {
         // An error happened.
-        console.log(error);
       });
   }
 );

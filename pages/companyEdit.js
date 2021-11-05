@@ -3,8 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProfile } from "../store/profiles/profileSlice";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
+import useIsLoggedIn from "../config/useIsLoggedIn";
+import Loading from "../components/Loading";
 
 export default function Edit() {
+  const [loading, setLoading] = useState(true);
+  useIsLoggedIn().then((value) => {
+    setLoading(value);
+  });
   const category = [
     { value: "Design", label: "Design" },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -85,7 +91,8 @@ export default function Edit() {
     dispatch(addProfile(profileData));
   };
 
-  if (profile) {
+  if (!profile || loading) return <Loading />;
+  else
     return (
       <>
         {" "}
@@ -347,6 +354,4 @@ export default function Edit() {
         </div>
       </>
     );
-  }
-  return <>loading</>;
 }

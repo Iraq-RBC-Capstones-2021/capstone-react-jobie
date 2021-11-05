@@ -4,54 +4,18 @@ import { addUserProfile, fetchProfile } from "../store/profiles/profileSlice";
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
 import { FaPlus } from "react-icons/fa";
-import Img from "./../assets/TeamPic/Lara.jpg";
 import Education from "../components/Education";
 import WorkExperience from "../components/WorkExperience";
 import { cities } from "../selectData";
 import { nanoid } from "@reduxjs/toolkit";
-
-// const userProfile = {
-//   is_company: false,
-//   // img: "",
-//   img: Img.src,
-//   resumeFile: "",
-//   firstName: "Lara",
-//   lastName: "Raoof",
-//   title: "Frontend Developer",
-//   biography:
-//     "I have no time⏳ to HATE PPL W HATE ME Cuz I'm busy LOVING PPL W L ME😊",
-//   location: "Kerbala",
-//   email: "larawf0019@gmail.com",
-//   phone: "07730000000",
-//   linkedIn: "https://www.linkedin.com/in/geshben",
-//   github: "https://github.com/Ge6ben",
-//   facebook: "https://www.facebook.com/geshben",
-//   skills: "React,Node js,MySql",
-//   workExperience: [
-//     {
-//       id: 1,
-//       company: "HiTech",
-//       location: "Erbil",
-//       employment_type: "Full Time",
-//       position: "intern",
-//       date: "2021-05-05",
-//     },
-//     {
-//       id: 2,
-//       company: "HiTech",
-//       location: "Erbil",
-//       employment_type: "Full Time",
-//       position: "intern",
-//       date: "",
-//     },
-//   ],
-//   education: [
-//     { id: 1, university: "TCK", major: "B.S", date: "2016-2020" },
-//     { id: 2, university: "TCK", major: "B.S", date: "2016-2020" },
-//   ],
-// };
+import useIsLoggedIn from "../config/useIsLoggedIn";
+import Loading from "../components/Loading";
 
 export default function Edit() {
+  const [loading, setLoading] = useState(true);
+  useIsLoggedIn().then((value) => {
+    setLoading(value);
+  });
   const userProfile = useSelector((state) => state.profile.profile);
   const [profileData, setProfileData] = useState(userProfile);
   const [imgPreview, setImgPreview] = useState(profileData.img);
@@ -186,10 +150,10 @@ export default function Edit() {
     dispatch(addUserProfile(profileData));
   };
 
-  if (userProfile) {
+  if (!userProfile || loading) return <Loading />;
+  else
     return (
       <>
-        {" "}
         <form className="form">
           <div className="bg-body px-4 lg:px-48 w-full pt-10">
             <div className="border-b-2 grid grid-cols-3">
@@ -538,6 +502,4 @@ export default function Edit() {
         </form>
       </>
     );
-  }
-  return <>loading</>;
 }

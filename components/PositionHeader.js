@@ -13,6 +13,8 @@ const PositionHeader = ({
   belongsToCompany,
   currentUser,
   is_company,
+  ApplyNow,
+  ViewAllJobs,
 }) => {
   const [saved, setsaved] = useState(true);
 
@@ -102,7 +104,7 @@ const PositionHeader = ({
                   className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
                   onClick={handleApplyJob}
                 >
-                  <span>Apply Now</span> <VscArrowRight />
+                  <span>{ApplyNow}</span> <VscArrowRight />
                 </button>
               )}
             </div>
@@ -110,7 +112,7 @@ const PositionHeader = ({
         )}
         <div>
           <button className="flex text-secondary text-lg space-x-2 font-semibold items-center">
-            <span>View All Jobs</span>
+            <span>{ViewAllJobs}</span>
             <HiOutlineArrowNarrowRight />
           </button>
         </div>

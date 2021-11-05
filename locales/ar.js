@@ -61,7 +61,8 @@ export default {
     Email: "بريد الالكتروني",
     Message: "رسالة",
     Send: "يرسل",
-
+    emailHolder: "بريدك الالكتروني",
+    messageHolder: "اكتب رسالتك هنا...",
     ContactUs: "اتصل بنا",
     Location: "السليمانية ، العراق",
     Phone: "+964 750 113 0495",
@@ -236,7 +237,8 @@ export default {
     Responsibilities: "وتشمل مسؤوليات",
     Background: "الخلفية والخبرة",
     SimilarJobs: "وظائف مماثلة",
-
+    edit: "تعديل",
+    AlreadyAplly: "تطبق بالفعل",
     OfferedSalary: "الراتب المعروض",
     Gender: "جنس تذكير أو تأنيث",
     Experience: "خبرة",

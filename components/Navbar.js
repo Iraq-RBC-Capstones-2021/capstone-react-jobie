@@ -3,6 +3,7 @@ import Link from "next/link";
 import NavBarSearch from "./NavBarSearch";
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
+import { FaGlobe } from "react-icons/fa";
 
 import { FaAngleDown } from "react-icons/fa";
 import LoginPopup from "./LoginPopup";
@@ -116,6 +117,13 @@ function Navbar() {
                 <Link href="/contact">
                   <a className="flex w-full text-base px-2.5">
                     {t.navbar.Contact}
+                  </a>
+                </Link>
+              </li>
+              <li className="list-none">
+                <Link href="">
+                  <a className="flex w-full text-base ">
+                    <FaGlobe />
                   </a>
                 </Link>
               </li>

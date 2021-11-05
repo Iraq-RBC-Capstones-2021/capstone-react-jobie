@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import en from "../locales/en";
 import ar from "../locales/ar";
 const RoadMap = () => {
-  const Router = useRouter;
+  const Router = useRouter();
   const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 

@@ -12,28 +12,29 @@ export default function HomeTable({ jobs }) {
       <div className=" text-right space-x-6 ">
         <label className="inline-flex items-center">
           <input type="checkbox" className="form-checkbox" />
-          <span className="ml-2">{t.fullTimeTable}</span>
+          <span className="ml-2">{t.home.FullTime}</span>
         </label>
         <label className="inline-flex items-center">
           <input type="checkbox" className="form-checkbox" />
-          <span className="ml-2">{t.partTimeTable}</span>
+          <span className="ml-2">{t.home.PartTime}</span>
         </label>
         <label className="inline-flex items-center">
           <input type="checkbox" className="form-checkbox" />
-          <span className="ml-2">{t.remoteTable}</span>
+          <span className="ml-2">{t.home.Remote}</span>
         </label>
       </div>
       <table className="table-fixed shadow-lg  ">
         <thead className="bg-lightgrey  h-12   ">
           <tr className="rounded-xl">
-            <th className=" text-dark w-1/2 text-left pl-6 ">{t.PositionTH}</th>
-            <th className="w-1/4 text-left text-dark">{t.SalaryTH}</th>
-            <th className="w-1/4 text-left text-dark ">{t.DateTH}</th>
-            <th className="w-1/4 text-left text-dark">{t.ApplyTH}</th>
+            <th className=" text-dark w-1/2 text-left pl-6 ">
+              {t.home.Position}
+            </th>
+            <th className="w-1/4 text-left text-dark">{t.home.Salary}</th>
+            <th className="w-1/4 text-left text-dark ">{t.home.Date}</th>
+            <th className="w-1/4 text-left text-dark">{t.home.Action}</th>
           </tr>
         </thead>
         <tbody className="bg-white">
-
           {jobs.map((job) => {
             return (
               <TableRow

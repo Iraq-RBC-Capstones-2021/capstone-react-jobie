@@ -54,9 +54,9 @@ export default function Home() {
           <link rel="icon" href="/icon_Logo.ico" />
         </Head>
         <Header
-          title={t.headerJobs}
-          title2={t.AreListedHere}
-          subtitle={t.Findyourdreamjobnow}
+          title={t.home.HTitle1}
+          title2={t.home.HTitle2}
+          subtitle={t.home.HSubTitle}
           light={false}
           img={HeaderImage}
         >
@@ -65,18 +65,18 @@ export default function Home() {
         <div className="bg-body px-4 lg:px-48 w-full">
           <div className="flex  gap-x-10 justify-center py-16">
             <JobTypeCard
-              title={t.FullTimeJobs}
-              text={t.FirstJobCard}
+              title={t.home.FullTimeJobs}
+              text={t.home.FullTimeJobsDescription}
               borderColor={Color1}
             />
             <JobTypeCard
-              title={t.PartTime}
-              text={t.PartTimeJobs}
+              title={t.home.PartTimeJobs}
+              text={t.home.PartTimeJobsDescription}
               borderColor={Color2}
             />
             <JobTypeCard
-              title={t.remote}
-              text={t.remoteParagraph}
+              title={t.home.RemotesJobs}
+              text={t.home.RemotesJobsDescription}
               borderColor={Color3}
             />
           </div>
@@ -89,46 +89,46 @@ export default function Home() {
               <div className="flex  justify-around">
                 <Categories
                   Logo={FaDraftingCompass}
-                  title={t.design}
-                  subtitle={t.designNumbers}
+                  title={t.home.Design}
+                  subtitle={t.home.DesignNumbers}
                   link=""
                 />
                 <Categories
                   Logo={FaHtml5}
-                  title={t.fronEnd}
-                  subtitle={t.frontNumber}
+                  title={t.home.Frontend}
+                  subtitle={t.home.FrontendNumbers}
                   link=""
                 />
                 <Categories
                   Logo={FaCog}
-                  title={t.backend}
-                  subtitle={t.backendNumber}
+                  title={t.home.Backend}
+                  subtitle={t.home.BackendNumbers}
                   link=""
                 />
                 <Categories
                   Logo={FaCogs}
-                  title={t.webDev}
-                  subtitle={t.webDevNumber}
+                  title={t.home.WebDeveloper}
+                  subtitle={t.home.WebDeveloperNumbers}
                   link=""
                 />
               </div>
               <div className="flex  justify-around">
                 <Categories
                   Logo={FaUserCog}
-                  title={t.network}
-                  subtitle={t.networkNumber}
+                  title={t.home.Network}
+                  subtitle={t.home.NetworkNumbers}
                   link=""
                 />
                 <Categories
                   Logo={FaProjectDiagram}
-                  title={t.PM}
-                  subtitle={t.PMnumber}
+                  title={t.home.ProjectManager}
+                  subtitle={t.home.ProjectManagerNumbers}
                   link=""
                 />
                 <Categories
                   Logo={FaChartLine}
-                  title={t.data}
-                  subtitle={t.dataNumber}
+                  title={t.home.DataAnalyzer}
+                  subtitle={t.home.DataAnalyzerNumbers}
                   link=""
                 />
                 <a
@@ -136,7 +136,7 @@ export default function Home() {
                   href=""
                 >
                   <h1 className="font-medium text-dark text-base lg:text-xl xl:text-2xl flex flex-row ">
-                    {t.viewCatg}
+                    {t.home.ViewAllCategories}
                     <ImArrowRight className="mt-2 ml-2" />
                   </h1>
                 </a>
@@ -148,7 +148,7 @@ export default function Home() {
         <div className="bg-light px-4 lg:px-48 w-full py-16">
           <h1 className="text-primary font-semibold  pb-8 text-lg lg:text-2xl xl:text-4xl">
             {" "}
-            {t.latestJobs}
+            {t.home.LatestJobs}
           </h1>
           {jobs.length !== 0 ? <HomeTable jobs={jobs} /> : <p>No jobs found</p>}
         </div>
@@ -156,36 +156,36 @@ export default function Home() {
         <div className="bg-body px-4 lg:px-48 w-full py-20">
           <h1 className="text-primary font-semibold text-lg lg:text-2xl xl:text-4xl">
             {" "}
-            {t.costumers}
+            {t.home.OurCustomers}
           </h1>
           <h2 className="text-primary font-semibold py-8 text-base lg:text-xl xl:text-2xl">
             {" "}
-            {t.helped}
+            {t.home.OurCustomersDescription}
           </h2>
           <div className="flex flex-row gap-8 pb-12">
             <CustomerCard
               img={Avatar}
-              name={t.aya}
-              position={t.ayaPosition}
-              feedback={t.feedback}
+              name={t.home.Lara}
+              position={t.home.LaraRole}
+              feedback={t.home.LaraFeedback}
             />
             <CustomerCard
               img={AvatarMale}
-              name={t.rebaz}
-              position={t.ayaPosition}
-              feedback={t.feedback}
+              name={t.home.Rebaz}
+              position={t.home.RebazRole}
+              feedback={t.home.RebazFeedback}
             />
             <CustomerCard
               img={Avatar}
-              name={t.zahraa}
-              position={t.ayaPosition}
-              feedback={t.feedback}
+              name={t.home.Zahraa}
+              position={t.home.ZahraRole}
+              feedback={t.home.ZahraFeedback}
             />
           </div>
           <div className=" py-12">
             <h2 className="text-primary font-semibold py-12 text-base lg:text-xl xl:text-2xl">
               {" "}
-              {t.companiesUsing}
+              {t.home.UsingOurServices}
             </h2>
             <Partners />
           </div>

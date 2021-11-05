@@ -120,6 +120,7 @@ export default {
     Position: "Position",
     Salary: "Salary",
     Date: "Date",
+    Action: "Action",
     Apply: "Apply",
     FullTime: "Full Time",
     PartTime: "Part Time",
@@ -196,6 +197,11 @@ export default {
     Roadmap: "Roadmap",
     Search: "Search",
     Login: "Login",
+    Account: "Account",
+    EditProfile: "Edit Profile",
+    ViewProfile: "View Profile",
+    PostJob: "Post Job",
+    Logout: "Logout",
   },
 
   footer: {

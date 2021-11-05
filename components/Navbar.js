@@ -85,28 +85,38 @@ function Navbar() {
           >
             <ul className="md:flex-row md:flex items-center md:gap-5">
               <li className="list-none">
-              <Link href="/" shallow={true}>
-                  <a className="flex w-full text-base px-2.5">{t.Home}</a>
+                <Link href="/" shallow={true}>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Home}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/about">
-                  <a className="flex w-full text-base px-2.5">{t.About}</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.About}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/roadmaps">
-                  <a className="flex w-full text-base px-2.5">{t.Roadmaps}</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Roadmap}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/jobs">
-                  <a className="flex w-full text-base px-2.5">{t.Jobs}</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Jobs}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/contact">
-                  <a className="flex w-full text-base px-2.5">{t.Contact}</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Contact}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
@@ -120,7 +130,7 @@ function Navbar() {
                     className=" text-white rounded-full px-7 py-1 bg-accent"
                     onClick={handleLoginModal}
                   >
-                    {t.Login}
+                    {t.navbar.Login}
                   </button>
                 ) : (
                   <div className="relative inline-block" ref={accountMenuRef}>
@@ -129,7 +139,7 @@ function Navbar() {
                       className=" text-white rounded-full px-7 py-1 bg-accent inline-flex justify-center items-center"
                       onClick={handleAccountMenu}
                     >
-                      {t.Account}
+                      {t.navbar.Account}
                       <FaAngleDown />
                     </button>
                     <div
@@ -155,7 +165,7 @@ function Navbar() {
                           id="menu-item-0"
                           onClick={handleAccountMenu}
                         >
-                          {t.ViewProfile}
+                          {t.navbar.ViewProfile}
                         </a>
                       </Link>
                       <Link
@@ -170,7 +180,7 @@ function Navbar() {
                           id="menu-item-1"
                           onClick={handleAccountMenu}
                         >
-                          {t.EditProfile}
+                          {t.navbar.EditProfile}
                         </a>
                       </Link>
                       {userProfile?.is_company && (
@@ -182,7 +192,7 @@ function Navbar() {
                             id="menu-item-1"
                             onClick={handleAccountMenu}
                           >
-                            Post Job
+                            {t.navbar.PostJob}
                           </a>
                         </Link>
                       )}
@@ -196,7 +206,7 @@ function Navbar() {
                           id="menu-item-3"
                           onClick={handleLogoutClick}
                         >
-                          {t.Logout}
+                          {t.navbar.Logout}
                         </button>
                       </div>
                     </div>

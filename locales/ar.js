@@ -120,6 +120,7 @@ export default {
     Position: "موقع",
     Salary: "مرتب",
     Date: "تاريخ",
+    Action: "تطبيق",
     Apply: "تطبيق",
     FullTime: "وقت كامل",
     PartTime: "دوام جزئى",
@@ -194,6 +195,11 @@ export default {
     Roadmap: "خريطة الطريق",
     Search: "بحث",
     Login: "تسجيل الدخول",
+    Account: "الحساب",
+    EditProfile: "تعديل الملف الشخصي",
+    ViewProfile: "عرض الملف الشخصي",
+    PostJob: "انشاء وظيفة",
+    Logout: "تسجيل الخروج",
   },
 
   footer: {

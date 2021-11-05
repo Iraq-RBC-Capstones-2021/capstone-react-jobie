@@ -48,7 +48,7 @@ export default function TableRow({ Position, Salary, timestamp, id }) {
             className=" rounded-full bg-transparent border-2 w-24 h-8  border-accent text-accent text-lg hover:bg-accent hover:text-gray-100 focus:border-4 "
             onClick={handleApplyJob}
           >
-            {t.Apply}
+            {t.home.Apply}
           </button>
         )}
       </td>

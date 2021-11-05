@@ -15,7 +15,7 @@ function JobFinder() {
   const jobs = useSelector((state) => state.jobs.jobs);
   const companies = useSelector((state) => state.tempStorage.company);
   const dispatch = useDispatch();
-  const Router = useRouter;
+  const Router = useRouter();
   const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 

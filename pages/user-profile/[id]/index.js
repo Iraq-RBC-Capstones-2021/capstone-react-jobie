@@ -9,11 +9,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSingleProfile } from "../../../store/tempStorage/tempStorageSlice";
 import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
+import en from "../../../locales/en";
+import ar from "../../../locales/ar";
 
 export default function UserProfile() {
   const profile = useSelector((state) => state.tempStorage.profile);
   const dispatch = useDispatch();
   const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
 
   useEffect(() => {
     const id = router.query.id;
@@ -28,11 +32,13 @@ export default function UserProfile() {
       <div className="bg-body">
         <div className="mx-auto px-4 lg:px-48 w-full py-10">
           <p className=" text-lg text-dark">
-            {profile?.biography ? profile.biography : "No biography added yet"}
+            {profile?.biography ? profile.biography : t.ProfileView.Bio}
           </p>
           <div className="grid grid-cols-3 gap-4 pt-12">
             <div className="space-y-3">
-              <h1 className="text-dark mb-3 font-semibold">Contact</h1>
+              <h1 className="text-dark mb-3 font-semibold">
+                {t.ProfileView.Contact}
+              </h1>
               <div className=" flex items-center">
                 <div className="mr-2">
                   <FaMapMarkerAlt className=" text-dark" />
@@ -60,7 +66,9 @@ export default function UserProfile() {
             </div>
             <div className="col-span-2">
               {" "}
-              <h1 className="text-dark mb-3 font-semibold">Skills</h1>
+              <h1 className="text-dark mb-3 font-semibold">
+                {t.ProfileView.Skills}
+              </h1>
               <div className="flex flex-wrap flex-row space-x-3 ">
                 {profile?.skills
                   ? profile?.skills.split(",").map((skill, index) => {
@@ -84,7 +92,7 @@ export default function UserProfile() {
       <div className="bg-lightgrey">
         <div className="mx-auto px-4 lg:px-48 w-full py-10">
           <h1 className=" mb-6 font-bold text-3xl text-secondary">
-            Work Experience
+            {t.ProfileView.WorkExperience}
           </h1>
           {profile?.workExperience
             ? profile?.workExperience.map((experience, index) => {
@@ -129,7 +137,9 @@ export default function UserProfile() {
       </div>
 
       <div className="mx-auto px-4 lg:px-48 w-full py-10">
-        <h1 className="  mb-6 font-bold text-3xl text-secondary">Education</h1>
+        <h1 className="  mb-6 font-bold text-3xl text-secondary">
+          {t.ProfileView.Education}
+        </h1>
         {profile?.education
           ? profile?.education.map((education, index) => {
               return (

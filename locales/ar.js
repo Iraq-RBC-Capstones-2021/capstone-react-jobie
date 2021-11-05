@@ -257,6 +257,8 @@ export default {
   },
 
   ProfileEdit: {
+    EditProfile: "تعديل الملف الشخصي / ",
+    SetUp: "قم بإعداد صفحة سيرتك الذاتية الشخصية",
     UploadPhoto: "حمل الصورة",
     Delete: "حذف",
     ImageDesc: "يجب أن تكون الصورة 400 × 400 بكسل على الأقل كملف png أو jpeg",

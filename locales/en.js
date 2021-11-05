@@ -176,8 +176,40 @@ export default {
     Results: "Results",
     SortBy: "Sort By: Newest",
   },
-  navbar:{},
-  footer:{},
+
+  navbar:{
+    Home: "Home",
+    About: "About",
+    Contact: "Contact",
+    Jobs: "Jobs",
+    Roadmap: "Roadmap",
+    Search: "Search",
+    Login: "Login",
+  },
+  footer:{
+    JobieDesc: "Jobie is a platform that can help you set up your career we give services from finding out the right path to advance your career through a roadmap or a right position from the top companies",
+    
+    Navigate:"Navigate",
+    Home: "Home",
+    About: "About Us",
+    Contact: "Contact Us",
+    Jobs: "Jobs",
+    Roadmap: "Roadmap",
+
+    Jobs: "Jobs",
+    WebDeveloper: "Web Developer",
+    GraphicDesign: "Graphic Design",
+    Translator: "Translator",
+    BackendDeveloper: "Backend Developer",
+    UIUX: "UIUX Desinger",
+
+    Services: "Services",
+    BuildYourResume: "Build Your Resume",
+    ListYourJobs: "List Your Jobs",
+    SearchJobs: "Search Jobs",
+    HireProfessionals:"Hire Professionals",
+    RateAnEmployee: "Rate An Employer",
+  },
 
   title: "jobie",
   headerJobs: "10,254 Jobs",

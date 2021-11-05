@@ -50,7 +50,18 @@ export default {
     OurCollaborators2: "Collaborators",
   },
   contact:{
-    
+    GetInTouch: "Get in touch",
+    FirstName: "First Name",
+    LastName: "Last Name",
+    Email: "Email",
+    Message: "Message",
+    Send: "Send",
+
+    ContactUs: "Contact Us",
+    Location: "As Sulaymaniyah, Iraq",
+    Phone: "+964 750 113 0495",
+    EmailUs: "Jobie@contact.com",
+    OpenHours: "9:00 - 17:00",
   },
   home:{},
   roadmap:{},

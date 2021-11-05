@@ -1,4 +1,63 @@
 export default {
+  about:{
+    HTitle:"Find Your Job",
+    HSubTitle:"Live your Dream",
+    
+    AboutUs1: "About",
+    AboutUs2: "Us?",
+    AboutUsDescription: "Our Mission is to build a bridge between professionals and employers those who need a job and the ones who needs someone to do the job for them this platform makes connections easier and faster, in a community where the tech sector is growing rapidly the demand for tech professionals is growing as well We strives to put job seekers first giving them free access to search for jobs post resumes and research companies. Every day we connect millions of people to new opportunities. but of course this also allows companies find the right candidate faster putting themselves out there and allowing job seekers to see their open positions.",
+    
+    HowItWorks: "How it Works",
+    CreateResume: "Create your Resume",
+    CreateResumeDescription: "Create your resume and add your skills and experience to your profile. You can also add your education and work experience to your profile.",
+    ApplyForJobs: "Apply for Jobs",
+    ApplyForJobsDescription: "Search for jobs and apply for them. You can also search for companies and apply for their jobs.",
+    GetHired: "Get Hired",
+    GetHiredDescription: "Once you have applied for a job you will be notified when the employer has responded to your application.",
+    
+    WhyChooseUs1: "Why Choose",
+    WhyChooseUs2: "Us?",
+    Posted: "Posted",
+    PostedDescription: "15k Vacancies",
+    Saved: "Saved",
+    SavedDescription: "5k Vacancies",
+    Submitted: "Submitted",
+    SubmittedDescription: "12k CV",
+    Hired: "Hired",
+    HiredDescription: "18k Employees",
+    MeetOurTeam1: "Meet Our",
+    MeetOurTeam2: "Team",
+
+    Zahraa: "Zahraa YH",
+    ZahraRole: "Senior Developer | Designer",
+
+    Wisam: "Wisam Naji",
+    WisamRole: "Senior Developer | Designer",
+
+    Rebaz: "Rebaz Farid",
+    RebazRole: "Project manager | Developer",
+
+    Aya: "Aya S. mohammad",
+    AyaRole: "Developer | Translator",
+
+    Bnar: "Bnar Kamal",
+    BnarRole: "Developer | Designer",
+
+    Lara: "Lara Raaof",
+    LaraRole: "Developer | Designer",
+
+    OurCollaborators1: "Our ",
+    OurCollaborators2: "Collaborators",
+  },
+  contact:{
+    
+  },
+  home:{},
+  roadmap:{},
+  jobs:{},
+  navbar:{},
+  footer:{},
+
   title: "jobie",
   headerJobs: "10,254 Jobs",
   AreListedHere: "Are Listed Here!",

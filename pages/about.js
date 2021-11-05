@@ -28,7 +28,7 @@ import en from "../locales/en";
 import ar from "../locales/ar";
 
 export default function aboutus() {
-  const Router = useRouter();
+  const Router = useRouter;
   const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 

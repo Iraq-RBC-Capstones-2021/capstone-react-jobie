@@ -9,7 +9,8 @@ import pic from "../assets/img_contact.png";
 export default function Home() {
   const form = useRef();
   const formref = form.current;
-  function submit(e, formref) {
+
+  const handleSubmit = (e) => {
     sendFeedback(e, formref);
     Array.from(document.querySelectorAll("input")).forEach(
       (input) => (input.value = "")
@@ -17,7 +18,8 @@ export default function Home() {
     Array.from(document.querySelectorAll("textarea")).forEach(
       (textarea) => (textarea.value = "")
     );
-  }
+  };
+
 
   return (
     <div className=" bg-body text-dark px-4 lg:px-48 w-full">
@@ -73,7 +75,7 @@ export default function Home() {
               type="submit"
               value="Send"
               className=" text-xl lg:text-2xl  rounded-full  mt-6 p-2 pr-10 pl-10  text-white font-semibold  bg-accent"
-              onClick={(e) => submit(e, formref)}
+              onClick={handleSubmit}
             >
               Send
             </button>

@@ -16,13 +16,12 @@ export function sendUserData(data) {
 // contact us page
 export function sendFeedback(e, formref) {
   e.preventDefault();
-
+  emailjs.init("user_sRP5iBhZmFEbxe9NtZU2b");
   emailjs
     .sendForm(
       "service_m2azucq",
       "template_gp268sw",
-      formref,
-      "user_sRP5iBhZmFEbxe9NtZU2b"
+      formref
     )
     .then(
       (result) => {

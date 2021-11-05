@@ -49,6 +49,7 @@ export default {
     OurCollaborators1: "Our ",
     OurCollaborators2: "Collaborators",
   },
+
   contact:{
     GetInTouch: "Get in touch",
     FirstName: "First Name",
@@ -63,7 +64,79 @@ export default {
     EmailUs: "Jobie@contact.com",
     OpenHours: "9:00 - 17:00",
   },
-  home:{},
+
+  home:{
+    HTitle1:"10,254 Jobs",
+    HTitle2:"Are Listed Here!",
+    HSubTitle: "Find your dream job now",
+    Search: "Search",
+    TypeToSearch: "Type to search",
+
+    FullTimeJobs: "Full Time Jobs",
+    FullTimeJobsDescription: "if you are set on your career and want to work full time, then a full time job is just the one for you, clicking here will show you all the current full time jobs in our platform",
+    ViewAllFullTimeJobs: "View all full time jobs",
+
+    PartTimeJobs: "Part Time Jobs",
+    PartTimeJobsDescription: "if you are set on your career and want to work part time, then a part time job is just the one for you, clicking here will show you all the current part time jobs in our platform",
+    ViewAllPartTimeJobs: "View all part time jobs",
+
+    RemotesJobs: "Remotes Jobs",
+    RemotesJobsDescription: "if you are set on your career and want to work remotes, then a remotes job is just the one for you, clicking here will show you all the current remotes jobs in our platform",
+    ViewAllRemotesJobs: "View all remotes jobs",
+
+
+    Categories: "Explore by categories",
+
+    Design: "Design",
+    DesignNumbers: "67 Job Vacancy",
+
+    Frontend: "Frontend",
+    FrontendNumbers: "180 Job Vacancy",
+
+    Backend: "Backend",
+    BackendNumbers: "223 Job Vacancy",
+
+    WebDeveloper: "Web Developer",
+    WebDeveloperNumbers: "445 Job Vacancy",
+
+    Network: "Network",
+    NetworkNumbers: "321 Job Vacancy",
+
+    ProjectManager: "Project Manager",
+    ProjectManagerNumbers: "635 Job Vacancy",
+
+    DataAnalyzer: "Data Analytics",
+    DataAnalyzerNumbers: "342 Job Vacancy",
+
+    ViewAllCategories: "View All Categories",
+
+
+    LatestJobs: "Latest Jobs",
+    Position: "Position",
+    Salary: "Salary",
+    Date: "Date",
+    Apply: "Apply",
+    FullTime: "Full Time",
+    PartTime: "Part Time",
+    Remote: "Remote",
+
+    OurCustomers: "Our Customers",
+    OurCustomersDescription: "We’ve helped 2,568 users to find their dream job.",
+    Rebaz: "Rebaz Farid",
+    RebazRole: "Web Developer @ Scopic",
+    RebazFeedback: "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+    
+    Zahraa: "Zahraa YH",
+    ZahraRole: "Senior Developer @ Acklen Avenue",
+    ZahraFeedback: "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+    
+    Lara: "Lara Raaof",
+    LaraRole: "DevOps @ Google",
+    LaraFeedback: "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+
+    UsingOurServices: "More than 20,000 companies are using our service to hire their employees."
+
+  },
   roadmap:{},
   jobs:{},
   navbar:{},

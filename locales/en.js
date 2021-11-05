@@ -4,7 +4,7 @@ export default {
     HSubTitle: "Live your Dream",
 
     AboutUs1: "About",
-    AboutUs2: "Us?",
+    AboutUs2: "Us",
     AboutUsDescription:
       "Our Mission is to build a bridge between professionals and employers those who need a job and the ones who needs someone to do the job for them this platform makes connections easier and faster, in a community where the tech sector is growing rapidly the demand for tech professionals is growing as well We strives to put job seekers first giving them free access to search for jobs post resumes and research companies. Every day we connect millions of people to new opportunities. but of course this also allows companies find the right candidate faster putting themselves out there and allowing job seekers to see their open positions.",
 

@@ -12,6 +12,7 @@ import useIsLoggedIn from "../config/useIsLoggedIn";
 import Loading from "../components/Loading";
 
 export default function Edit() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   useIsLoggedIn().then((value) => {
     setLoading(value);
@@ -20,7 +21,7 @@ export default function Edit() {
   const [profileData, setProfileData] = useState(userProfile);
   const [imgPreview, setImgPreview] = useState(profileData.img);
   const [cvPreview, setCvPreview] = useState();
-  const router = useRouter();
+
   const imagePreviewRef = useRef();
   const dispatch = useDispatch();
 

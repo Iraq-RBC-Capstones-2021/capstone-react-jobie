@@ -247,6 +247,9 @@ export default {
 
 
   ProfileEdit:{
+    EditProfile: "/ Edit Profile",
+    SetUp: "Set up your personal resume page",
+    
     UploadPhoto: "Upload Photo",
     Delete:"Delete",
     ImageDesc:"Image should be at least 400 x 400px as a png or jpeg file",

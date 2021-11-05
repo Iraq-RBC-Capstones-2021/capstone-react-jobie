@@ -11,7 +11,14 @@ import { useRouter } from "next/router";
 import useIsLoggedIn from "../config/useIsLoggedIn";
 import Loading from "../components/Loading";
 
+import en from "../locales/en";
+import ar from "../locales/ar";
+
 export default function Edit() {
+  const Router = useRouter();
+  const { locale } = Router;
+  const t = locale === "ar" ? ar : en;
+
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   useIsLoggedIn().then((value) => {
@@ -163,7 +170,7 @@ export default function Edit() {
                   {profileData.firstName !== ""
                     ? `${profileData.firstName} ${profileData.lastName}`
                     : `${profileData.name}`}{" "}
-                  / Edit Profile
+                  {t.ProfileEdit.EditProfile}
                 </h1>
                 <h4 className="mb-10">Set up your personal resume page</h4>
               </div>

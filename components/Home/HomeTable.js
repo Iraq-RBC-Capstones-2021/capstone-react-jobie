@@ -22,7 +22,7 @@ export default function HomeTable({ jobs }) {
             <th className=" text-dark w-1/2 text-left pl-6 ">Position</th>
             <th className="w-1/4 text-left text-dark">Salary</th>
             <th className="w-1/4 text-left text-dark ">Date</th>
-            <th className="w-1/4 text-left text-dark">Apply</th>
+            <th className="w-1/4 text-left text-dark">Action</th>
           </tr>
         </thead>
         <tbody className="bg-white">

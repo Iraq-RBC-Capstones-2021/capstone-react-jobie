@@ -1,13 +1,13 @@
 import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserProfile, fetchProfile } from "../store/profiles/profileSlice";
-import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
 import { FaPlus } from "react-icons/fa";
 import Education from "../components/Education";
 import WorkExperience from "../components/WorkExperience";
 import { cities } from "../selectData";
 import { nanoid } from "@reduxjs/toolkit";
+import { useRouter } from "next/router";
 import useIsLoggedIn from "../config/useIsLoggedIn";
 import Loading from "../components/Loading";
 

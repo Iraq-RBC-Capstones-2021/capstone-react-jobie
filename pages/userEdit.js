@@ -217,7 +217,7 @@ export default function Edit() {
                             <label>
                               <div className="flex">
                                 <h1 className="text-base rounded-full p-1 px-6 mr-2 text-white font-semibold border-2 border-secondary bg-secondary cursor-pointer w-40">
-                                 {t.ProfileEdit.UploadPhoto}
+                                  {t.ProfileEdit.UploadPhoto}
                                 </h1>{" "}
                                 <input
                                   type="file"
@@ -239,14 +239,14 @@ export default function Edit() {
                       </div>
                     </div>
                   </div>
-                  <p className="mt-6 text-footer">
-                    {t.ProfileEdit.ImageDesc}
-                  </p>
+                  <p className="mt-6 text-footer">{t.ProfileEdit.ImageDesc}</p>
                 </div>
               </div>
             </div>
             <div>
-              <h1 className="mb-10 text-3xl text-primary">{t.ProfileEdit.ResumeFile}</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.ResumeFile}
+              </h1>
               <div className="pb-20 mt-10">
                 <div className="self-center col-1 col-span-2">
                   <div className="w-full h-20 rounded-md bg-white border-2  flex items-center">
@@ -256,7 +256,9 @@ export default function Edit() {
                           {t.ProfileEdit.Choose}
                         </h1>
                         <p className="text-darkgrey mt-1 ml-4">
-                          {cvPreview?.name ? cvPreview.name : "No File Chosen"}
+                          {cvPreview?.name
+                            ? cvPreview.name
+                            : t.ProfileEdit.NoFileSelected}
                         </p>
                       </div>
                       <input
@@ -273,7 +275,9 @@ export default function Edit() {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="mb-10 text-3xl text-primary">{t.ProfileEdit.BasicInfo}</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.BasicInfo}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">{t.ProfileEdit.FirstName}</h5>
@@ -322,7 +326,9 @@ export default function Edit() {
 
           <div className="bg-lightgrey flex flex-col items-center justify-center w-full ">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14 ">
-              <h1 className="mb-10 text-3xl text-primary">{t.ProfileEdit.Contact}</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.Contact}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">{t.ProfileEdit.Location}</h5>
@@ -373,7 +379,9 @@ export default function Edit() {
           </div>
           <div className="w-full  flex flex-col items-center justify-center bg-body">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className="mb-10 text-3xl text-primary">{t.ProfileEdit.Social}</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.Social}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">Linkedin</h5>
@@ -413,7 +421,9 @@ export default function Edit() {
           <div className="w-full bg-lightgrey flex flex-col items-center justify-center ">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
               <div className="">
-                <h1 className="text-3xl text-primary mb-5">{t.ProfileEdit.Skills}</h1>
+                <h1 className="text-3xl text-primary mb-5">
+                  {t.ProfileEdit.Skills}
+                </h1>
                 <p>{t.ProfileEdit.SkillsDesc}</p>
               </div>
               <div className=" mt-10">
@@ -433,7 +443,9 @@ export default function Edit() {
 
           <div className="w-full  flex flex-col items-center justify-center bg-body">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className=" text-3xl text-primary mt-4">{t.ProfileEdit.WorkExperience}</h1>
+              <h1 className=" text-3xl text-primary mt-4">
+                {t.ProfileEdit.WorkExperience}
+              </h1>
               <div className="mt-5 ">
                 <button
                   className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"
@@ -461,7 +473,9 @@ export default function Edit() {
           </div>
           <div className="w-full  flex flex-col items-center justify-center bg-lightgrey">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className=" text-3xl text-primary mt-4">{t.ProfileEdit.Education}</h1>
+              <h1 className=" text-3xl text-primary mt-4">
+                {t.ProfileEdit.Education}
+              </h1>
               <div className="mt-5 ">
                 <button
                   className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"

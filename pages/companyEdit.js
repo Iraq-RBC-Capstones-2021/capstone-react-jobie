@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProfile } from "../store/profiles/profileSlice";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 import useIsLoggedIn from "../config/useIsLoggedIn";
 import Loading from "../components/Loading";
 
 export default function Edit() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   useIsLoggedIn().then((value) => {
     setLoading(value);

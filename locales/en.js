@@ -156,8 +156,26 @@ export default {
     Security: "Security",
     Cloud: "Cloud",
   },
-  
-  jobs:{},
+
+  jobs:{
+    JobsFider: "Jobs Finder",
+    JobsFinerDesc: "Find the best job for you here",
+    Search: "Search",
+
+    Filter: "Filter",
+    SalaryRanges: "Salary Range",
+    From: "From",
+    To: "To",
+    Location: "Location",
+    TypeOfEmployment: "Type of Employment",
+    Category: "Category",
+    Experience: "Experience",
+    WrokLevel: "Wrok Level",
+    ChooseAllThatApplies: "Choose all that applies",
+    Total: "Total",
+    Results: "Results",
+    SortBy: "Sort By: Newest",
+  },
   navbar:{},
   footer:{},
 

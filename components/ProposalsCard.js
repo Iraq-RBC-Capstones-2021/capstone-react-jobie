@@ -1,9 +1,5 @@
-function ProposalsCard({
-  profile,
-  name = "Bruse Lee ",
-  date = "2021/10/10",
-  image = "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
-}) {
+import Link from "next/link";
+function ProposalsCard({ profile, date = "2021/10/10" }) {
   return (
     <div>
       <div className="bg-white shadow-lg w-full py-4 px-6 flex justify-between items-center rounded-xl">
@@ -24,7 +20,11 @@ function ProposalsCard({
           </div>
 
           <div>
-            <p className="font-bold font-primary text-lg">{profile.name}</p>
+            <p className="font-bold font-primary text-lg">
+              <Link href={`/user-profile/${profile.id}`}>
+                <a className="hover:underline">{profile.name}</a>
+              </Link>
+            </p>
             <p>{profile?.title}</p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { notifySuccess, notifyError } from "../notification/notificationSlice";
+import { sendUserData } from "../../config/emailConfig";
 
 const initialState = {
   profile: [],
@@ -169,9 +170,17 @@ export const applyJob = createAsyncThunk(
         { collection: "profiles", doc: currentUser },
         { ...profile, applied_jobs: jobs }
       );
+      const emailData = {
+        username: profile.name,
+        useremail: profile.email,
+        userlink: `https://rbc-jobie.netlify.app/user-profile/${profile.id}`,
+        companyemail: data.company_email,
+        companyname: data.company_name,
+      };
+      sendUserData(emailData);
       dispatch(
         notifySuccess({
-          text: "Applied successfully.",
+          text: "Application was submitted successfully.",
           action: "Create new",
         })
       );

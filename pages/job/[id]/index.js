@@ -13,6 +13,8 @@ import {
 } from "../../../store/tempStorage/tempStorageSlice";
 import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
+import { notifyError } from "../../../store/notification/notificationSlice";
+import { applyJob } from "../../../store/profiles/profileSlice";
 
 // when applying the following data needs to be saved and passed down to sendUserData
 const data = {
@@ -29,8 +31,10 @@ function Job() {
   const companies = useSelector((state) => state.tempStorage.company);
   const profiles = useSelector((state) => state.tempStorage.applied_profiles);
   const auth = useSelector((state) => state.auth);
+  const profile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   const router = useRouter();
+  let applied = false;
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -47,15 +51,20 @@ function Job() {
     (item) => item?.category === job?.category && item?.id !== router.query.id
   );
 
-  // let appliedProfiles = []
-  // if(companies && )
-
   const appliedProfiles = profiles
     ? profiles.filter(
         (item) =>
           item?.applied_jobs && item?.applied_jobs.includes(router.query.id)
       )
     : [];
+
+  if (auth?.currentUser && profile.hasOwnProperty("applied_jobs")) {
+    if (profile.applied_jobs.includes(router.query.id)) {
+      applied = true;
+    } else {
+      applied = false;
+    }
+  }
 
   const [activeTab, setActiveTab] = useState("details");
 
@@ -69,11 +78,35 @@ function Job() {
     }
   };
 
-  if (!job || !company || !auth) return <Loading />;
+  const handleApplyJob = (e) => {
+    if (auth?.currentUser) {
+      const data = {
+        profile: profile,
+        jobId: job.id,
+        company_name: company[0].name,
+        company_email: company[0].email,
+      };
+      dispatch(applyJob(data));
+    } else {
+      dispatch(
+        notifyError({
+          text: "Please log in to apply to a job.",
+          action: "Cancel",
+        })
+      );
+    }
+  };
+
+  if (!job || !company || !auth || !profile) return <Loading />;
 
   return (
     <div>
-      <PositionHeader job={job} company={company[0]} />
+      <PositionHeader
+        job={job}
+        company={company[0]}
+        handleApplyJob={handleApplyJob}
+        applied={applied}
+      />
       <div className="bg-light">
         <div className="px-4 lg:px-48 w-full">
           <div className="rounded mx-auto">
@@ -140,12 +173,21 @@ function Job() {
               </div>
 
               <div className="mt-10">
-                <button
-                  className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
-                  onClick={(e) => sendUserData(e, data)}
-                >
-                  <span>Apply Now</span> <VscArrowRight />
-                </button>
+                {applied ? (
+                  <button
+                    className=" bg-gray-500 text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
+                    disabled
+                  >
+                    <span>Already Applied</span>
+                  </button>
+                ) : (
+                  <button
+                    className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
+                    onClick={handleApplyJob}
+                  >
+                    <span>Apply Now</span> <VscArrowRight />
+                  </button>
+                )}
               </div>
 
               {/* Similar Jobs */}

@@ -13,7 +13,10 @@ export const fetchJobs = createAsyncThunk(
   async (_, thunkAPI) => {
     const { getFirestore } = thunkAPI.extra;
     const firestore = getFirestore();
-    const collection = await firestore.get("jobs");
+    const collection = await firestore.get({
+      collection: "jobs",
+      orderBy: ["timestamp", "desc"],
+    });
     let jobs = [];
 
     collection.forEach((doc) => {

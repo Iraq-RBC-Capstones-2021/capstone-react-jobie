@@ -5,7 +5,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 import Link from "next/link";
 
-const PositionHeader = ({ job, company }) => {
+const PositionHeader = ({ job, company, handleApplyJob, applied }) => {
   const [saved, setsaved] = useState(true);
 
   // when applying the following data needs to be saved and passed down to sendUserData
@@ -70,12 +70,21 @@ const PositionHeader = ({ job, company }) => {
                   </div>
                 )}
               </button>
-              <button
-                className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
-                onClick={(e) => sendUserData(e, data)}
-              >
-                <span>Apply Now</span> <VscArrowRight />
-              </button>
+              {applied ? (
+                <button
+                  className=" bg-gray-500 text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
+                  disabled
+                >
+                  <span>Already Applied</span>
+                </button>
+              ) : (
+                <button
+                  className=" bg-accent hover:bg-secondary text-white rounded-full items-center text-xl inline-flex py-3 px-10 self-end my-auto space-x-2"
+                  onClick={handleApplyJob}
+                >
+                  <span>Apply Now</span> <VscArrowRight />
+                </button>
+              )}
             </div>
           </div>
         )}

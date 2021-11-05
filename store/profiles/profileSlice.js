@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { notifySuccess, notifyError } from "../notification/notificationSlice";
+import { sendUserData } from "../../config/emailConfig";
 
 const initialState = {
   profile: [],
@@ -141,6 +142,62 @@ export const addUserProfile = createAsyncThunk(
   }
 );
 
+export const applyJob = createAsyncThunk(
+  "profile/applyJob",
+  async (data, thunkAPI) => {
+    const { getFirestore, getFirebase } = thunkAPI.extra;
+    const firestore = getFirestore();
+    const firebase = getFirebase();
+    const dispatch = thunkAPI.dispatch;
+
+    // get current user id
+    const currentUser = firebase.auth().currentUser.uid;
+
+    let jobs = [];
+    const profile = data.profile;
+
+    // check if property applied_jobs exists
+    if (profile.hasOwnProperty("applied_jobs")) {
+      // check if job already applied
+      if (profile.applied_jobs.includes(data.jobId)) {
+        jobs = profile.applied_jobs;
+      } else {
+        jobs = [...profile.applied_jobs, data.jobId];
+      }
+    }
+    try {
+      const doc = await firestore.update(
+        { collection: "profiles", doc: currentUser },
+        { ...profile, applied_jobs: jobs }
+      );
+      const emailData = {
+        username: profile.name,
+        useremail: profile.email,
+        userlink: `https://rbc-jobie.netlify.app/user-profile/${profile.id}`,
+        companyemail: data.company_email,
+        companyname: data.company_name,
+      };
+      sendUserData(emailData);
+      dispatch(
+        notifySuccess({
+          text: "Application was submitted successfully.",
+          action: "Create new",
+        })
+      );
+      return { ...profile, applied_jobs: jobs };
+    } catch (ex) {
+      dispatch(
+        notifyError({
+          text: "Something went wrong.Please try again later.",
+          action: "Cancel",
+        })
+      );
+    }
+
+    return { ...data.profile };
+  }
+);
+
 export const createProfile = createAsyncThunk(
   "profile/createProfile",
   async (data, thunkAPI) => {
@@ -173,7 +230,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [fetchProfile.fulfilled]: (state, action) => {
-      state.status = "loaded";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [fetchProfile.rejected]: (state) => {
@@ -183,7 +240,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [fetchProfilebyid.fulfilled]: (state, action) => {
-      state.status = "loaded";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [fetchProfilebyid.rejected]: (state) => {
@@ -193,7 +250,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [addProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [addProfile.rejected]: (state) => {
@@ -203,7 +260,7 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [addUserProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [addUserProfile.rejected]: (state) => {
@@ -213,10 +270,20 @@ const profileSlice = createSlice({
       state.status = "loading";
     },
     [createProfile.fulfilled]: (state, action) => {
-      state.status = "added";
+      state.status = "idle";
       state.profile = action.payload;
     },
     [createProfile.rejected]: (state) => {
+      state.status = "error";
+    },
+    [applyJob.pending]: (state) => {
+      state.status = "loading";
+    },
+    [applyJob.fulfilled]: (state, action) => {
+      state.status = "idle";
+      state.profile = action.payload;
+    },
+    [applyJob.rejected]: (state) => {
       state.status = "error";
     },
     [HYDRATE]: (state, action) => {

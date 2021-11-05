@@ -31,12 +31,20 @@ export default function TableRow({ Position, Salary, timestamp, id }) {
       <td>{`$${Salary.salary_from} - $${Salary.salary_to}`}</td>
       <td>{new Date(timestamp).toLocaleDateString("en-GB")}</td>
       <td className="p-4 pl-0">
-        <button
-          className=" rounded-full bg-transparent border-2 w-24 h-8  border-accent text-accent text-lg hover:bg-accent hover:text-gray-100 focus:border-4 "
-          onClick={handleApplyJob}
-        >
-          Apply
-        </button>
+        {auth?.currentUser && profile?.is_company ? (
+          <Link href={`/job/${id}`}>
+            <a className=" rounded-full bg-transparent border-2 w-24 h-8 py-0.5 px-2 border-accent text-accent text-lg hover:bg-accent hover:text-gray-100 focus:border-4 ">
+              View
+            </a>
+          </Link>
+        ) : (
+          <button
+            className=" rounded-full bg-transparent border-2 w-24 h-8  border-accent text-accent text-lg hover:bg-accent hover:text-gray-100 focus:border-4 "
+            onClick={handleApplyJob}
+          >
+            Apply
+          </button>
+        )}
       </td>
     </tr>
   );

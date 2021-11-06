@@ -22,7 +22,18 @@ export const CheckboxItem = ({ item, name }) => {
   );
 };
 
-function FilterSidebar() {
+function FilterSidebar({
+  filter,
+  salaryRange,
+  from,
+  to,
+  location,
+  TypeOfEmployment,
+  cetegory,
+  Experience,
+  WrokLevel,
+  ChooseAllThatApplies,
+}) {
   const category = [
     { value: "Design", label: "Design" },
     { value: "Frontend Developer", label: "Frontend Developer" },
@@ -50,7 +61,7 @@ function FilterSidebar() {
   };
   return (
     <div>
-      <h2 className="text-3xl text-primary pb-3">Filter</h2>
+      <h2 className="text-3xl text-primary pb-3">{filter}</h2>
       <hr className="border-gray-300 mb-5" />
       <FilterGroup title="Salary Range">
         <div className="flex gap-2">
@@ -59,7 +70,7 @@ function FilterSidebar() {
               htmlFor="salaryFrom"
               className="text-gray-600 select-none font-medium"
             >
-              From
+              {from}
             </label>
             <input
               id="salaryFrom"
@@ -73,7 +84,7 @@ function FilterSidebar() {
               htmlFor="salaryTo"
               className="text-gray-600 select-none font-medium"
             >
-              To
+              {to}
             </label>
             <input
               id="salaryTo"
@@ -85,38 +96,38 @@ function FilterSidebar() {
         </div>
       </FilterGroup>
 
-      <FilterGroup title="Location">
+      <FilterGroup title={location}>
         {" "}
         <Select
           className=" h-11 rounded-lg border-grey border-2"
           name="location"
           options={cities}
           styles={style}
-          placeholder="Choose all that applies"
+          placeholder={ChooseAllThatApplies}
         />
       </FilterGroup>
 
-      <FilterGroup title="Type of Employment">
+      <FilterGroup title={TypeOfEmployment}>
         <Select
           className=" h-11 rounded-lg border-grey border-2"
           name="employment"
           options={employment}
           styles={style}
           isMulti
-          placeholder="Choose all that applies"
+          placeholder={ChooseAllThatApplies}
         />
       </FilterGroup>
-      <FilterGroup title="Category">
+      <FilterGroup title={cetegory}>
         <Select
           className=" h-11 rounded-lg border-grey border-2"
           name="category"
           options={category}
           styles={style}
           isMulti
-          placeholder="Choose all that applies"
+          placeholder={ChooseAllThatApplies}
         />
       </FilterGroup>
-      <FilterGroup title="Experience">
+      <FilterGroup title={Experience}>
         <fieldset>
           <div className=" space-y-2">
             <CheckboxItem item="1" name="experience" />
@@ -126,14 +137,14 @@ function FilterSidebar() {
           </div>
         </fieldset>
       </FilterGroup>
-      <FilterGroup title="Work Level">
+      <FilterGroup title={WrokLevel}>
         <Select
           className=" h-11 rounded-lg border-grey border-2"
           name="level"
           options={level}
           styles={style}
           isMulti
-          placeholder="Choose all that applies"
+          placeholder={ChooseAllThatApplies}
         />
       </FilterGroup>
     </div>

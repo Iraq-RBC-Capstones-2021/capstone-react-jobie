@@ -136,7 +136,7 @@ export default function Home() {
                   href=""
                 >
                   <h1 className="font-medium text-dark text-base lg:text-xl xl:text-2xl flex flex-row ">
-                    {t.viewCatg} 
+                    {t.viewCatg}
                     <ImArrowRight className="mt-2 ml-2" />
                   </h1>
                 </a>
@@ -156,7 +156,6 @@ export default function Home() {
         <div className="bg-body px-4 lg:px-48 w-full py-20">
           <h1 className="text-primary font-semibold text-lg lg:text-2xl xl:text-4xl">
             {" "}
-            
             {t.costumers}
           </h1>
           <h2 className="text-primary font-semibold py-8 text-base lg:text-xl xl:text-2xl">

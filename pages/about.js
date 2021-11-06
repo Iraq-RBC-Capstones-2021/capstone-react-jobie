@@ -27,39 +27,59 @@ import { useRouter } from "next/router";
 import en from "../locales/en";
 import ar from "../locales/ar";
 
-export default function aboutus() {
-  const Router = useRouter;
+export default function Aboutus() {
+  const Router = useRouter();
   const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 
   const Sec1 = [
     {
-      title: t.title1,
-      desc: t.title2,
+      title: t.about.CreateResume,
+      desc: t.about.CreateResumeDescription,
       logo: BsFillFileEarmarkTextFill,
     },
     {
-      title: t.title3,
-      desc: t.title4,
+      title: t.about.ApplyForJobs,
+      desc: t.about.ApplyForJobsDescription,
       logo: BsFillPencilFill,
     },
     {
-      title: t.title5,
-      desc: t.title6,
+      title: t.about.GetHired,
+      desc: t.about.GetHiredDescription,
       logo: FaHandshake,
     },
   ];
 
   const Sec2 = [
-    { title: t.posted, subtitle: t.vaccine, logo: FaPenNib },
-    { title: t.saved, subtitle: t.vaccine2, logo: FaBookmark },
-    { title: t.submitted, subtitle: t.cv, logo: FaFileUpload },
-    { title: t.hired, subtitle: t.noHired, logo: FaCheckDouble },
+    {
+      title: t.about.Posted,
+      subtitle: t.about.PostedDescription,
+      logo: FaPenNib,
+    },
+    {
+      title: t.about.Saved,
+      subtitle: t.about.SavedDescription,
+      logo: FaBookmark,
+    },
+    {
+      title: t.about.Submitted,
+      subtitle: t.about.SubmittedDescription,
+      logo: FaFileUpload,
+    },
+    {
+      title: t.about.Hired,
+      subtitle: t.about.HiredDescription,
+      logo: FaCheckDouble,
+    },
   ];
 
   return (
     <div className="bg-body">
-      <Header title={t.aboutHeader} subtitle={t.aboutSub} img={HeadPic} />
+      <Header
+        title={t.about.HTitle}
+        subtitle={t.about.HSubTitle}
+        img={HeadPic}
+      />
       <div className=" px-4 lg:px-48 w-full py-10">
         <div className="grid grid-cols-3 w-full py-10">
           <div className="col-1">
@@ -69,16 +89,16 @@ export default function aboutus() {
           <div className="col-2 col-span-2 px-6">
             <h1 className="text-4xl xl:text-6xl font-semibold mb-6">
               {" "}
-              <span className="text-accent"> {t.about}</span>{" "}
-              <span className="text-dark"> {t.us}</span>{" "}
+              <span className="text-accent"> {t.about.AboutUs1}</span>{" "}
+              <span className="text-dark"> {t.about.AboutUs2}</span>{" "}
             </h1>
-            <h2 className="text-justify">{t.mission}</h2>
+            <h2 className="text-justify">{t.about.AboutUsDescription}</h2>
           </div>
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-primary pt-20 pb-10">
           {" "}
-          {t.howWork}
+          {t.about.HowItWorks}
         </h1>
         <div className="grid grid-cols-3 py-6 gap-12 pb-20">
           <HowItWorks
@@ -100,8 +120,8 @@ export default function aboutus() {
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
-          <span className="text-primary">{t.choose}</span>{" "}
-          <span className="text-accent">{t.us}</span>
+          <span className="text-primary">{t.about.WhyChooseUs1}</span>{" "}
+          <span className="text-accent">{t.about.WhyChooseUs2}</span>
         </h1>
         <div className="grid grid-cols-4 gap-4 pb-20 ">
           <WhyChooseUs
@@ -128,48 +148,38 @@ export default function aboutus() {
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-10">
           {" "}
-          <span className="text-primary"> {t.meet} </span>{" "}
-          <span className="text-accent">{t.team}</span>
+          <span className="text-primary"> {t.about.MeetOurTeam1} </span>{" "}
+          <span className="text-accent">{t.about.MeetOurTeam2}</span>
         </h1>
         <div className="flex justify-between pb-20">
           <TeamProfile
-            name={t.zahraa}
+            name={t.about.Zahraa}
             pic={Zahraa}
-            role={t.ZahraRole}
-          />
-          <TeamProfile 
-            name={t.wisam} 
-            pic={Wisam} 
-            role={t.WisamRole}
+            role={t.about.ZahraRole}
           />
           <TeamProfile
-            name={t.rebaz}
+            name={t.about.Wisam}
+            pic={Wisam}
+            role={t.about.WisamRole}
+          />
+          <TeamProfile
+            name={t.about.Rebaz}
             pic={Rebaz}
-            role={t.RebazRole}
+            role={t.about.RebazRole}
           />
         </div>
         <div className="grid grid-cols-3 place-items-center">
-          <TeamProfile
-            name={t.aya}
-            pic={Aya}
-            role={t.AyaRole}
-          />
-          <TeamProfile
-            name={t.bnar}
-            pic={Bnar}
-            role={t.BnarRole}
-          />
-          <TeamProfile
-            name={t.lara}
-            pic={Lara}
-            role={t.LaraRole}
-          />
+          <TeamProfile name={t.about.Aya} pic={Aya} role={t.about.AyaRole} />
+          <TeamProfile name={t.about.Bnar} pic={Bnar} role={t.about.BnarRole} />
+          <TeamProfile name={t.about.Lara} pic={Lara} role={t.about.LaraRole} />
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
-          <span className="text-primary">{t.our} </span>{" "}
-          <span className="text-accent">{t.Collaborators}</span>
+          <span className="text-primary">
+            {t.about.OurCollaborators1}{" "}
+          </span>{" "}
+          <span className="text-accent">{t.about.OurCollaborators2}</span>
         </h1>
         <Partners className="flex justify-around" />
       </div>

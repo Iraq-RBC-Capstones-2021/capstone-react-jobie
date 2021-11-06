@@ -1,4 +1,4 @@
-import react, { useRef } from "react";
+import { useRef } from "react";
 import { sendFeedback } from "../config/emailConfig";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
@@ -12,7 +12,7 @@ import pic from "../assets/img_contact.png";
 export default function Home() {
   const form = useRef();
   const formref = form.current;
-  const Router = useRouter;
+  const Router = useRouter();
   const { locale } = Router;
   const t = locale === "ar" ? ar : en;
 

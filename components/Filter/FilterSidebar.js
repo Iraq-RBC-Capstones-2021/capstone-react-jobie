@@ -63,7 +63,7 @@ function FilterSidebar({
     <div>
       <h2 className="text-3xl text-primary pb-3">{filter}</h2>
       <hr className="border-gray-300 mb-5" />
-      <FilterGroup title="Salary Range">
+      <FilterGroup title={salaryRange}>
         <div className="flex gap-2">
           <div className="flex flex-col ">
             <label

@@ -15,6 +15,8 @@ import { useRouter } from "next/router";
 import Loading from "../../../components/Loading";
 import { notifyError } from "../../../store/notification/notificationSlice";
 import { applyJob } from "../../../store/profiles/profileSlice";
+import en from "../../../locales/en";
+import ar from "../../../locales/ar";
 
 // when applying the following data needs to be saved and passed down to sendUserData
 const data = {
@@ -36,6 +38,9 @@ function Job() {
   const router = useRouter();
   let applied = false;
   let belongsToCompany = false;
+  const Router = useRouter;
+  const { locale } = Router;
+  const t = locale === "ar" ? ar : en;
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -116,6 +121,8 @@ function Job() {
           belongsToCompany={belongsToCompany}
           currentUser={auth?.currentUser}
           is_company={profile?.is_company}
+          ApplyNow={t.JobView.ApplyNow}
+          ViewAllJobs={t.JobView.ViewAllJobs}
         />
         <div className="bg-light">
           <div className="px-4 lg:px-48 w-full">
@@ -127,7 +134,7 @@ function Job() {
                   }`}
                 >
                   <a id="details" href="#details" onClick={handleTabs}>
-                    Details
+                    {t.JobView.Details}
                   </a>
                 </li>
                 {auth.currentUser === company[0]?.id && (
@@ -156,28 +163,35 @@ function Job() {
                   <div className=" space-y-10">
                     <div>
                       <h1 className="text-primary font-bold mb-5">
-                        Job Description
+                        {t.JobView.JobDescription}
                       </h1>
                       <p className="text-justify">{job.description}</p>
                     </div>
 
                     <div>
                       <h1 className="text-primary font-bold mb-5">
-                        Responsibilities Include:
+                        {t.JobView.Responsibilities}
                       </h1>
                       <p className="text-justify">{job.responsibilities}</p>
                     </div>
 
                     <div>
                       <h1 className="text-primary font-bold mb-5">
-                        Background & Experience:
+                        {t.JobView.Background}
                       </h1>
                       <p className="text-justify">{job.experience}</p>
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-end">
-                      <PositionSummary job={job} />
+                      <PositionSummary
+                        job={job}
+                        offeredSalary={t.JobView.OfferedSalary}
+                        gender={t.JobView.Gender}
+                        experience={t.JobView.Experience}
+                        workLevel={t.JobView.WorkLevel}
+                        cetegory={t.JobView.Category}
+                      />
                     </div>
                   </div>
                 </div>
@@ -190,7 +204,7 @@ function Job() {
                         className=" bg-accent hover:bg-secondary  text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
                         disabled
                       >
-                        <span>Edit</span>
+                        <span>{t.JobView.edit}</span>
                       </button>
                     ) : (
                       ""
@@ -200,21 +214,23 @@ function Job() {
                       className=" bg-gray-500 text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
                       disabled
                     >
-                      <span>Already Applied</span>
+                      <span>{t.JobView.AlreadyAplly}</span>
                     </button>
                   ) : (
                     <button
                       className=" bg-accent hover:bg-secondary text-white rounded-full text-lg inline-flex py-1 px-10 self-end items-center my-auto space-x-2"
                       onClick={handleApplyJob}
                     >
-                      <span>Apply Now</span> <VscArrowRight />
+                      <span>{t.JobView.ApplyNow}</span> <VscArrowRight />
                     </button>
                   )}
                 </div>
 
                 {/* Similar Jobs */}
                 <div className="mt-20">
-                  <h1 className="text-primary font-bold mb-5">Similar Jobs</h1>
+                  <h1 className="text-primary font-bold mb-5">
+                    {t.JobView.SimilarJobs}
+                  </h1>
                   <div className="space-y-3 ">
                     {similarJobs.map((item, index) => {
                       return <JobListing key={job.id} job={item} />;

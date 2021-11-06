@@ -23,35 +23,63 @@ import { FaCheckDouble } from "react-icons/fa";
 import HeadPic from "../assets/img_about.png";
 import SectionPic from "../assets/img_about2.png";
 
-const Sec1 = [
-  {
-    title: "Create your resume",
-    desc: "creating your resume helps you apply faster and showcase your experience and skills to employers",
-    logo: BsFillFileEarmarkTextFill,
-  },
-  {
-    title: "Apply for a Job",
-    desc: "Through our website you can find different kind of jobs from different tech categories and applying is made easy once you set up your resume",
-    logo: BsFillPencilFill,
-  },
-  {
-    title: "Get hired now",
-    desc: "Once you apply for a job the employer will be able to see your resume and the position you applied for, which makes hiring easy",
-    logo: FaHandshake,
-  },
-];
+import { useRouter } from "next/router";
+import en from "../locales/en";
+import ar from "../locales/ar";
 
-const Sec2 = [
-  { title: "Posted", subtitle: "15k Vacancies", logo: FaPenNib },
-  { title: "Saved", subtitle: "5k Vacancies", logo: FaBookmark },
-  { title: "Submitted", subtitle: "12k CV", logo: FaFileUpload },
-  { title: "Hired", subtitle: "8k Employees", logo: FaCheckDouble },
-];
+export default function Aboutus() {
+  const Router = useRouter();
+  const { locale } = Router;
+  const t = locale === "ar" ? ar : en;
 
-export default function aboutus() {
+  const Sec1 = [
+    {
+      title: t.about.CreateResume,
+      desc: t.about.CreateResumeDescription,
+      logo: BsFillFileEarmarkTextFill,
+    },
+    {
+      title: t.about.ApplyForJobs,
+      desc: t.about.ApplyForJobsDescription,
+      logo: BsFillPencilFill,
+    },
+    {
+      title: t.about.GetHired,
+      desc: t.about.GetHiredDescription,
+      logo: FaHandshake,
+    },
+  ];
+
+  const Sec2 = [
+    {
+      title: t.about.Posted,
+      subtitle: t.about.PostedDescription,
+      logo: FaPenNib,
+    },
+    {
+      title: t.about.Saved,
+      subtitle: t.about.SavedDescription,
+      logo: FaBookmark,
+    },
+    {
+      title: t.about.Submitted,
+      subtitle: t.about.SubmittedDescription,
+      logo: FaFileUpload,
+    },
+    {
+      title: t.about.Hired,
+      subtitle: t.about.HiredDescription,
+      logo: FaCheckDouble,
+    },
+  ];
+
   return (
     <div className="bg-body">
-      <Header title="Find Your Job" subtitle="Live Your Dream " img={HeadPic} />
+      <Header
+        title={t.about.HTitle}
+        subtitle={t.about.HSubTitle}
+        img={HeadPic}
+      />
       <div className=" px-4 lg:px-48 w-full py-10">
         <div className="grid grid-cols-3 w-full py-10">
           <div className="col-1">
@@ -61,28 +89,16 @@ export default function aboutus() {
           <div className="col-2 col-span-2 px-6">
             <h1 className="text-4xl xl:text-6xl font-semibold mb-6">
               {" "}
-              <span className="text-accent"> About</span>{" "}
-              <span className="text-dark"> Us</span>{" "}
+              <span className="text-accent"> {t.about.AboutUs1}</span>{" "}
+              <span className="text-dark"> {t.about.AboutUs2}</span>{" "}
             </h1>
-            <h2 className="text-justify">
-              Our Mission is to build a bridge between professionals and
-              employers those who need a job and the ones who needs someone to
-              do the job for them this platform makes connections easier and
-              faster, in a community where the tech sector is growing rapidly
-              the demand for tech professionals is growing as well We strives to
-              put job seekers first, giving them free access to search for jobs,
-              post resumes, and research companies. Every day, we connect
-              millions of people to new opportunities. but of course this also
-              allows companies find the right candidate faster putting
-              themselves out there and allowing job seekers to see their open
-              positions.
-            </h2>
+            <h2 className="text-justify">{t.about.AboutUsDescription}</h2>
           </div>
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-primary pt-20 pb-10">
           {" "}
-          How it works
+          {t.about.HowItWorks}
         </h1>
         <div className="grid grid-cols-3 py-6 gap-12 pb-20">
           <HowItWorks
@@ -104,8 +120,8 @@ export default function aboutus() {
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
-          <span className="text-primary">Why Choose </span>{" "}
-          <span className="text-accent">Us?</span>
+          <span className="text-primary">{t.about.WhyChooseUs1}</span>{" "}
+          <span className="text-accent">{t.about.WhyChooseUs2}</span>
         </h1>
         <div className="grid grid-cols-4 gap-4 pb-20 ">
           <WhyChooseUs
@@ -132,44 +148,38 @@ export default function aboutus() {
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-10">
           {" "}
-          <span className="text-primary"> Meet Our </span>{" "}
-          <span className="text-accent">Team</span>
+          <span className="text-primary"> {t.about.MeetOurTeam1} </span>{" "}
+          <span className="text-accent">{t.about.MeetOurTeam2}</span>
         </h1>
         <div className="flex justify-between pb-20">
           <TeamProfile
-            name="Zahraa YH"
+            name={t.about.Zahraa}
             pic={Zahraa}
-            role="Senior Developer | Designer"
+            role={t.about.ZahraRole}
           />
-          <TeamProfile name="Wisam Naji " pic={Wisam} role="Supervisor" />
           <TeamProfile
-            name="Rebaz Farid"
+            name={t.about.Wisam}
+            pic={Wisam}
+            role={t.about.WisamRole}
+          />
+          <TeamProfile
+            name={t.about.Rebaz}
             pic={Rebaz}
-            role="Project manager | Developer"
+            role={t.about.RebazRole}
           />
         </div>
         <div className="grid grid-cols-3 place-items-center">
-          <TeamProfile
-            name="Aya Abdulsalm "
-            pic={Aya}
-            role="Developer | Translator"
-          />
-          <TeamProfile
-            name="Bnar Kamal"
-            pic={Bnar}
-            role="Developer | Designer"
-          />
-          <TeamProfile
-            name="Lara Raoof "
-            pic={Lara}
-            role="Developer | Designer"
-          />
+          <TeamProfile name={t.about.Aya} pic={Aya} role={t.about.AyaRole} />
+          <TeamProfile name={t.about.Bnar} pic={Bnar} role={t.about.BnarRole} />
+          <TeamProfile name={t.about.Lara} pic={Lara} role={t.about.LaraRole} />
         </div>
 
         <h1 className="text-4xl xl:text-6xl font-semibold text-center pt-20 pb-16 ">
           {" "}
-          <span className="text-primary">Our </span>{" "}
-          <span className="text-accent">Collaborators</span>
+          <span className="text-primary">
+            {t.about.OurCollaborators1}{" "}
+          </span>{" "}
+          <span className="text-accent">{t.about.OurCollaborators2}</span>
         </h1>
         <Partners className="flex justify-around" />
       </div>

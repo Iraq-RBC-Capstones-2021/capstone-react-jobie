@@ -3,11 +3,15 @@ import { debounce } from "lodash";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
+import en from "../locales/en";
+import ar from "../locales/ar";
 
 import data from "../data.json";
 
 function NavbarSearch() {
   const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
   const [searchResults, setSearchResults] = useState([]);
   const searchInput = useRef();
 
@@ -37,7 +41,7 @@ function NavbarSearch() {
         <input
           className="border border-gray-300 h-10 px-5 pr-10 rounded-full text-sm focus:outline-none relative"
           type="search"
-          placeholder="Search"
+          placeholder={t.navbar.Search}
           onChange={handleChange}
           ref={searchInput}
         />

@@ -11,7 +11,14 @@ import { useRouter } from "next/router";
 import useIsLoggedIn from "../config/useIsLoggedIn";
 import Loading from "../components/Loading";
 
+import en from "../locales/en";
+import ar from "../locales/ar";
+
 export default function Edit() {
+  const Router = useRouter();
+  const { locale } = Router;
+  const t = locale === "ar" ? ar : en;
+
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   useIsLoggedIn().then((value) => {
@@ -163,9 +170,9 @@ export default function Edit() {
                   {profileData.firstName !== ""
                     ? `${profileData.firstName} ${profileData.lastName}`
                     : `${profileData.name}`}{" "}
-                  / Edit Profile
+                  {t.ProfileEdit.EditProfile}
                 </h1>
-                <h4 className="mb-10">Set up your personal resume page</h4>
+                <h4 className="mb-10">{t.ProfileEdit.SetUp}</h4>
               </div>
               <div className="col-start-3 my-10 flex justify-end">
                 <button
@@ -173,14 +180,14 @@ export default function Edit() {
                   type="submit"
                   onClick={addData}
                 >
-                  Save
+                  {t.ProfileEdit.Save}
                 </button>
                 <button
                   className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightgrey"
                   type="button"
                   onClick={() => router.back()}
                 >
-                  Cancel
+                  {t.ProfileEdit.Cancel}
                 </button>
               </div>
             </div>
@@ -210,7 +217,7 @@ export default function Edit() {
                             <label>
                               <div className="flex">
                                 <h1 className="text-base rounded-full p-1 px-6 mr-2 text-white font-semibold border-2 border-secondary bg-secondary cursor-pointer w-40">
-                                  Upload photo
+                                  {t.ProfileEdit.UploadPhoto}
                                 </h1>{" "}
                                 <input
                                   type="file"
@@ -226,30 +233,32 @@ export default function Edit() {
                             className="rounded-full border-2 border-secondary px-6 py-1 text-secondary font-medium w-40"
                             onClick={handleImgDelete}
                           >
-                            Delete
+                            {t.ProfileEdit.Delete}
                           </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <p className="mt-6 text-footer">
-                    Image should be at least 400 x 400px as a png or jpeg file
-                  </p>
+                  <p className="mt-6 text-footer">{t.ProfileEdit.ImageDesc}</p>
                 </div>
               </div>
             </div>
             <div>
-              <h1 className="mb-10 text-3xl text-primary">Resume File</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.ResumeFile}
+              </h1>
               <div className="pb-20 mt-10">
                 <div className="self-center col-1 col-span-2">
                   <div className="w-full h-20 rounded-md bg-white border-2  flex items-center">
                     <label>
                       <div className="flex">
                         <h1 className="text-base rounded-full p-1 px-10  ml-10 text-white font-semibold cursor-pointer bg-dark">
-                          Choose
+                          {t.ProfileEdit.Choose}
                         </h1>
                         <p className="text-darkgrey mt-1 ml-4">
-                          {cvPreview?.name ? cvPreview.name : "No File Chosen"}
+                          {cvPreview?.name
+                            ? cvPreview.name
+                            : t.ProfileEdit.NoFileSelected}
                         </p>
                       </div>
                       <input
@@ -266,10 +275,12 @@ export default function Edit() {
               </div>
             </div>
             <div className="w-full">
-              <h1 className="mb-10 text-3xl text-primary">Basic info</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.BasicInfo}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
-                  <h5 className="mb-2">First Name</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.FirstName}</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="firstName"
@@ -279,7 +290,7 @@ export default function Edit() {
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Last Name</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.LastName}</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="lastName"
@@ -289,7 +300,7 @@ export default function Edit() {
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2"> Title</h5>
+                  <h5 className="mb-2"> {t.ProfileEdit.Title}</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="title"
@@ -301,7 +312,7 @@ export default function Edit() {
               </div>
               <div className="pb-20 mt-10">
                 <div className="self-center col-1 col-span-2">
-                  <h5 className="mb-2">Biography</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.Biography}</h5>
                   <textarea
                     className="w-full h-40 mt-2 border-grey border-2"
                     name="biography"
@@ -315,10 +326,12 @@ export default function Edit() {
 
           <div className="bg-lightgrey flex flex-col items-center justify-center w-full ">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14 ">
-              <h1 className="mb-10 text-3xl text-primary">Contact</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.Contact}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
-                  <h5 className="mb-2">Location</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.Location}</h5>
 
                   <Select
                     instanceId="location"
@@ -342,7 +355,7 @@ export default function Edit() {
                 </div>
 
                 <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Email</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.Email}</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="email"
@@ -352,7 +365,7 @@ export default function Edit() {
                   />
                 </div>
                 <div className="self-center col-2 ml-4">
-                  <h5 className="mb-2">Phone</h5>
+                  <h5 className="mb-2">{t.ProfileEdit.Phone}</h5>
                   <input
                     className="h-11 w-full rounded-lg border-grey border-2 pl-2"
                     name="phone"
@@ -366,7 +379,9 @@ export default function Edit() {
           </div>
           <div className="w-full  flex flex-col items-center justify-center bg-body">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className="mb-10 text-3xl text-primary">Social</h1>
+              <h1 className="mb-10 text-3xl text-primary">
+                {t.ProfileEdit.Social}
+              </h1>
               <div className=" row-2 grid grid-cols-3">
                 <div className="self-center col-2 ">
                   <h5 className="mb-2">Linkedin</h5>
@@ -406,8 +421,10 @@ export default function Edit() {
           <div className="w-full bg-lightgrey flex flex-col items-center justify-center ">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
               <div className="">
-                <h1 className="text-3xl text-primary mb-5">Skills</h1>
-                <p>Add skills as comma seperated values.</p>
+                <h1 className="text-3xl text-primary mb-5">
+                  {t.ProfileEdit.Skills}
+                </h1>
+                <p>{t.ProfileEdit.SkillsDesc}</p>
               </div>
               <div className=" mt-10">
                 <div className="self-center col-1 col-span-2">
@@ -426,7 +443,9 @@ export default function Edit() {
 
           <div className="w-full  flex flex-col items-center justify-center bg-body">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className=" text-3xl text-primary mt-4">Work Experience</h1>
+              <h1 className=" text-3xl text-primary mt-4">
+                {t.ProfileEdit.WorkExperience}
+              </h1>
               <div className="mt-5 ">
                 <button
                   className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"
@@ -434,7 +453,7 @@ export default function Edit() {
                   type="button"
                 >
                   <FaPlus className="mt-1 mr-1" />
-                  Add item
+                  {t.ProfileEdit.AddItem}
                 </button>
               </div>
               {profileData?.workExperience
@@ -454,7 +473,9 @@ export default function Edit() {
           </div>
           <div className="w-full  flex flex-col items-center justify-center bg-lightgrey">
             <div className="px-4 lg:px-48 w-full pt-10 pb-14">
-              <h1 className=" text-3xl text-primary mt-4">Education</h1>
+              <h1 className=" text-3xl text-primary mt-4">
+                {t.ProfileEdit.Education}
+              </h1>
               <div className="mt-5 ">
                 <button
                   className="flex justify-center rounded-full border-2 bg-secondary  px-6 py-1 text-white font-medium"
@@ -462,7 +483,7 @@ export default function Edit() {
                   type="button"
                 >
                   <FaPlus className="mt-1 mr-1" />
-                  Add item
+                  {t.ProfileEdit.AddItem}
                 </button>
 
                 {profileData?.education
@@ -487,14 +508,14 @@ export default function Edit() {
                     type="submit"
                     onClick={addData}
                   >
-                    Save
+                    {t.ProfileEdit.Save}
                   </button>
                   <button
                     className="text-base rounded-full p-1 px-6 ml-6  text-dark  font-semibold  bg-lightblue"
                     type="button"
                     onClick={() => router.back()}
                   >
-                    Cancel
+                    {t.ProfileEdit.Cancel}
                   </button>
                 </div>
               </div>

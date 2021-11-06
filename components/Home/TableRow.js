@@ -1,9 +1,15 @@
+import { useRouter } from "next/router";
+import en from "../../locales/en";
+import ar from "../../locales/ar";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { notifyError } from "../../store/notification/notificationSlice";
 import { applyJob } from "../../store/profiles/profileSlice";
 
 export default function TableRow({ Position, Salary, timestamp, id }) {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
   const auth = useSelector((state) => state.auth);
   const profile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
@@ -42,7 +48,7 @@ export default function TableRow({ Position, Salary, timestamp, id }) {
             className=" rounded-full bg-transparent border-2 w-24 h-8  border-accent text-accent text-lg hover:bg-accent hover:text-gray-100 focus:border-4 "
             onClick={handleApplyJob}
           >
-            Apply
+            {t.home.Apply}
           </button>
         )}
       </td>

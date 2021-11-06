@@ -18,7 +18,14 @@ const summary = {
   category: "Web Development",
 };
 
-export default function PositionSummary({ job }) {
+export default function PositionSummary({
+  job,
+  offeredSalary,
+  gender,
+  experience,
+  workLevel,
+  cetegory,
+}) {
   return (
     <div className=" bg-light h-auto w-80">
       <div className="ml-5 grid grid-cols-2 w-54 mt-5 mb-6">
@@ -26,7 +33,7 @@ export default function PositionSummary({ job }) {
           <BsCurrencyDollar className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Offered Salary</h1>
+          <h1 className="text-xl text-secondary font-bold">{offeredSalary}</h1>
           <h1 className="text-base">
             {`${job.salary_from + summary.currency.symbolShort} 
               - 
@@ -39,7 +46,7 @@ export default function PositionSummary({ job }) {
           <FaUserAlt className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Gender</h1>
+          <h1 className="text-xl text-secondary font-bold">{gender}</h1>
           <h1 className="text-base">{job.gender}</h1>
         </div>
       </div>
@@ -48,7 +55,7 @@ export default function PositionSummary({ job }) {
           <FaLightbulb className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Experience</h1>
+          <h1 className="text-xl text-secondary font-bold">{experience}</h1>
           <h1 className="text-base">{job.experience_years}</h1>
         </div>
       </div>
@@ -57,7 +64,7 @@ export default function PositionSummary({ job }) {
           <FaLayerGroup className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Work Level</h1>
+          <h1 className="text-xl text-secondary font-bold">{workLevel}</h1>
           <h1 className="text-base"> {job.work_level}</h1>
         </div>
       </div>
@@ -66,7 +73,7 @@ export default function PositionSummary({ job }) {
           <FaListUl className="text-4xl text-accent" />
         </div>
         <div className="-ml-20">
-          <h1 className="text-xl text-secondary font-bold">Category</h1>
+          <h1 className="text-xl text-secondary font-bold">{cetegory}</h1>
           <h1 className="text-base">{job.category}</h1>
         </div>
       </div>

@@ -1,22 +1,45 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavBarSearch from "./NavBarSearch";
+import Router from 'next/router'
+
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
-
+import { FaGlobe } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
+
 import LoginPopup from "./LoginPopup";
 import LoginAccountTpe from "./LoginAccountType";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutGoogle } from "../store/auth/authSlice";
+import { useRouter } from "next/router";
+
+import en from "../locales/en";
+import ar from "../locales/ar";
 
 function Navbar() {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "ar" ? ar : en;
+
   const auth = useSelector((state) => state.auth);
   const userProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [language, setLanguage] = useState("ar")
   const [menuActive, setMenuActive] = useState(false);
   const [accountMenuActive, setAccountMenuActive] = useState(false);
+
+  const handleLanguageChange = () => {
+    if(language === "ar") {
+      setLanguage("en");
+      Router.push('/ar')
+    }
+    if(language === "en") {
+      setLanguage("ar");
+      Router.push('/en')
+    }
+  }
 
   const accountMenuRef = useRef();
   useEffect(() => {
@@ -80,27 +103,47 @@ function Navbar() {
             <ul className="md:flex-row md:flex items-center md:gap-5">
               <li className="list-none">
                 <Link href="/" shallow={true}>
-                  <a className="flex w-full text-base px-2.5">Home</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Home}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/about">
-                  <a className="flex w-full text-base px-2.5">About</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.About}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/roadmaps">
-                  <a className="flex w-full text-base px-2.5">Roadmaps</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Roadmap}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/jobs">
-                  <a className="flex w-full text-base px-2.5">Jobs</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Jobs}
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
                 <Link href="/contact">
-                  <a className="flex w-full text-base px-2.5">Contact</a>
+                  <a className="flex w-full text-base px-2.5">
+                    {t.navbar.Contact}
+                  </a>
+                </Link>
+              </li>
+              <li className="list-none">
+                <Link href="">
+                  <a 
+                    className="flex w-full text-base "
+                    onClick = {handleLanguageChange}
+                    >
+                    <FaGlobe />
+                  </a>
                 </Link>
               </li>
               <li className="list-none">
@@ -114,7 +157,7 @@ function Navbar() {
                     className=" text-white rounded-full px-7 py-1 bg-accent"
                     onClick={handleLoginModal}
                   >
-                    Login
+                    {t.navbar.Login}
                   </button>
                 ) : (
                   <div className="relative inline-block" ref={accountMenuRef}>
@@ -123,7 +166,7 @@ function Navbar() {
                       className=" text-white rounded-full px-7 py-1 bg-accent inline-flex justify-center items-center"
                       onClick={handleAccountMenu}
                     >
-                      Account
+                      {t.navbar.Account}
                       <FaAngleDown />
                     </button>
                     <div
@@ -149,7 +192,7 @@ function Navbar() {
                           id="menu-item-0"
                           onClick={handleAccountMenu}
                         >
-                          View Profile
+                          {t.navbar.ViewProfile}
                         </a>
                       </Link>
                       <Link
@@ -164,7 +207,7 @@ function Navbar() {
                           id="menu-item-1"
                           onClick={handleAccountMenu}
                         >
-                          Edit Profile
+                          {t.navbar.EditProfile}
                         </a>
                       </Link>
                       {userProfile?.is_company && (
@@ -176,7 +219,7 @@ function Navbar() {
                             id="menu-item-1"
                             onClick={handleAccountMenu}
                           >
-                            Post Job
+                            {t.navbar.PostJob}
                           </a>
                         </Link>
                       )}
@@ -190,7 +233,7 @@ function Navbar() {
                           id="menu-item-3"
                           onClick={handleLogoutClick}
                         >
-                          Logout
+                          {t.navbar.Logout}
                         </button>
                       </div>
                     </div>

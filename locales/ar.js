@@ -63,6 +63,7 @@ export default {
     Send: "يرسل",
     emailHolder: "بريدك الالكتروني",
     messageHolder: "اكتب رسالتك هنا...",
+    
     ContactUs: "اتصل بنا",
     Location: "السليمانية ، العراق",
     Phone: "+964 750 113 0495",
@@ -121,7 +122,6 @@ export default {
     Position: "موقع",
     Salary: "مرتب",
     Date: "تاريخ",
-    Action: "تطبيق",
     Apply: "تطبيق",
     FullTime: "وقت كامل",
     PartTime: "دوام جزئى",
@@ -261,6 +261,7 @@ export default {
   ProfileEdit: {
     EditProfile: "تعديل الملف الشخصي / ",
     SetUp: "قم بإعداد صفحة سيرتك الذاتية الشخصية",
+
     UploadPhoto: "حمل الصورة",
     Delete: "حذف",
     ImageDesc: "يجب أن تكون الصورة 400 × 400 بكسل على الأقل كملف png أو jpeg",

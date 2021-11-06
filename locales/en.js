@@ -1,24 +1,25 @@
 export default {
-  about: {
-    HTitle: "Find Your Job",
-    HSubTitle: "Live your Dream",
 
+  about:{
+    HTitle:"Find Your Job",
+    HSubTitle:"Live your Dream",
+    
     AboutUs1: "About",
-    AboutUs2: "Us",
-    AboutUsDescription:
+    AboutUs2: "Us?",
+    AboutUsDescription: 
       "Our Mission is to build a bridge between professionals and employers those who need a job and the ones who needs someone to do the job for them this platform makes connections easier and faster, in a community where the tech sector is growing rapidly the demand for tech professionals is growing as well We strives to put job seekers first giving them free access to search for jobs post resumes and research companies. Every day we connect millions of people to new opportunities. but of course this also allows companies find the right candidate faster putting themselves out there and allowing job seekers to see their open positions.",
-
+    
     HowItWorks: "How it Works",
     CreateResume: "Create your Resume",
-    CreateResumeDescription:
+    CreateResumeDescription: 
       "Create your resume and add your skills and experience to your profile. You can also add your education and work experience to your profile.",
     ApplyForJobs: "Apply for Jobs",
-    ApplyForJobsDescription:
+    ApplyForJobsDescription: 
       "Search for jobs and apply for them. You can also search for companies and apply for their jobs.",
     GetHired: "Get Hired",
-    GetHiredDescription:
+    GetHiredDescription: 
       "Once you have applied for a job you will be notified when the employer has responded to your application.",
-
+    
     WhyChooseUs1: "Why Choose",
     WhyChooseUs2: "Us?",
     Posted: "Posted",
@@ -54,15 +55,16 @@ export default {
     OurCollaborators2: "Collaborators",
   },
 
-  contact: {
+  contact:{
     GetInTouch: "Get in touch",
     FirstName: "First Name",
     LastName: "Last Name",
     Email: "Email",
+    EmailHolders: "Email Address",
     Message: "Message",
+    MessageHolders: "Write your messsage...",
     Send: "Send",
-    emailHolder: "Your Email",
-    messageHolder: "Write your message here...",
+
     ContactUs: "Contact Us",
     Location: "As Sulaymaniyah, Iraq",
     Phone: "+964 750 113 0495",
@@ -70,25 +72,25 @@ export default {
     OpenHours: "9:00 - 17:00",
   },
 
-  home: {
-    HTitle1: "10,254 Jobs",
-    HTitle2: "Are Listed Here!",
+  home:{
+    HTitle1:"10,254 Jobs",
+    HTitle2:"Are Listed Here!",
     HSubTitle: "Find your dream job now",
     Search: "Search",
     TypeToSearch: "Type to search",
 
     FullTimeJobs: "Full Time Jobs",
-    FullTimeJobsDescription:
+    FullTimeJobsDescription: 
       "if you are set on your career and want to work full time, then a full time job is just the one for you, clicking here will show you all the current full time jobs in our platform",
     ViewAllFullTimeJobs: "View all full time jobs",
 
     PartTimeJobs: "Part Time Jobs",
-    PartTimeJobsDescription:
+    PartTimeJobsDescription: 
       "if you are set on your career and want to work part time, then a part time job is just the one for you, clicking here will show you all the current part time jobs in our platform",
     ViewAllPartTimeJobs: "View all part time jobs",
 
     RemotesJobs: "Remotes Jobs",
-    RemotesJobsDescription:
+    RemotesJobsDescription: 
       "if you are set on your career and want to work remotes, then a remotes job is just the one for you, clicking here will show you all the current remotes jobs in our platform",
     ViewAllRemotesJobs: "View all remotes jobs",
 
@@ -121,56 +123,55 @@ export default {
     Position: "Position",
     Salary: "Salary",
     Date: "Date",
-    Action: "Action",
     Apply: "Apply",
     FullTime: "Full Time",
     PartTime: "Part Time",
     Remote: "Remote",
 
     OurCustomers: "Our Customers",
-    OurCustomersDescription:
-      "We’ve helped 2,568 users to find their dream job.",
+    OurCustomersDescription: 
+    "We’ve helped 2,568 users to find their dream job.",
     Rebaz: "Rebaz Farid",
     RebazRole: "Web Developer @ Scopic",
-    RebazFeedback:
-      "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
-
+    RebazFeedback: 
+    "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+    
     Zahraa: "Zahraa YH",
     ZahraRole: "Senior Developer @ Acklen Avenue",
-    ZahraFeedback:
-      "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
-
+    ZahraFeedback: 
+    "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+    
     Lara: "Lara Raaof",
     LaraRole: "DevOps @ Google",
-    LaraFeedback:
-      "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
+    LaraFeedback: 
+    "I’ve been working with Jobie for a while now and I’m really happy with the service. I’ve found it very easy to find a job and I’m really glad that I’ve found it.",
 
-    UsingOurServices:
-      "More than 20,000 companies are using our service to hire their employees.",
+    UsingOurServices: "More than 20,000 companies are using our service to hire their employees."
   },
 
-  roadmap: {
-    Htitle: "Developer Roadmaps",
-    HSubTitle:
-      "Follow these roadmaps and become a hero in any path you choose!",
 
-    WebDevelopment: "Web Development",
-    Frontend: "Frontend",
-    Backend: "Backend",
-    FullStack: "Full Stack",
+  roadmap:{
+    Htitle: "Developer Roadmaps",
+    HSubTitle: "Follow these roadmaps and become a hero in any path you choose!",
+    
+    WebDevelopment:"Web Development",
+    Frontend:"Frontend",
+    Backend:"Backend",
+    FullStack:"Full Stack",
 
     Design: "Design",
     UIUX: "UI/UX",
     Graphic: "Graphics",
     Logo: "Logo",
 
-    NetworkSecurity: "Network & Security",
+    Network: "Network & Security",
     Network: "Network",
     Security: "Security",
     Cloud: "Cloud",
   },
 
-  jobs: {
+
+  jobs:{
     JobsFider: "Jobs Finder",
     JobsFinerDesc: "Find the best job for you here",
     Search: "Search",
@@ -190,7 +191,8 @@ export default {
     SortBy: "Sort By: Newest",
   },
 
-  navbar: {
+
+  navbar:{
     Home: "Home",
     About: "About",
     Contact: "Contact",
@@ -198,25 +200,18 @@ export default {
     Roadmap: "Roadmap",
     Search: "Search",
     Login: "Login",
-    Account: "Account",
-    EditProfile: "Edit Profile",
-    ViewProfile: "View Profile",
-    PostJob: "Post Job",
-    Logout: "Logout",
   },
 
-  footer: {
-    JobieDesc:
-      "Jobie is a platform that can help you set up your career we give services from finding out the right path to advance your career through a roadmap or a right position from the top companies",
 
-    Navigate: "Navigate",
+  footer:{
+    JobieDesc: "Jobie is a platform that can help you set up your career we give services from finding out the right path to advance your career through a roadmap or a right position from the top companies",
+    
+    Navigate:"Navigate",
     Home: "Home",
     About: "About Us",
     Contact: "Contact Us",
     Jobs: "Jobs",
     Roadmap: "Roadmap",
-    Login: "Login",
-    SignUp: "Sign up",
 
     Jobs: "Jobs",
     WebDeveloper: "Web Developer",
@@ -229,9 +224,10 @@ export default {
     BuildYourResume: "Build Your Resume",
     ListYourJobs: "List Your Jobs",
     SearchJobs: "Search Jobs",
-    HireProfessionals: "Hire Professionals",
+    HireProfessionals:"Hire Professionals",
     RateAnEmployee: "Rate An Employer",
   },
+
 
   JobView: {
     ViewAllJobs: "View All Jobs",
@@ -241,8 +237,7 @@ export default {
     Responsibilities: "Responsibilities Include",
     Background: "Background & Experience",
     SimilarJobs: "Similar Jobs",
-    edit: "Edit",
-    AlreadyAplly: "Already Applied",
+
     OfferedSalary: "Offered Salary",
     Gender: "Gender",
     Experience: "Experience",
@@ -250,7 +245,8 @@ export default {
     Category: "Category",
   },
 
-  ProfileView: {
+
+  ProfileView:{
     Hire: "Hire",
     DownloadCV: "Download CV",
     Bio: "No Biography added yet",
@@ -260,22 +256,23 @@ export default {
     Education: "Education",
   },
 
-  ProfileEdit: {
+
+  ProfileEdit:{
     EditProfile: "/ Edit Profile",
     SetUp: "Set up your personal resume page",
-
+    
     UploadPhoto: "Upload Photo",
-    Delete: "Delete",
-    ImageDesc: "Image should be at least 400 x 400px as a png or jpeg file",
+    Delete:"Delete",
+    ImageDesc:"Image should be at least 400 x 400px as a png or jpeg file",
+    
+    ResumeFile:"Resume File",
+    Choose:"Choose",
+    NoFileSelected:"No File Selected",
 
-    ResumeFile: "Resume File",
-    Choose: "Choose",
-    NoFileSelected: "No File Selected",
-
-    BasicInfo: "Basic Info",
-    FirstName: "First Name",
-    LastName: "Last Name",
-    Title: "Title",
+    BasicInfo:"Basic Info",
+    FirstName:"First Name",
+    LastName:"Last Name",
+    Title:"Title",
     Biography: "Biography",
 
     Contact: "Contact",
@@ -308,4 +305,4 @@ export default {
     Save: "Save",
     Cancel: "Cancel",
   },
-};
+}

@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavBarSearch from "./NavBarSearch";
+
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa";
-
 import { FaAngleDown } from "react-icons/fa";
+
 import LoginPopup from "./LoginPopup";
 import LoginAccountTpe from "./LoginAccountType";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutGoogle } from "../store/auth/authSlice";
 import { useRouter } from "next/router";
+
 import en from "../locales/en";
 import ar from "../locales/ar";
 function Navbar() {

@@ -38,7 +38,7 @@ export default {
     Wisam: "وسام ناجي",
     WisamRole: "مطور أول | مصمم",
 
-    Rebaz: "ريباز فاريد",
+    Rebaz: "ريباز فەريد",
     RebazRole: "مدير المشروع | مطور",
 
     Aya: "ايه عبدالسلام محمد",

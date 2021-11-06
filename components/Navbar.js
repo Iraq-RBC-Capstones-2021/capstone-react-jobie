@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import NavBarSearch from "./NavBarSearch";
+import Router from 'next/router'
 
 import { FaBars } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
@@ -15,6 +16,7 @@ import { useRouter } from "next/router";
 
 import en from "../locales/en";
 import ar from "../locales/ar";
+
 function Navbar() {
   const router = useRouter();
   const { locale } = router;
@@ -24,8 +26,20 @@ function Navbar() {
   const userProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [language, setLanguage] = useState("ar")
   const [menuActive, setMenuActive] = useState(false);
   const [accountMenuActive, setAccountMenuActive] = useState(false);
+
+  const handleLanguageChange = () => {
+    if(language === "ar") {
+      setLanguage("en");
+      Router.push('/ar')
+    }
+    if(language === "en") {
+      setLanguage("ar");
+      Router.push('/en')
+    }
+  }
 
   const accountMenuRef = useRef();
   useEffect(() => {
@@ -124,7 +138,10 @@ function Navbar() {
               </li>
               <li className="list-none">
                 <Link href="">
-                  <a className="flex w-full text-base ">
+                  <a 
+                    className="flex w-full text-base "
+                    onClick = {handleLanguageChange}
+                    >
                     <FaGlobe />
                   </a>
                 </Link>

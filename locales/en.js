@@ -200,6 +200,11 @@ export default {
     Roadmap: "Roadmap",
     Search: "Search",
     Login: "Login",
+    Account: "Account",
+    EditProfile: "Edit Profile",
+    ViewProfile: "View Profile",
+    PostJob: "Create a Job",
+    Logout: "Logout",
   },
 
 

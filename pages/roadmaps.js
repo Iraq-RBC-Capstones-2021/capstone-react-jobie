@@ -13,62 +13,74 @@ import {
 
 import RoadMapCard from "../components/RoadMapCard.js";
 import { AiFillHtml5 } from "react-icons/ai";
+import { useRouter } from "next/router";
+import en from "../locales/en";
+import ar from "../locales/ar";
 const RoadMap = () => {
+  const Router = useRouter;
+  const { locale } = Router;
+  const t = locale === "ar" ? ar : en;
+
   return (
     <main>
       <Header
-        title="Developer Roadmaps"
-        subtitle="Follow these roadmaps and become a hero in any path you choose!"
+        title={t.roadmap.Htitle}
+        subtitle={t.roadmap.HSubTitle}
         subtitle2=""
         img={Img}
+        align=""
       />
       <div className="bg-body p-24 space-y-14 px-4 lg:px-48 w-full">
-        <h1 className="text-dark font-semibold text-4xl">Web Development</h1>
+        <h1 className="text-dark font-semibold text-4xl">
+          {t.roadmap.WebDevelopment}
+        </h1>
         <span className="flex justify-between  ">
           <RoadMapCard
             link={"https://roadmap.sh/frontend"}
             icon={<AiFillHtml5 />}
-            title="Frontend"
+            title={t.roadmap.Frontend}
           />
           <RoadMapCard
             link={"https://roadmap.sh/backend"}
             icon={<FaCog />}
-            title="Backend"
+            title={t.roadmap.Backend}
           />
           <RoadMapCard
             link={
               "https://www.crampete.com/blogs/road-map-to-full-stack-web-development/"
             }
             icon={<FaCogs />}
-            title="Fullstack"
+            title={t.roadmap.FullStack}
           />
         </span>
 
-        <h1 className="text-dark font-semibold text-4xl ">Design</h1>
+        <h1 className="text-dark font-semibold text-4xl ">
+          {t.roadmap.Design}
+        </h1>
         <span className="flex justify-between  ">
           <RoadMapCard
             link={
               "https://bootcamp.uxdesign.cc/the-self-taught-ui-ux-designer-roadmap-in-2021-aa0f5b62cecb"
             }
             icon={<FaDraftingCompass />}
-            title="UI/UX"
+            title={t.roadmap.UIUX}
           />
           <RoadMapCard
             link={"http://www.cadlearner.com/graphic-design-roadmap-for-2021/"}
             icon={<FaPalette />}
-            title="Graphic"
+            title={t.roadmap.Graphic}
           />
           <RoadMapCard
             link={
               "https://www.behance.net/gallery/93233577/Logo-design-Roadmap"
             }
             icon={<FaSplotch />}
-            title="Logo"
+            title={t.roadmap.Logo}
           />
         </span>
 
         <h1 className="text-dark font-semibold text-4xl ">
-          Network & Security
+          {t.roadmap.NetworkSecurity}
         </h1>
         <span className="flex justify-between  ">
           <RoadMapCard
@@ -76,21 +88,21 @@ const RoadMap = () => {
               "https://www.itpro.com/business-strategy/careers-training/357384/your-roadmap-to-becoming-a-computer-network-architect"
             }
             icon={<FaCodeBranch />}
-            title="Network"
+            title={t.roadmap.Network}
           />
           <RoadMapCard
             link={
               "https://www.comptia.org/content/it-careers-path-roadmap/cybersecurity-specialist"
             }
             icon={<FaShieldAlt />}
-            title="Security"
+            title={t.roadmap.Security}
           />
           <RoadMapCard
             link={
               "https://novacontext.com/roadmap-to-cloud-computing-the-planning-phase/index.html"
             }
             icon={<FaCloudUploadAlt />}
-            title="Cloud"
+            title={t.roadmap.Cloud}
           />
         </span>
       </div>

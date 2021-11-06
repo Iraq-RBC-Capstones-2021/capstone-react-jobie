@@ -160,7 +160,7 @@ export default {
     Graphic: "الرسومات",
     Logo: "شعار",
 
-    Network: "الشبكة والأمن",
+    NetworkSecurity: "الشبكة والأمن",
     Network: "شبكة الاتصال",
     Security: "حماية",
     Cloud: "سحاب",

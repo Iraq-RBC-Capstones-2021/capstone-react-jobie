@@ -61,7 +61,8 @@ export default {
     Email: "بريد الالكتروني",
     Message: "رسالة",
     Send: "يرسل",
-
+    emailHolder: "بريدك الالكتروني",
+    messageHolder: "اكتب رسالتك هنا...",
     ContactUs: "اتصل بنا",
     Location: "السليمانية ، العراق",
     Phone: "+964 750 113 0495",

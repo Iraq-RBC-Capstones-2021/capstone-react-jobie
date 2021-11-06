@@ -61,7 +61,8 @@ export default {
     Email: "Email",
     Message: "Message",
     Send: "Send",
-
+    emailHolder: "Your Email",
+    messageHolder: "Write your message here...",
     ContactUs: "Contact Us",
     Location: "As Sulaymaniyah, Iraq",
     Phone: "+964 750 113 0495",

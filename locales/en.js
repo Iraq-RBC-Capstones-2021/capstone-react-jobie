@@ -233,7 +233,8 @@ export default {
     Responsibilities: "Responsibilities Include",
     Background: "Background & Experience",
     SimilarJobs: "Similar Jobs",
-
+    edit: "Edit",
+    AlreadyAplly: "Already Applied",
     OfferedSalary: "Offered Salary",
     Gender: "Gender",
     Experience: "Experience",

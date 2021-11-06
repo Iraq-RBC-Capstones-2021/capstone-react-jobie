@@ -231,7 +231,8 @@ export default {
     Responsibilities: "وتشمل مسؤوليات",
     Background: "الخلفية والخبرة",
     SimilarJobs: "وظائف مماثلة",
-
+    edit: "تعديل",
+    AlreadyAplly: "تطبق بالفعل",
     OfferedSalary: "الراتب المعروض",
     Gender: "جنس تذكير أو تأنيث",
     Experience: "خبرة",

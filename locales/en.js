@@ -215,6 +215,8 @@ export default {
     Contact: "Contact Us",
     Jobs: "Jobs",
     Roadmap: "Roadmap",
+    Login: "Login",
+    SignUp: "Sign up",
 
     Jobs: "Jobs",
     WebDeveloper: "Web Developer",

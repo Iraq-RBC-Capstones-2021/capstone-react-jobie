@@ -10,56 +10,51 @@ import { useRouter } from "next/router";
 import en from "../locales/en";
 import ar from "../locales/ar";
 
-const links = [
-  {
-    head: "Navigate Website",
-    links: [
-      { title: "Home", href: "/" },
-      { title: "About Us", href: "/about" },
-      { title: "Road Maps", href: "/roadmaps" },
-      { title: "Jobs", href: "/jobs" },
-      { title: "Contact Us", href: "/contact" },
-      { title: "Login", href: "/login" },
-      { title: "Sign up", href: "/signup" },
-    ],
-  },
-  {
-    head: "Jobs",
-    links: [
-      { title: "Web Developers", href: "/jobs/web+developers" },
-      { title: "Graphic Designers", href: "/jobs/graphic+designers" },
-      { title: "Translators", href: "/jobs/translators" },
-      { title: "Backend Developers", href: "/jobs/backend+developers" },
-      { title: "UX/UI Specialist", href: "/jobs/uxui+specialists" },
-    ],
-  },
-  {
-    head: "Services",
-    links: [
-      { title: "Build your resume", href: "/profile" },
-      { title: "List your jobs", href: "/jobs/create" },
-      { title: "Search Jobs", href: "/jobs" },
-      { title: "Hire Professionals", href: "/hire" },
-      { title: "Rate an employer", href: "/rate" },
-    ],
-  },
-];
 export default function Footer() {
   const router = useRouter();
   const { locale } = router;
   const t = locale === "ar" ? ar : en;
-
+  const links = [
+    {
+      head: t.footer.Navigate,
+      links: [
+        { title: t.footer.Home, href: "/" },
+        { title: t.footer.About, href: "/about" },
+        { title: t.footer.Roadmap, href: "/roadmaps" },
+        { title: t.footer.Jobs, href: "/jobs" },
+        { title: t.footer.Contact, href: "/contact" },
+        { title: t.footer.Login, href: "/login" },
+        { title: t.footer.SignUp, href: "/signup" },
+      ],
+    },
+    {
+      head: t.footer.Jobs,
+      links: [
+        { title: t.footer.WebDeveloper, href: "/jobs/web+developers" },
+        { title: t.footer.GraphicDesign, href: "/jobs/graphic+designers" },
+        { title: t.footer.Translator, href: "/jobs/translators" },
+        { title: t.footer.BackendDeveloper, href: "/jobs/backend+developers" },
+        { title: t.footer.UIUX, href: "/jobs/uxui+specialists" },
+      ],
+    },
+    {
+      head: t.footer.Services,
+      links: [
+        { title: t.footer.BuildYourResume, href: "/profile" },
+        { title: t.footer.ListYourJobs, href: "/jobs/create" },
+        { title: t.footer.SearchJobs, href: "/jobs" },
+        { title: t.footer.HireProfessionals, href: "/hire" },
+        { title: t.footer.RateAnEmployee, href: "/rate" },
+      ],
+    },
+  ];
   return (
     <div className="w-full">
       <div className="text-white px-4 lg:px-48 py-4 bg-footer md:h-80 h-auto w-full">
         <div className="grid justify-items-between md:grid-cols-2 grid-cols-1">
           <div className="mt-3">
             <Image src={logo} alt="Logo" />
-            <p className="w-full md:w-3/4 mt-8 text-sm">
-              Realm of the galaxies across the centuries the carbon in our apple
-              pies vanquish the impossible another world venture. Dream of the
-              minds eye muse about home.
-            </p>
+            <p className="w-full md:w-3/4 mt-8 text-sm">{t.footer.JobieDesc}</p>
           </div>
           <div className="grid grid-cols-3 gap-8 mt-12">
             {links.map((group) => {

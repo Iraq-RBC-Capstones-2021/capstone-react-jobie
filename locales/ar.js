@@ -213,6 +213,8 @@ export default {
     Contact: "اتصل بنا",
     Jobs: "وظائف",
     Roadmap: "خريطة الطريق",
+    Login: "تسجيل الدخول",
+    SignUp: "اشتراك",
 
     Jobs: "وظائف",
     WebDeveloper: "مطور ويب",

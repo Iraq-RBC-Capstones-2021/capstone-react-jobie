@@ -8,7 +8,7 @@ export default {
     AboutUsDescription:
       "مهمتنا هي بناء جسر بين المهنيين وأرباب العمل الذين يحتاجون إلى وظيفة والذين يحتاجون إلى شخص ما للقيام بهذه المهمة نيابة عنهم ، هذه المنصة تجعل الاتصالات أسهل وأسرع ، في مجتمع ينمو فيه قطاع التكنولوجيا بسرعة الطلب على التكنولوجيا المهنيين ينموون كذلك نحن نسعى جاهدين لوضع الباحثين عن عمل في المقام الأول ومنحهم حرية الوصول للبحث عن وظائف وسير ذاتية وشركات بحثية. نربط كل يوم ملايين الأشخاص بفرص جديدة. ولكن هذا بالطبع يسمح أيضًا للشركات بالعثور على المرشح المناسب بشكل أسرع ، مما يسمح للباحثين عن عمل برؤية وظائفهم المفتوحة.",
 
-    HowItWorks: "كيف تعمل",
+    HowItWorks: "كيف يعمل ",
     CreateResume: "أنشئ سيرتك الذاتية",
     CreateResumeDescription:
       "أنشئ سيرتك الذاتية وأضف مهاراتك وخبراتك إلى ملفك الشخصي. يمكنك أيضًا إضافة خبرتك التعليمية والعملية إلى ملفك الشخصي",
@@ -17,10 +17,10 @@ export default {
       "ابحث عن وظائف وتقدم لها. يمكنك أيضًا البحث عن الشركات والتقدم لوظائفها.",
     GetHired: "احصل على وظيفة",
     GetHiredDescription:
-      "بمجرد تقديمك لوظيفة ، سيتم إخطارك عندما يقوم صاحب العمل بالرد على طلبك.",
+      "بمجرد تقديمك لوظيفة ، سيتم اعلامك عندما يقوم صاحب العمل بالرد على طلبك.",
 
-    WhyChooseUs1: "لماذا الاختيار",
-    WhyChooseUs2: "نحن?",
+    WhyChooseUs1: "لماذا ",
+    WhyChooseUs2: "تختارنا ?",
     Posted: "تم النشر",
     PostedDescription: "15 ألف وظيفة شاغرة",
     Saved: "تم الحفظ",
@@ -29,8 +29,8 @@ export default {
     SubmittedDescription: "12k السيرة الذاتية",
     Hired: "استأجرت",
     HiredDescription: "18k الموظفين",
-    MeetOurTeam1: "تلبية لدينا",
-    MeetOurTeam2: "فريق",
+    MeetOurTeam1: "فريق ",
+    MeetOurTeam2: "جوبي",
 
     Zahraa: "زهراء يعرب",
     ZahraRole: "مطور أول | مصمم",
@@ -51,7 +51,7 @@ export default {
     LaraRole: "المطور | مصمم",
 
     OurCollaborators1: "لنا ",
-    OurCollaborators2: "المتعاونون",
+    OurCollaborators2: "شركائنا",
   },
 
   contact: {
@@ -60,10 +60,10 @@ export default {
     LastName: "الكنية",
     Email: "بريد الالكتروني",
     Message: "رسالة",
-    Send: "يرسل",
+    Send: "ارسال",
     emailHolder: "بريدك الالكتروني",
     messageHolder: "اكتب رسالتك هنا...",
-    
+
     ContactUs: "اتصل بنا",
     Location: "السليمانية ، العراق",
     Phone: "+964 750 113 0495",
@@ -91,14 +91,14 @@ export default {
     RemotesJobs: "وظائف التحكم عن بعد",
     RemotesJobsDescription:
       "إذا تم تعيينك في حياتك المهنية وترغب في العمل عن بُعد ، فإن وظيفة التحكم عن بُعد هي الوظيفة المناسبة لك ، وسيظهر لك النقر هنا جميع وظائف أجهزة التحكم عن بُعد الحالية في نظامنا الأساسي",
-    ViewAllRemotesJobs: "عرض جميع وظائف أجهزة التحكم عن بعد",
+    ViewAllRemotesJobs: "عرض جميع وظائف العن بعد ",
 
     Categories: "استكشف حسب الفئات",
 
     Design: "تصميم",
     DesignNumbers: "67 وظيفة شاغرة",
 
-    Frontend: "مطور الواجهه نهاية المقدمة",
+    Frontend: "مطور واجهه المستخدم",
     FrontendNumbers: "180 وظيفة شاغرة",
 
     Backend: "مطور الواجهه الخلفيه",
@@ -107,13 +107,13 @@ export default {
     WebDeveloper: "مطور ويب",
     WebDeveloperNumbers: "445 وظيفة شاغرة",
 
-    Network: "شبكة الاتصال",
+    Network: "الاتصالات والشبكات  ",
     NetworkNumbers: "321 وظيفة شاغرة",
 
-    ProjectManager: "مدير المشروع",
+    ProjectManager: "ادارة المشاريع",
     ProjectManagerNumbers: "635 وظيفة شاغرة",
 
-    DataAnalyzer: "تحليلات البيانات",
+    DataAnalyzer: "تحليل البيانات",
     DataAnalyzerNumbers: "342 وظيفة شاغرة",
 
     ViewAllCategories: "عرض جميع الفئات",
@@ -149,13 +149,13 @@ export default {
   },
 
   roadmap: {
-    Htitle: "خرائط طريق المطور",
-    HSubTitle: "اتبع خرائط الطريق هذه وكن بطلاً في أي مسار تختاره!",
+    Htitle: "المسارات",
+    HSubTitle: "اتبع احد هذه المسارات وكن بطلاً في أي مسار تختاره!",
 
-    WebDevelopment: "تطوير الشبكة",
-    Frontend: "مطور الواجهه نهاية المقدمة",
+    WebDevelopment: "مطور مواقع الكترونيه",
+    Frontend: "مطور واجهه المستخدم",
     Backend: "همطور الواجهه الخلفيه",
-    FullStack: "كومة كاملة",
+    FullStack: "مطور ويب مطور ويب شامل ",
 
     Design: "تصميم",
     UIUX: "UI/UX",
@@ -165,7 +165,7 @@ export default {
     NetworkSecurity: "الشبكة والأمن",
     Network: "شبكة الاتصال",
     Security: "حماية",
-    Cloud: "سحاب",
+    Cloud: "الخدمات السحابيه",
   },
 
   jobs: {
@@ -173,11 +173,11 @@ export default {
     JobsFinerDesc: "ابحث عن أفضل وظيفة لك هنا",
     Search: "بحث",
 
-    Filter: "منقي",
-    SalaryRanges: "نطاق الراتب",
-    From: "من عند",
+    Filter: "تحديد حسب نوع",
+    SalaryRanges: "حدود الراتب",
+    From: "من ",
     To: "إلى",
-    Location: "موقع",
+    Location: "مكان",
     TypeOfEmployment: "نوع العمل",
     Category: "فئة",
     Experience: "خبرة",
@@ -242,7 +242,7 @@ export default {
     edit: "تعديل",
     AlreadyAplly: "تطبق بالفعل",
     OfferedSalary: "الراتب المعروض",
-    Gender: "جنس تذكير أو تأنيث",
+    Gender: "الجنس",
     Experience: "خبرة",
     WorkLevel: "مستوى العمل",
     Category: "فئة",
@@ -276,7 +276,7 @@ export default {
     Title: "العنوان",
     Biography: "سيرة شخصية",
 
-    Contact: "اتصل",
+    Contact: "الرقم",
     Location: "موقع",
     Phone: "هاتف",
     Email: "بريد الالكتروني",
@@ -287,10 +287,10 @@ export default {
     SkillsDesc: "أضف المهارات كقيم مفصولة بفواصل.",
 
     AddItem: "اضافة عنصر",
-    Remove: "يزيل",
+    Remove: "ازاله",
 
     WorkExperience: "خبرة في العمل",
-    ExperienceItem: "عنصر الخبرة ",
+    ExperienceItem: " الخبرة ",
     Company: "شركة",
     Location: "موقع",
     TypeOfEmployment: "نوع العمل ",
@@ -300,10 +300,10 @@ export default {
     Education: "تعليم",
     EducationItem: "عنصر التعليم",
     UniversitySchool: "جامعة / مدرسة",
-    Major: "رئيسي",
+    Major: "اختصاص",
     Date: "تاريخ",
 
     Save: "يحفظ",
-    Cancel: "يلغي",
+    Cancel: "الغاء",
   },
 };

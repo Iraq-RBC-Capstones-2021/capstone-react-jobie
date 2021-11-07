@@ -37,7 +37,7 @@ export default function PositionSummary({
           <h1 className="text-base">
             {`${job.salary_from + summary.currency.symbolShort} 
               - 
-              ${job.salary_from + summary.currency.symbolShort}`}
+              ${job.salary_to + summary.currency.symbolShort}`}
           </h1>
         </div>
       </div>

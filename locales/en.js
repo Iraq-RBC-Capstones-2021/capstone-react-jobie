@@ -236,6 +236,8 @@ export default {
 
   JobView: {
     ViewAllJobs: "View All Jobs",
+    edit: "Edit",
+    AlreadyAplly: "Already Applied",
     ApplyNow: "Apply Now",
     Details: "Details",
     JobDescription: "Job Description",

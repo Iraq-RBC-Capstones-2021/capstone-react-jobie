@@ -233,6 +233,8 @@ export default {
 
   JobView: {
     ViewAllJobs: "عرض جميع الوظائف",
+    edit:"تعديل",
+    AlreadyAplly: "تم التقديم",
     ApplyNow: "قدم الآن",
     Details: "تفاصيل",
     JobDescription: "المسمى الوظيفي",

@@ -70,10 +70,8 @@ export const createJob = createAsyncThunk(
           action: "Create new",
         })
       );
-      return {
-        ...newJobData,
-        id: doc.id,
-      };
+      const data = { ...newJobData, id: doc.id };
+      return data;
     } catch (ex) {
       dispatch(
         notifyError({
@@ -105,7 +103,7 @@ const jobsSlice = createSlice({
     },
     [createJob.fulfilled]: (state, action) => {
       state.status = "idle";
-      state.jobs = action.payload;
+      state.jobs = [...state.jobs, action.payload];
     },
     [createJob.rejected]: (state) => {
       state.status = "error";

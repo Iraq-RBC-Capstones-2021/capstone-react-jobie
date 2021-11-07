@@ -18,14 +18,14 @@ function Message({ message }) {
 
   return (
     <div
-      className={`alert flex flex-row items-center p-4 rounded border-b-2 fixed right-0 top-8 ${
+      className={`alert flex flex-row items-center p-4 rounded border-b-2 fixed right-0 top-8 z-50 ${
         message.type === "success"
           ? "bg-green-100  border-green-300"
           : "bg-red-100  border-red-300"
       }`}
     >
       <div
-        className={`alert-icon flex items-center justify-center h-6 w-6 flex-shrink-0 rounded-full border-2 ${
+        className={`alert-icon flex items-center justify-center h-6 w-6 flex-shrink-0 rounded-full border-2 z-50 ${
           message.type === "success"
             ? "bg-green-100 border-green-500"
             : "bg-red-100  border-red-500"
